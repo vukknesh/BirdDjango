@@ -4,7 +4,6 @@ import profilepic1 from "./profile1.jpg";
 
 export default class MyProfile extends Component {
   render() {
-    const { name, email } = this.props.user;
     return (
       <div>
         <div className="card">
@@ -14,8 +13,8 @@ export default class MyProfile extends Component {
             alt="Picture"
           />
           <div className="card-body">
-            <h5 className="card-title">{name}</h5>
-            <p className="card-text">{email}</p>
+            <h5 className="card-title">Name</h5>
+            <p className="card-text">email</p>
           </div>
           <ul className="list-group list-group-flush">
             <li className="list-group-item">Cras justo odio</li>

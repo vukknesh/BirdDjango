@@ -1,51 +1,35 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { loginUser } from "../../actions/authActions";
-
+import { login } from "../../actions/auth";
+import { Redirect } from "react-router-dom";
 import TextFieldGroup from "../common/TextFieldGroup";
 
 class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: "",
+      username: "",
       password: "",
 
       errors: {}
     };
-    this.onChange = this.onChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
   }
-  componentDidMount() {
-    // if (this.props.auth.isAuthenticated) {
-    //   this.props.history.push("/dashboard");
-    // }
-  }
+  componentDidMount() {}
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.auth.isAuthenticated) {
-      this.props.history.push("/my-page");
-    }
-
-    if (nextProps.errors) {
-      this.setState({ errors: nextProps.errors });
-    }
-  }
-  onChange(event) {
+  componentWillReceiveProps(nextProps) {}
+  onChange = event => {
     this.setState({ [event.target.name]: event.target.value });
-  }
-  onSubmit(event) {
+  };
+  onSubmit = event => {
     event.preventDefault();
-    const userData = {
-      email: this.state.email,
-      password: this.state.password
-    };
-    this.props.loginUser(userData);
-  }
-  render() {
-    const { errors } = this.state;
 
+    this.props.login(this.state.username, this.state.password);
+  };
+  render() {
+    if (this.props.isAuthenticated) {
+      return <Redirect to="/" />;
+    }
     return (
       <div className="login">
         <div className="container">
@@ -57,12 +41,12 @@ class Login extends Component {
               </p>
               <form onSubmit={this.onSubmit}>
                 <TextFieldGroup
-                  placeholder="email"
-                  name="email"
-                  type="email"
-                  value={this.state.email}
+                  placeholder="username"
+                  name="username"
+                  type="text"
+                  value={this.state.username}
                   onChange={this.onChange}
-                  error={errors.email}
+                  // error={errors.email}
                 />
                 <TextFieldGroup
                   placeholder="password"
@@ -70,7 +54,7 @@ class Login extends Component {
                   type="password"
                   value={this.state.password}
                   onChange={this.onChange}
-                  error={errors.password}
+                  // error={errors.password}
                 />
 
                 <input
@@ -86,16 +70,17 @@ class Login extends Component {
   }
 }
 Login.propTypes = {
-  loginUser: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired,
-  errors: PropTypes.object.isRequired
+  isAuthenticated: PropTypes.bool,
+  login: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
-  auth: state.auth,
-  errors: state.errors
+  isAuthenticated: state.auth.isAuthenticated
 });
+
 export default connect(
   mapStateToProps,
-  { loginUser }
+  {
+    login
+  }
 )(Login);
