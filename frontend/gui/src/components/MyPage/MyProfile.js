@@ -1,8 +1,15 @@
 import React, { Component } from "react";
 
 import profilepic1 from "./profile1.jpg";
+// import { connect } from "react-redux";
+// import { getCurrentProfile } from "../../actions/profile";
 
-export default class MyProfile extends Component {
+class MyProfile extends Component {
+  // componentDidMount() {
+  //   let token = this.props.auth.token;
+  //   this.props.getCurrentProfile(token);
+  //   console.log(this.props.profiles);
+  // }
   render() {
     return (
       <div>
@@ -95,3 +102,12 @@ export default class MyProfile extends Component {
     );
   }
 }
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+// export default connect(
+//   mapStateToProps,
+//   { getCurrentProfile }
+// )(MyProfile);
+
+export default MyProfile;

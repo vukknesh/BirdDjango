@@ -1,33 +1,44 @@
-// import axios from "axios";
+import axios from "axios";
 
-// import {
-//   GET_PROFILE,
-//   PROFILE_LOADING,
-//   CLEAR_CURRENT_PROFILE,
-//   GET_ERRORS,
-//   SET_CURRENT_USER,
-//   GET_PROFILES
-// } from "./types";
+import {
+  GET_PROFILE,
+  USER_LOADING
+  // PROFILE_LOADING,
+  // CLEAR_CURRENT_PROFILE,
+  // GET_ERRORS,
+  // SET_CURRENT_USER,
+  // GET_PROFILES
+} from "./types";
 
-// //get current profile
+//get current profile
 
-// export const getCurrentProfile = () => dispatch => {
-//   dispatch(setProfileLoading);
-//   axios
-//     .get("/api/profile")
-//     .then(res =>
-//       dispatch({
-//         type: GET_PROFILE,
-//         payload: res.data
-//       })
-//     )
-//     .catch(err =>
-//       dispatch({
-//         type: GET_PROFILE,
-//         payload: {}
-//       })
-//     );
-// };
+export const getCurrentProfile = token => dispatch => {
+  //headers
+  const config = {
+    headers: {
+      "Content-Type": "application/json"
+    }
+  };
+
+  //if token, add to headers config
+  if (token) {
+    config.headers["Authorization"] = `Token ${token}`;
+  }
+  axios
+    .get("http://localhost:8000/api/profiles/", config)
+    .then(res =>
+      dispatch({
+        type: GET_PROFILE,
+        payload: res.data
+      })
+    )
+    .catch(err =>
+      dispatch({
+        type: GET_PROFILE,
+        payload: {}
+      })
+    );
+};
 
 // //get current profile by handle
 

@@ -3,20 +3,18 @@ import PropTypes from "prop-types";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { registerUser } from "../../actions/auth";
+import { createMessage } from "../../actions/messages";
 
 import TextFieldGroup from "../common/TextFieldGroup";
 
 class Register extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      username: "",
-      email: "",
-      password1: "",
-      password2: "",
-      errors: {}
-    };
-  }
+  state = {
+    username: "",
+    email: "",
+    password: "",
+    password2: "",
+    errors: {}
+  };
 
   componentDidMount() {}
 
@@ -25,12 +23,18 @@ class Register extends Component {
   };
   onSubmit = event => {
     event.preventDefault();
+    const { username, email, password, password2 } = this.state;
 
-    let username = this.state.username;
-    let email = this.state.email;
-    let password1 = this.state.password1;
-
-    this.props.registerUser(username, email, password1);
+    if (password !== password2) {
+      this.props.createMessage({ passwordNotMatch: "Passwords do not match" });
+    } else {
+      const newUser = {
+        username,
+        email,
+        password
+      };
+      this.props.registerUser(newUser);
+    }
   };
   render() {
     if (this.props.isAuthenticated) {
@@ -48,6 +52,7 @@ class Register extends Component {
               <form noValidate onSubmit={this.onSubmit}>
                 <TextFieldGroup
                   placeholder="Username"
+                  type="text"
                   name="username"
                   value={this.state.username}
                   onChange={this.onChange}
@@ -63,8 +68,8 @@ class Register extends Component {
                 />
                 <TextFieldGroup
                   placeholder="Password"
-                  name="password1"
-                  value={this.state.password1}
+                  name="password"
+                  value={this.state.password}
                   onChange={this.onChange}
                   // error={errors.password}
                   type="password"
@@ -93,6 +98,7 @@ class Register extends Component {
 
 Register.propTypes = {
   registerUser: PropTypes.func.isRequired,
+  createMessage: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool
 };
 
@@ -103,6 +109,7 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   {
-    registerUser
+    registerUser,
+    createMessage
   }
 )(Register);

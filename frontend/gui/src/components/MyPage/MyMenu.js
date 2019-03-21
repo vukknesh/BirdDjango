@@ -5,8 +5,6 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 class MyMenu extends Component {
-  componentDidMount() {}
-
   render() {
     return (
       <div className="btn-group-vertical d-flex flex-column ml-5 mr-4 ">

@@ -11,12 +11,14 @@ import store from "./store";
 //components
 import NotFound from "./components/not-found/NotFound";
 import Navbar from "./components/layout/Navbar";
+import Topbar from "./components/layout/Topbar";
 import Footer from "./components/layout/Footer";
 import Landing from "./components/layout/Landing";
 import MyPage from "./components/MyPage/MyPage";
 import Login from "./components/Auth/Login";
 import Register from "./components/Auth/Register";
 import Guide from "./components/Guide/Guide";
+import Enter from "./components/layout/Enter/Enter";
 
 //ALERT OPTIONS
 
@@ -38,10 +40,12 @@ class App extends Component {
             <Router>
               <div>
                 <Navbar />
+                <Topbar />
                 <Alerts />
 
                 <Route exact path="/" component={Landing} />
                 <div>
+                  <Route exact path="/enter" component={Enter} />
                   <Route exact path="/login" component={Login} />
                   <Route exact path="/register" component={Register} />
                   <Route exact path="/my-page" component={MyPage} />

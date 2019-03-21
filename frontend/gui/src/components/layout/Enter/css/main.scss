@@ -1,0 +1,21 @@
+.sec {
+  display: grid;
+  grid-template-columns: repeat(10, auto);
+}
+.con {
+  margin: 0;
+  height: 100vh;
+}
+.dd {
+  background-color: lightblue;
+  height: 100vh;
+}
+.hh1 {
+  font-family: MontSerrat;
+  font-size: 4rem;
+  position: absolute;
+  top: 70%;
+  left: 12%;
+  opacity: 0.2;
+  z-index: 2;
+}

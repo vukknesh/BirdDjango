@@ -1,17 +1,34 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logout } from "../../actions/auth";
 
 class Navbar extends Component {
-  onLogoutClick(event) {
+  handleLogout = event => {
     event.preventDefault();
-  }
+    this.props.logout();
+  };
   render() {
     const { isAuthenticated } = this.props;
+
+    const mypage = (
+      <li className="nav-item active">
+        <Link className="nav-link text-light" to="/my-page">
+          My page <span className="sr-only">(current)</span>
+        </Link>
+      </li>
+    );
+    const guest = (
+      <li className="nav-item active">
+        <Link className="nav-link text-light" to="/about-us">
+          About <span className="sr-only">(current)</span>
+        </Link>
+      </li>
+    );
+
     const authLinks = (
-      <ul className="navbar-nav ml-auto ">
+      <ul className="navbar-nav ml-auto font-weight-bold">
         <li className="nav-item">
           <Link className="nav-link text-light" to="/feed">
             PostFeed
@@ -25,7 +42,7 @@ class Navbar extends Component {
         <li className="nav-item ">
           <a
             href="#"
-            onClick={this.props.logout}
+            onClick={this.handleLogout}
             className="nav-link text-light"
           >
             <img
@@ -40,7 +57,7 @@ class Navbar extends Component {
       </ul>
     );
     const guestLinks = (
-      <ul className="navbar-nav ml-auto ">
+      <ul className="navbar-nav ml-auto font-weight-bold ">
         <li className="nav-item ">
           <Link className="nav-link text-light" to="/register">
             Sign Up
@@ -56,9 +73,9 @@ class Navbar extends Component {
 
     return (
       <div>
-        <nav className="navbar sticky-top navbar-expand-lg navbar-dark bg-primary">
+        <nav className="navbar navbar-expand-lg navbar-dark" style={navBg}>
           <Link to="/">
-            <div className="navbar-brand">BirdWatcher.com</div>
+            <div className="navbar-brand font-weight-bold">BirdWatcher.com</div>
           </Link>
           <button
             className="navbar-toggler"
@@ -73,21 +90,14 @@ class Navbar extends Component {
           </button>
 
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav mr-auto">
-              <li className="nav-item active">
-                <Link to="/my-page">
-                  <div className="nav-link" href="#">
-                    My page <span className="sr-only">(current)</span>
-                  </div>
+            <ul className="navbar-nav mr-auto font-weight-bold">
+              {isAuthenticated ? mypage : guest}
+
+              <li className="nav-item">
+                <Link className="nav-link text-light" to="/guide">
+                  Guide
                 </Link>
               </li>
-              <Link to="/guide">
-                <li className="nav-item">
-                  <div className="nav-link" href="/landing">
-                    Guide
-                  </div>
-                </li>
-              </Link>
             </ul>
 
             {isAuthenticated ? authLinks : guestLinks}
@@ -97,6 +107,10 @@ class Navbar extends Component {
     );
   }
 }
+
+const navBg = {
+  backgroundColor: "rgba(2, 206, 179, 0.7)"
+};
 
 Navbar.propTypes = {
   logout: PropTypes.func.isRequired

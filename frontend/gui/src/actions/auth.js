@@ -1,5 +1,5 @@
 import axios from "axios";
-// import { returnErrors } from "./messages";
+import { returnErrors } from "./messages";
 
 import {
   USER_LOADED,
@@ -7,7 +7,7 @@ import {
   AUTH_ERROR,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
-  CREATE_USER,
+  REGISTER_SUCCESS,
   REGISTER_FAIL,
   LOGOUT_SUCCESS
 } from "./types";
@@ -31,8 +31,9 @@ export const loadUser = () => (dispatch, getState) => {
   if (token) {
     config.headers["Authorization"] = `Token ${token}`;
   }
+
   axios
-    .get("/api/auth/user", config)
+    .get("http://localhost:8000/api/auth/user", config)
     .then(res => {
       dispatch({
         type: USER_LOADED,
@@ -40,7 +41,7 @@ export const loadUser = () => (dispatch, getState) => {
       });
     })
     .catch(err => {
-      // dispatch(returnErrors(err.response.data, err.response.status));
+      dispatch(returnErrors(err.response.data, err.response.status));
       dispatch({
         type: AUTH_ERROR
       });
@@ -68,7 +69,7 @@ export const login = (username, password) => dispatch => {
       });
     })
     .catch(err => {
-      // dispatch(returnErrors(err.response.data, err.response.status));
+      dispatch(returnErrors(err.response.data, err.response.status));
       dispatch({
         type: LOGIN_FAIL
       });
@@ -76,7 +77,7 @@ export const login = (username, password) => dispatch => {
 };
 
 //register USER
-export const registerUser = (username, email, password) => dispatch => {
+export const registerUser = newUser => dispatch => {
   //headers
   const config = {
     headers: {
@@ -85,18 +86,18 @@ export const registerUser = (username, email, password) => dispatch => {
   };
 
   //request body
-  const body = JSON.stringify({ username, email, password });
+  const body = JSON.stringify(newUser);
 
   axios
     .post("http://localhost:8000/api/auth/register", body, config)
     .then(res => {
       dispatch({
-        type: CREATE_USER,
+        type: REGISTER_SUCCESS,
         payload: res.data
       });
     })
     .catch(err => {
-      // dispatch(returnErrors(err.response.data, err.response.status));
+      dispatch(returnErrors(err.response.data, err.response.status));
       dispatch({
         type: REGISTER_FAIL
       });
@@ -106,8 +107,6 @@ export const registerUser = (username, email, password) => dispatch => {
 //LOGOUT USER
 
 export const logout = () => (dispatch, getState) => {
-  // user loading
-
   //get token from state
   const token = getState().auth.token;
 
@@ -131,7 +130,7 @@ export const logout = () => (dispatch, getState) => {
       });
     })
     .catch(err => {
-      // dispatch(returnErrors(err.response.data, err.response.status));
+      dispatch(returnErrors(err.response.data, err.response.status));
       console.log(err);
     });
 };
