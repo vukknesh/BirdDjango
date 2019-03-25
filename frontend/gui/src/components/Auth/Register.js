@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import { registerUser } from "../../actions/auth";
+import { register } from "../../actions/auth";
 import { createMessage } from "../../actions/messages";
 
 import TextFieldGroup from "../common/TextFieldGroup";
@@ -12,7 +12,7 @@ class Register extends Component {
     email: "",
     password: "",
     password2: "",
-    name: "",
+    username: "",
     errors: {}
   };
 
@@ -23,7 +23,7 @@ class Register extends Component {
   };
   onSubmit = event => {
     event.preventDefault();
-    const { name, email, password, password2 } = this.state;
+    const { username, email, password, password2 } = this.state;
 
     if (password !== password2) {
       this.props.createMessage({ passwordNotMatch: "Passwords do not match" });
@@ -31,9 +31,9 @@ class Register extends Component {
       const newUser = {
         email,
         password,
-        name
+        username
       };
-      this.props.registerUser(newUser);
+      this.props.register(newUser);
     }
   };
   render() {
@@ -53,8 +53,8 @@ class Register extends Component {
                 <TextFieldGroup
                   placeholder="name"
                   type="text"
-                  name="name"
-                  value={this.state.name}
+                  name="username"
+                  value={this.state.username}
                   onChange={this.onChange}
                   // error={errors.name}
                 />
@@ -102,7 +102,7 @@ const colorPrimary = {
 };
 
 Register.propTypes = {
-  registerUser: PropTypes.func.isRequired,
+  register: PropTypes.func.isRequired,
   createMessage: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool
 };
@@ -114,7 +114,7 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   {
-    registerUser,
+    register,
     createMessage
   }
 )(Register);

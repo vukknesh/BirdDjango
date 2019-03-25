@@ -4,15 +4,15 @@ import {
   GET_PROFILE,
   USER_LOADING,
   PROFILE_LOADING,
-  // CLEAR_CURRENT_PROFILE,
-  // GET_ERRORS,
-  // SET_CURRENT_USER,
+  CLEAR_CURRENT_PROFILE,
+  GET_ERRORS,
+  SET_CURRENT_USER,
   GET_PROFILES
 } from "./types";
 
 //get current profile
 
-export const getCurrentProfile = token => dispatch => {
+export const getCurrentProfile = id => (dispatch, getState) => {
   //headers
   const config = {
     headers: {
@@ -21,11 +21,13 @@ export const getCurrentProfile = token => dispatch => {
   };
 
   //if token, add to headers config
-  if (token) {
-    config.headers["Authorization"] = `Token ${token}`;
-  }
+  // if (token) {
+  //   config.headers["Authorization"] = `Token ${token}`;
+  // }
+
+  dispatch(setProfileLoading);
   axios
-    .get("http://localhost:8000/userprofile/")
+    .get(`http://localhost:8000/api/profiles/${id}`)
     .then(res =>
       dispatch({
         type: GET_PROFILE,
@@ -81,13 +83,13 @@ export const setProfileLoading = () => {
   };
 };
 
-// // Clear Loading
+// Clear Loading
 
-// export const clearCurrentProfile = () => {
-//   return {
-//     type: CLEAR_CURRENT_PROFILE
-//   };
-// };
+export const clearCurrentProfile = () => {
+  return {
+    type: CLEAR_CURRENT_PROFILE
+  };
+};
 
 // //add experience
 
@@ -155,11 +157,11 @@ export const setProfileLoading = () => {
 //     );
 // };
 
-//GET PROFILES
+// GET PROFILES
 export const getProfiles = () => dispatch => {
   dispatch(setProfileLoading());
   axios
-    .get("http://localhost:8000/userprofile/profile/")
+    .get("http://localhost:8000/api/profiles/")
     .then(res =>
       dispatch({
         type: GET_PROFILES,

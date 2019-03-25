@@ -1,27 +1,24 @@
 import React, { Component } from "react";
-
-import profilepic1 from "./profile1.jpg";
+import { getCurrentProfile } from "../../actions/profile";
 import { connect } from "react-redux";
 
 class MyProfile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: null
+      user: null,
+      profile: null
     };
   }
   componentDidMount() {
-    this.setState({
-      user: this.props.user
-    });
+    this.props.getCurrentProfile(this.props.user.id);
   }
 
   render() {
-    if (this.state.user) {
-      var name = this.state.user.name;
-      var email = this.state.user.email;
-      var pic = this.state.user.image;
-      console.log(pic);
+    if (this.props.user) {
+      var username = this.props.user.username;
+      var email = this.props.user.email;
+      var pic = this.props.user.image;
     }
 
     return (
@@ -29,12 +26,12 @@ class MyProfile extends Component {
         <div className="card">
           <img
             style={{ width: "150px", marginRight: "150px" }}
-            src="http://localhost:8000/media/users/beograd_fKGF64k.jpg"
+            src={pic}
             className="card-img-top rounded-circle mx-auto"
             alt="Picture"
           />
           <div className="card-body">
-            <h5 className="card-title">{name}</h5>
+            <h5 className="card-title">{username}</h5>
             <p className="card-text">{email}</p>
           </div>
           <ul className="list-group list-group-flush">
@@ -117,6 +114,10 @@ class MyProfile extends Component {
   }
 }
 const mapStateToProps = state => ({
-  user: state.auth.user
+  user: state.auth.user,
+  profile: state.profiles
 });
-export default connect(mapStateToProps)(MyProfile);
+export default connect(
+  mapStateToProps,
+  { getCurrentProfile }
+)(MyProfile);
