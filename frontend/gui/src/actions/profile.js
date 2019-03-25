@@ -2,12 +2,12 @@ import axios from "axios";
 
 import {
   GET_PROFILE,
-  USER_LOADING
-  // PROFILE_LOADING,
+  USER_LOADING,
+  PROFILE_LOADING,
   // CLEAR_CURRENT_PROFILE,
   // GET_ERRORS,
   // SET_CURRENT_USER,
-  // GET_PROFILES
+  GET_PROFILES
 } from "./types";
 
 //get current profile
@@ -25,7 +25,7 @@ export const getCurrentProfile = token => dispatch => {
     config.headers["Authorization"] = `Token ${token}`;
   }
   axios
-    .get("http://localhost:8000/api/profiles/", config)
+    .get("http://localhost:8000/userprofile/")
     .then(res =>
       dispatch({
         type: GET_PROFILE,
@@ -75,11 +75,11 @@ export const getCurrentProfile = token => dispatch => {
 
 // // Profile Loading
 
-// export const setProfileLoading = () => {
-//   return {
-//     type: PROFILE_LOADING
-//   };
-// };
+export const setProfileLoading = () => {
+  return {
+    type: PROFILE_LOADING
+  };
+};
 
 // // Clear Loading
 
@@ -155,24 +155,24 @@ export const getCurrentProfile = token => dispatch => {
 //     );
 // };
 
-// //GET PROFILES
-// export const getProfiles = () => dispatch => {
-//   dispatch(setProfileLoading());
-//   axios
-//     .get("/api/profile/all")
-//     .then(res =>
-//       dispatch({
-//         type: GET_PROFILES,
-//         payload: res.data
-//       })
-//     )
-//     .catch(err =>
-//       dispatch({
-//         type: GET_PROFILES,
-//         payload: null
-//       })
-//     );
-// };
+//GET PROFILES
+export const getProfiles = () => dispatch => {
+  dispatch(setProfileLoading());
+  axios
+    .get("http://localhost:8000/userprofile/profile/")
+    .then(res =>
+      dispatch({
+        type: GET_PROFILES,
+        payload: res.data
+      })
+    )
+    .catch(err =>
+      dispatch({
+        type: GET_PROFILES,
+        payload: null
+      })
+    );
+};
 // //GET find guides by name
 // export const findGuides = user => dispatch => {
 //   dispatch(setProfileLoading());

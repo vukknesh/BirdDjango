@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import GuideUser from "./GuideUser";
-export default class Guide extends Component {
+import { connect } from "react-redux";
+
+class Guide extends Component {
   render() {
     return (
       <div className="container mt-3 d-flex">
@@ -43,3 +45,8 @@ export default class Guide extends Component {
     );
   }
 }
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+});
+
+export default connect(mapStateToProps)(Guide);

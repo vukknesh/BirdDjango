@@ -15,3 +15,5 @@ export const REGISTER_FAIL = "REGISTER_FAIL";
 export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
 
 export const GET_PROFILE = "GET_PROFILE";
+export const GET_PROFILES = "GET_PROFILES";
+export const PROFILE_LOADING = "PROFILE_LOADING";

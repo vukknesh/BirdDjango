@@ -1,9 +1,11 @@
 import React, { Component } from "react";
+import Enter from "./Enter/Enter";
 
 class Landing extends Component {
   render() {
     return (
-      <div className="container">
+      <div>
+        <Enter />
         <div className="jumbotron">
           <h1 className="display-4">Hello, world!</h1>
           <p className="lead">

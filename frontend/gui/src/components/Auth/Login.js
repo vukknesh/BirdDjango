@@ -59,7 +59,8 @@ class Login extends Component {
 
                 <input
                   type="submit"
-                  className="btn btn-primary btn-block mt-4"
+                  className="btn btn-block mt-4"
+                  style={colorPrimary}
                 />
               </form>
             </div>
@@ -69,6 +70,11 @@ class Login extends Component {
     );
   }
 }
+
+const colorPrimary = {
+  backgroundColor: "rgba(2, 206, 179, 0.7)",
+  color: "white"
+};
 Login.propTypes = {
   isAuthenticated: PropTypes.bool,
   login: PropTypes.func.isRequired

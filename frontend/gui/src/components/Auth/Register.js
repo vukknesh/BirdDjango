@@ -9,10 +9,10 @@ import TextFieldGroup from "../common/TextFieldGroup";
 
 class Register extends Component {
   state = {
-    username: "",
     email: "",
     password: "",
     password2: "",
+    name: "",
     errors: {}
   };
 
@@ -23,15 +23,15 @@ class Register extends Component {
   };
   onSubmit = event => {
     event.preventDefault();
-    const { username, email, password, password2 } = this.state;
+    const { name, email, password, password2 } = this.state;
 
     if (password !== password2) {
       this.props.createMessage({ passwordNotMatch: "Passwords do not match" });
     } else {
       const newUser = {
-        username,
         email,
-        password
+        password,
+        name
       };
       this.props.registerUser(newUser);
     }
@@ -51,10 +51,10 @@ class Register extends Component {
               </p>
               <form noValidate onSubmit={this.onSubmit}>
                 <TextFieldGroup
-                  placeholder="Username"
+                  placeholder="name"
                   type="text"
-                  name="username"
-                  value={this.state.username}
+                  name="name"
+                  value={this.state.name}
                   onChange={this.onChange}
                   // error={errors.name}
                 />
@@ -85,7 +85,8 @@ class Register extends Component {
 
                 <input
                   type="submit"
-                  className="btn btn-primary btn-block mt-4"
+                  className="btn btn-block mt-4"
+                  style={colorPrimary}
                 />
               </form>
             </div>
@@ -95,6 +96,10 @@ class Register extends Component {
     );
   }
 }
+const colorPrimary = {
+  backgroundColor: "rgba(2, 206, 179, 0.7)",
+  color: "white"
+};
 
 Register.propTypes = {
   registerUser: PropTypes.func.isRequired,

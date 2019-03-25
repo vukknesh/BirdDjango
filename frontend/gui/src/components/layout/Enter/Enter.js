@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+
 import "./css/main.css";
 
 import anime from "animejs";
@@ -20,7 +20,7 @@ export default class Enter extends Component {
     tl.add({
       targets: ".dd",
       width: "90%",
-      backgroundColor: "rgb(197,197,255)"
+      backgroundColor: "rgb(142, 201, 184)"
     });
     tl.add(
       {

@@ -1,13 +1,16 @@
 import React, { Component } from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Link, Redirect, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logout } from "../../actions/auth";
+import profilepic from "../MyPage/profile1.jpg";
+import "./Navbarcss.css";
 
 class Navbar extends Component {
   handleLogout = event => {
     event.preventDefault();
     this.props.logout();
+    this.props.history.push("/");
   };
   render() {
     const { isAuthenticated } = this.props;
@@ -30,25 +33,25 @@ class Navbar extends Component {
     const authLinks = (
       <ul className="navbar-nav ml-auto font-weight-bold">
         <li className="nav-item">
-          <Link className="nav-link text-light" to="/feed">
-            PostFeed
+          <Link className="nav-link text-light" to="/hotels">
+            Hotels
           </Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link text-light" to="/dashboard">
-            Dashboard
+          <Link className="nav-link text-light" to="/guide">
+            Guides
           </Link>
         </li>
         <li className="nav-item ">
           <a
-            href="#"
+            href="/"
             onClick={this.handleLogout}
             className="nav-link text-light"
           >
             <img
-              src=""
+              src={profilepic}
               alt=".."
-              style={{ width: "25px", marginRight: "5px" }}
+              style={{ width: "25px", marginRight: "15px" }}
               className="rounded-circle"
             />
             LOGOUT
@@ -73,7 +76,7 @@ class Navbar extends Component {
 
     return (
       <div>
-        <nav className="navbar navbar-expand-lg navbar-dark" style={navBg}>
+        <nav className="navbar navbar-expand-lg navbar-dark navz" style={navBg}>
           <Link to="/">
             <div className="navbar-brand font-weight-bold">BirdWatcher.com</div>
           </Link>
@@ -122,4 +125,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { logout }
-)(Navbar);
+)(withRouter(Navbar));
