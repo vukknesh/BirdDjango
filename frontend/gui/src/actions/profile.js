@@ -5,6 +5,7 @@ import {
   USER_LOADING,
   PROFILE_LOADING,
   CLEAR_CURRENT_PROFILE,
+  CLEAR_PROFILES,
   GET_ERRORS,
   SET_CURRENT_USER,
   GET_PROFILES
@@ -97,6 +98,12 @@ export const setProfileLoading = () => {
 export const clearCurrentProfile = () => {
   return {
     type: CLEAR_CURRENT_PROFILE
+  };
+};
+
+export const clearAllProfiles = () => {
+  return {
+    type: CLEAR_PROFILES
   };
 };
 

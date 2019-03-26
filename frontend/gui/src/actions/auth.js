@@ -1,6 +1,7 @@
 import axios from "axios";
 import { returnErrors } from "./messages";
-import { clearCurrentProfile } from "./profile";
+import { clearCurrentProfile, clearAllProfiles } from "./profile";
+import { clearPosts } from "./Post";
 
 import {
   USER_LOADED,
@@ -93,6 +94,8 @@ export const register = ({ username, password, email }) => dispatch => {
 // LOGOUT USER
 export const logout = () => (dispatch, getState) => {
   dispatch(clearCurrentProfile());
+  dispatch(clearAllProfiles());
+  dispatch(clearPosts());
   axios
     .post("http://localhost:8000/api/auth/logout/", null, tokenConfig(getState))
     .then(res => {

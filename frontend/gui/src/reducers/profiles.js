@@ -2,6 +2,7 @@ import {
   GET_PROFILES,
   PROFILE_LOADING,
   GET_PROFILE,
+  CLEAR_PROFILES,
   CLEAR_CURRENT_PROFILE
 } from "../actions/types";
 
@@ -34,6 +35,11 @@ export default function(state = initialState, action) {
       return {
         ...state,
         profile: null
+      };
+    case CLEAR_PROFILES:
+      return {
+        ...state,
+        profiles: null
       };
     default:
       return state;

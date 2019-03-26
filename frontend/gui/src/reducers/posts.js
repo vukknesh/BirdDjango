@@ -1,4 +1,9 @@
-import { ADD_POST, GET_POSTS, POST_LOADING } from "../actions/types";
+import {
+  ADD_POST,
+  GET_POSTS,
+  POST_LOADING,
+  CLEAR_POSTS
+} from "../actions/types";
 
 const initialState = {
   post: null,
@@ -29,11 +34,13 @@ export default function(state = initialState, action) {
         posts: action.payload,
         loading: false
       };
-    // case CLEAR_CURRENT_PROFILE:
-    //   return {
-    //     ...state,
-    //     profile: null
-    //   };
+    case CLEAR_POSTS:
+      return {
+        ...state,
+        posts: null,
+        post: null,
+        isLoading: false
+      };
     default:
       return state;
   }

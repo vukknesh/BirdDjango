@@ -6,6 +6,7 @@ import {
   POST_LOADING,
   GET_POSTS,
   GET_POST,
+  CLEAR_POSTS,
   CLEAR_ERRORS,
   DELETE_POST
 } from "./types";
@@ -164,5 +165,13 @@ export const setPostLoading = () => {
 export const clearErrors = () => {
   return {
     type: CLEAR_ERRORS
+  };
+};
+
+//clear posts
+
+export const clearPosts = () => {
+  return {
+    type: CLEAR_POSTS
   };
 };
