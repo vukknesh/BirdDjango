@@ -27,7 +27,7 @@ export const getCurrentProfile = id => (dispatch, getState) => {
 
   dispatch(setProfileLoading);
   axios
-    .get(`http://localhost:8000/api/profiles/${id}`)
+    .get(`http://localhost:8000/api/profiles/${id}/`)
     .then(res =>
       dispatch({
         type: GET_PROFILE,
@@ -62,20 +62,29 @@ export const getCurrentProfile = id => (dispatch, getState) => {
 //     );
 // };
 
-// //create profile
-// export const createProfile = (profileData, history) => dispatch => {
-//   axios
-//     .post("/api/profile", profileData)
-//     .then(res => history.push("dashboard"))
-//     .catch(err =>
-//       dispatch({
-//         type: GET_ERRORS,
-//         payload: err.response.data
-//       })
-//     );
-// };
+// Create profile
+export const updateProfile = (profileData, id, token, history) => dispatch => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json"
+    }
+  };
+  if (token) {
+    config.headers["Authorization"] = `Token ${token}`;
+  }
 
-// // Profile Loading
+  axios
+    .put(`http://localhost:8000/api/profiles/${id}/`, profileData, config)
+    .then(res => history.push("/my-page"))
+    .catch(err =>
+      dispatch({
+        type: GET_PROFILE,
+        payload: "alou"
+      })
+    );
+};
+
+// Profile Loading
 
 export const setProfileLoading = () => {
   return {

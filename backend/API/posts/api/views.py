@@ -38,7 +38,7 @@ from .serializers import (
 class PostCreateAPIView(CreateAPIView):
     queryset = Post.objects.all()
     serializer_class = PostCreateUpdateSerializer
-    #permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
@@ -57,7 +57,6 @@ class PostUpdateAPIView(RetrieveUpdateAPIView):
     serializer_class = PostCreateUpdateSerializer
     lookup_field = 'slug'
     permission_classes = [IsOwnerOrReadOnly]
-    #lookup_url_kwarg = "abc"
 
     def perform_update(self, serializer):
         serializer.save(user=self.request.user)
@@ -69,7 +68,6 @@ class PostDeleteAPIView(DestroyAPIView):
     serializer_class = PostDetailSerializer
     lookup_field = 'slug'
     permission_classes = [IsOwnerOrReadOnly]
-    #lookup_url_kwarg = "abc"
 
 
 class PostListAPIView(ListAPIView):
@@ -77,10 +75,10 @@ class PostListAPIView(ListAPIView):
     filter_backends = [SearchFilter, OrderingFilter]
     permission_classes = [AllowAny]
     search_fields = ['title', 'content', 'user__first_name']
-    pagination_class = PostPageNumberPagination  # PageNumberPagination
+    pagination_class = PostPageNumberPagination
 
     def get_queryset(self, *args, **kwargs):
-        #queryset_list = super(PostListAPIView, self).get_queryset(*args, **kwargs)
+
         queryset_list = Post.objects.all()  # filter(user=self.request.user)
         query = self.request.GET.get("q")
         if query:

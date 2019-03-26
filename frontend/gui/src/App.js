@@ -19,6 +19,7 @@ import Login from "./components/Auth/Login";
 import Register from "./components/Auth/Register";
 import Guide from "./components/Guide/Guide";
 import Enter from "./components/layout/Enter/Enter";
+import EditProfile from "./components/Profile/EditProfile";
 
 //ALERT OPTIONS
 
@@ -52,6 +53,13 @@ class App extends Component {
                   <Switch>
                     <PrivateRoute exact path="/my-page" component={MyPage} />
                   </Switch>{" "}
+                  <Switch>
+                    <PrivateRoute
+                      exact
+                      path="/edit-profile"
+                      component={EditProfile}
+                    />
+                  </Switch>{" "}
                   {/* <Switch>
                     <PrivateRoute
                       exact
@@ -59,13 +67,6 @@ class App extends Component {
                       component={CreateProfile}
                     />
                   </Switch> */}
-                  {/* <Switch>
-                <PrivateRoute
-                  exact
-                  path="/edit-profile"
-                  component={EditProfile}
-                />
-              </Switch> */}
                   {/* <Switch>
                 <PrivateRoute
                   exact

@@ -33,7 +33,7 @@ def upload_location(instance, filename):
 class Post(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
                              on_delete=models.CASCADE)
-    title = models.CharField(max_length=120)
+    title = models.CharField(max_length=120, default='')
     slug = models.SlugField(unique=True)
     image = models.ImageField(upload_to=upload_location,
                               null=True,
@@ -44,7 +44,7 @@ class Post(models.Model):
     width_field = models.IntegerField(default=0)
     content = models.TextField()
     draft = models.BooleanField(default=False)
-    publish = models.DateField(auto_now=False, auto_now_add=False)
+    publish = models.DateField(auto_now=True, auto_now_add=False)
 
     read_time = models.IntegerField(default=0)
     updated = models.DateTimeField(auto_now=True, auto_now_add=False)

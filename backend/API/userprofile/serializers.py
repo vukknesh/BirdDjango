@@ -36,15 +36,19 @@ class ProfileSerializer(serializers.HyperlinkedModelSerializer):
         request = self.context['request']
         return request.user.get_full_name()
 
-    def update(self, instance, validated_data):
+    # def update(self, instance, validated_data):
         # retrieve the User
-        user_data = validated_data.pop('user', None)
+        # user_data = validated_data.pop('user', None)
+        # for attr, value in user_data.items():
+        #     setattr(instance.user, attr, value)
+
+    def update(self, instance, validated_data):
+        # First, update the User
+        user_data = validated_data.pop('user', {})
         for attr, value in user_data.items():
             setattr(instance.user, attr, value)
-
-        # retrieve Profile
+        # Then, update UserProfile
         for attr, value in validated_data.items():
             setattr(instance, attr, value)
-        instance.user.save()
-        instance.save()
+            instance.save()
         return instance

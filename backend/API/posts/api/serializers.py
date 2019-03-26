@@ -1,7 +1,8 @@
 from rest_framework.serializers import (
     HyperlinkedIdentityField,
     ModelSerializer,
-    SerializerMethodField
+    SerializerMethodField,
+    CharField
 )
 
 
@@ -13,10 +14,12 @@ from posts.models import Post
 
 
 class PostCreateUpdateSerializer(ModelSerializer):
+    username = CharField(source='user.username', read_only=True)
+
     class Meta:
         model = Post
         fields = [
-            # 'id',
+            'username',
             'title',
             # 'slug',
             'content',
@@ -69,14 +72,14 @@ class PostDetailSerializer(ModelSerializer):
 
 
 class PostListSerializer(ModelSerializer):
-    url = post_detail_url
-    user = UserSerializer(read_only=True)
+    # url = post_detail_url
+    username = CharField(source='user.username', read_only=True)
 
     class Meta:
         model = Post
         fields = [
-            'url',
-            'user',
+            'id',
+            'username',
             'title',
             'content',
             'publish',

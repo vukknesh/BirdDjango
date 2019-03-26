@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { getCurrentProfile } from "../../actions/profile";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import profilepic from "./profile1.jpg";
 import isEmpty from "../../validation/is-empty";
 
@@ -46,27 +47,27 @@ class MyProfile extends Component {
           <ul className="list-group list-group-flush">
             <li className="list-group-item">
               {isEmpty(email) ? null : (
-                <i class="fas fa-envelope-square"> - {email} </i>
+                <i className="fas fa-envelope-square"> - {email} </i>
               )}
             </li>
             <li className="list-group-item">
               {isEmpty(wikiaves) ? null : (
-                <i class="fas fa-crow"> - {wikiaves} </i>
+                <i className="fas fa-crow"> - {wikiaves} </i>
               )}
             </li>
             <li className="list-group-item">
               {isEmpty(facebook) ? null : (
-                <i class="fab fa-facebook"> - {facebook} </i>
+                <i className="fab fa-facebook"> - {facebook} </i>
               )}
             </li>
             <li className="list-group-item">
               {isEmpty(youtube) ? null : (
-                <i class="fab fa-youtube"> - {youtube} </i>
+                <i className="fab fa-youtube"> - {youtube} </i>
               )}
             </li>
             <li className="list-group-item">
               {isEmpty(instagram) ? null : (
-                <i class="fab fa-instagram"> - {instagram}</i>
+                <i className="fab fa-instagram"> - {instagram}</i>
               )}
             </li>
           </ul>
@@ -82,6 +83,11 @@ class MyProfile extends Component {
                 Social Medias
               </button>
             )}
+            <Link to="/edit-profile">
+              <button type="button" className="btn btn-block" style={btnColor}>
+                Edit Profile
+              </button>
+            </Link>
 
             <button
               type="button"
@@ -90,7 +96,7 @@ class MyProfile extends Component {
               data-target="#exampleModalScrollable"
               style={btnColor}
             >
-              Edit Profile
+              View Social
             </button>
 
             <div

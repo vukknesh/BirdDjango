@@ -32,8 +32,4 @@ const pageStyle = {
   width: "100%"
 };
 
-const mapStateToProps = state => ({
-  auth: state.auth
-});
-
 export default MyPage;
