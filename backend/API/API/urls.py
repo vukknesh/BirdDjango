@@ -1,9 +1,14 @@
 
 from django.contrib import admin
 from django.urls import path, include
+# from django.conf.urls import url, include as inc
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('accounts.urls')),
     path('', include('userprofile.urls')),
+    path('api/posts/', include('posts.api.urls')),
+    path('api/comments/', include("comments.api.urls")),
+    # url(r'^api/comments/', inc("comments.api.urls", namespace='comments-api')),
+    # url(r'^api/posts/', inc("posts.api.urls", namespace='posts-api')),
 ]
