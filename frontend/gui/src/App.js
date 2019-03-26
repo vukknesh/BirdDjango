@@ -5,7 +5,7 @@ import { Provider } from "react-redux";
 import { transitions, positions, Provider as AlertProvider } from "react-alert";
 import AlertTemplate from "react-alert-template-basic";
 import Alerts from "./components/layout/Alerts";
-// import PrivateRoute from "./components/common/PrivateRoute";
+import PrivateRoute from "./components/common/PrivateRoute";
 import store from "./store";
 // import { loadUser } from "./actions/auth";
 //components
@@ -48,18 +48,17 @@ class App extends Component {
                   <Route exact path="/enter" component={Enter} />
                   <Route exact path="/login" component={Login} />
                   <Route exact path="/register" component={Register} />
-                  <Route exact path="/my-page" component={MyPage} />
                   {/* <Route exact path="/profile/:handle" component={Profile} /> */}
+                  <Switch>
+                    <PrivateRoute exact path="/my-page" component={MyPage} />
+                  </Switch>{" "}
                   {/* <Switch>
-              <PrivateRoute exact path="/my-page" component={MyPage} />
-            </Switch> */}
-                  {/* <Switch>
-                <PrivateRoute
-                  exact
-                  path="/create-profile"
-                  component={CreateProfile}
-                />
-              </Switch> */}
+                    <PrivateRoute
+                      exact
+                      path="/create-profile"
+                      component={CreateProfile}
+                    />
+                  </Switch> */}
                   {/* <Switch>
                 <PrivateRoute
                   exact
@@ -88,7 +87,6 @@ class App extends Component {
                 <PrivateRoute exact path="/post/:id" component={Post1} />
               </Switch> */}
                   <Route exact path="/not-found" component={NotFound} />
-
                   <Route exact path="/guide" component={Guide} />
                   <Footer />
                 </div>

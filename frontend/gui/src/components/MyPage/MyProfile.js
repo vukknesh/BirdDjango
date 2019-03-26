@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { getCurrentProfile } from "../../actions/profile";
 import { connect } from "react-redux";
+import profilepic from "./profile1.jpg";
+import isEmpty from "../../validation/is-empty";
 
 class MyProfile extends Component {
   constructor(props) {
@@ -15,38 +17,80 @@ class MyProfile extends Component {
   }
 
   render() {
-    if (this.props.user) {
-      var username = this.props.user.username;
-      var email = this.props.user.email;
-      var pic = this.props.user.image;
+    if (this.props.profile) {
+      var first_name = this.props.profile.first_name;
+      var last_name = this.props.profile.last_name;
+      var email = this.props.profile.email;
+      var city = this.props.profile.city;
+      var facebook = this.props.profile.facebook;
+      var instagram = this.props.profile.instagram;
+      var youtube = this.props.profile.youtube;
+      var wikiaves = this.props.profile.wikiaves;
     }
 
     return (
       <div className="w-100">
         <div className="card">
           <img
-            style={{ width: "150px", marginRight: "150px" }}
-            src={pic}
-            className="card-img-top rounded-circle mx-auto"
-            alt="Picture"
+            style={{ width: "250px", marginRight: "250px" }}
+            src={profilepic}
+            className="card-img-top  mx-auto"
+            alt="my pic"
           />
           <div className="card-body">
-            <h5 className="card-title">{username}</h5>
-            <p className="card-text">{email}</p>
+            <h5 className="card-title">
+              {first_name} {last_name}
+            </h5>{" "}
+            <p className="card-text">{city}</p>
           </div>
           <ul className="list-group list-group-flush">
-            <li className="list-group-item">Cras justo odio</li>
-            <li className="list-group-item">Dapibus ac facilisis in</li>
-            <li className="list-group-item">Vestibulum at eros</li>
+            <li className="list-group-item">
+              {isEmpty(email) ? null : (
+                <i class="fas fa-envelope-square"> - {email} </i>
+              )}
+            </li>
+            <li className="list-group-item">
+              {isEmpty(wikiaves) ? null : (
+                <i class="fas fa-crow"> - {wikiaves} </i>
+              )}
+            </li>
+            <li className="list-group-item">
+              {isEmpty(facebook) ? null : (
+                <i class="fab fa-facebook"> - {facebook} </i>
+              )}
+            </li>
+            <li className="list-group-item">
+              {isEmpty(youtube) ? null : (
+                <i class="fab fa-youtube"> - {youtube} </i>
+              )}
+            </li>
+            <li className="list-group-item">
+              {isEmpty(instagram) ? null : (
+                <i class="fab fa-instagram"> - {instagram}</i>
+              )}
+            </li>
           </ul>
           <div className="card-body">
+            {isEmpty(instagram || facebook || youtube || wikiaves) ? null : (
+              <button
+                type="button"
+                className="btn btn-block"
+                data-toggle="modal"
+                data-target="#exampleModalScrollable"
+                style={btnColor}
+              >
+                Social Medias
+              </button>
+            )}
+
             <button
               type="button"
-              className="btn btn-secondary btn-block"
+              className="btn btn-block"
               data-toggle="modal"
               data-target="#exampleModalScrollable"
+              style={btnColor}
             >
-              View Profile
+              Edit Profile
             </button>
 
             <div
@@ -100,7 +144,7 @@ class MyProfile extends Component {
                     >
                       Close
                     </button>
-                    <button type="button" className="btn btn-primary">
+                    <button type="button" className="btn" style={btnColor}>
                       Save changes
                     </button>
                   </div>
@@ -113,9 +157,15 @@ class MyProfile extends Component {
     );
   }
 }
+
+const btnColor = {
+  backgroundColor: "rgba(2, 206, 179, 0.7)",
+  color: "white"
+};
+
 const mapStateToProps = state => ({
   user: state.auth.user,
-  profile: state.profiles
+  profile: state.profiles.profile
 });
 export default connect(
   mapStateToProps,
