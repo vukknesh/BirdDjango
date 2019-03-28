@@ -1,17 +1,25 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
+import { getPosts, clearPosts } from "../../actions/Post";
 import Spinner from "../common/Spinner";
-import { getPosts } from "../../actions/Post";
+import { connect } from "react-redux";
 
 class MyContent extends Component {
-  constructor() {
-    super();
-    this.state = {
-      posts: null
-    };
-  }
-  componentDidMount() {
+  state = {
+    posts: []
+  };
+  componentWillMount() {
     this.props.getPosts();
+    this.setState({ posts: this.props.posts });
+  }
+
+  componentWillUnmount() {
+    this.props.clearPosts();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.newPost) {
+      this.props.posts.results.unshift(nextProps.newPost);
+    }
   }
 
   render() {
@@ -20,7 +28,6 @@ class MyContent extends Component {
     if (this.props.posts === null) {
       conteudo = <Spinner />;
     } else {
-      console.log(this.props.posts.results);
       conteudo = this.props.posts.results.map(post => (
         <div key={post.id} className="card mb-3">
           <div className="card-header">{post.username}</div>
@@ -36,12 +43,12 @@ class MyContent extends Component {
     return <div>{conteudo}</div>;
   }
 }
-
 const mapStateToProps = state => ({
-  posts: state.posts.posts
+  posts: state.posts.posts,
+  newPost: state.posts.post
 });
 
 export default connect(
   mapStateToProps,
-  { getPosts }
+  { getPosts, clearPosts }
 )(MyContent);

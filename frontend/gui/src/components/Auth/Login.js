@@ -41,7 +41,7 @@ class Login extends Component {
               </p>
               <form onSubmit={this.onSubmit}>
                 <TextFieldGroup
-                  placeholder="username"
+                  placeholder="Seu Email . . ."
                   name="username"
                   type="text"
                   value={this.state.username}

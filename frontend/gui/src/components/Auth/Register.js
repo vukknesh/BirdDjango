@@ -13,6 +13,7 @@ class Register extends Component {
     password: "",
     password2: "",
     username: "",
+
     errors: {}
   };
 
@@ -23,11 +24,12 @@ class Register extends Component {
   };
   onSubmit = event => {
     event.preventDefault();
-    const { username, email, password, password2 } = this.state;
+    const { username, password, password2 } = this.state;
 
     if (password !== password2) {
       this.props.createMessage({ passwordNotMatch: "Passwords do not match" });
     } else {
+      let email = username;
       const newUser = {
         email,
         password,
@@ -51,23 +53,16 @@ class Register extends Component {
               </p>
               <form noValidate onSubmit={this.onSubmit}>
                 <TextFieldGroup
-                  placeholder="name"
-                  type="text"
+                  placeholder="Seu Email..."
+                  type="email"
                   name="username"
                   value={this.state.username}
                   onChange={this.onChange}
                   // error={errors.name}
                 />
+
                 <TextFieldGroup
-                  placeholder="Email"
-                  type="email"
-                  name="email"
-                  value={this.state.email}
-                  onChange={this.onChange}
-                  // error={errors.email}
-                />
-                <TextFieldGroup
-                  placeholder="Password"
+                  placeholder="Sua senha..."
                   name="password"
                   value={this.state.password}
                   onChange={this.onChange}
@@ -75,7 +70,7 @@ class Register extends Component {
                   type="password"
                 />
                 <TextFieldGroup
-                  placeholder="Confirm password"
+                  placeholder="Confirma aqui sua senha..."
                   name="password2"
                   value={this.state.password2}
                   onChange={this.onChange}

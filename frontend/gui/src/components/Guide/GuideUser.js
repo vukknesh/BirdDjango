@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import profilepic from "../MyPage/profile1.jpg";
-import { getProfiles } from "../../actions/profile";
+import { getProfiles, clearAllProfiles } from "../../actions/profile";
 import { connect } from "react-redux";
 import Spinner from "../common/Spinner";
 
@@ -11,14 +11,16 @@ class GuideUser extends Component {
       profiles: null
     };
   }
-  componentWillMount() {
+  componentDidMount() {
     this.props.getProfiles();
     this.setState({
       profiles: this.props.profiles.profiles
     });
   }
-  com;
-  componentDidMount() {}
+  componentWillUnmount() {
+    this.props.clearAllProfiles();
+  }
+
   render() {
     if (this.props.isLoading) {
       var conteudo = <Spinner />;
@@ -51,5 +53,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getProfiles }
+  { getProfiles, clearAllProfiles }
 )(GuideUser);

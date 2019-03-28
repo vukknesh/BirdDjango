@@ -2,11 +2,17 @@ import React, { Component } from "react";
 import { addPost } from "../../actions/Post";
 import { connect } from "react-redux";
 import { Redirect, withRouter } from "react-router-dom";
+import MyContent from "./MyContent";
 
 class Message extends Component {
-  state = {
-    content: ""
-  };
+  constructor() {
+    super();
+    this.state = {
+      content: "",
+      post: ""
+    };
+  }
+
   onChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
@@ -16,7 +22,7 @@ class Message extends Component {
     const newPost = this.state.content;
     // let id = this.props.user.id;
     let token = this.props.token;
-    this.props.addPost(newPost, token, this.props.history);
+    this.props.addPost(newPost, token);
     this.setState({ content: "" });
   };
 
@@ -75,6 +81,7 @@ class Message extends Component {
             </li>
           </ul>
         </div>
+        <MyContent />
       </div>
     );
   }

@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import MyMenu from "./MyMenu";
-import MyContent from "./MyContent";
+
 import RigthMenu from "./RigthMenu";
-import Message from "./Message";
+import Middle from "./Middle";
 
 class MyPage extends Component {
   componentWillMount() {}
@@ -12,11 +12,10 @@ class MyPage extends Component {
       <div style={pageStyle} className="mt-3  bg-light">
         <div className="row h-100">
           <div className="w-25">
-            <MyMenu profile={this.props.profile} />
+            <MyMenu />
           </div>
           <div className="w-50">
-            <Message />
-            <MyContent />
+            <Middle />
           </div>
           <div className="w-25">
             <RigthMenu />

@@ -26,6 +26,12 @@ export const addPost = (content, token) => dispatch => {
   const body = JSON.stringify({ content });
   axios
     .post("http://localhost:8000/api/posts/create/", body, config)
+    .then(res =>
+      dispatch({
+        type: ADD_POST,
+        payload: res.data
+      })
+    )
     .catch(err => console.log(err));
 };
 

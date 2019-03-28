@@ -32,7 +32,7 @@ export default function(state = initialState, action) {
       return {
         ...state,
         posts: action.payload,
-        loading: false
+        isLoading: false
       };
     case CLEAR_POSTS:
       return {
