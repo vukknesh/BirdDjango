@@ -4,12 +4,8 @@ import Spinner from "../common/Spinner";
 import { connect } from "react-redux";
 
 class MyContent extends Component {
-  state = {
-    posts: []
-  };
   componentWillMount() {
     this.props.getPosts();
-    this.setState({ posts: this.props.posts });
   }
 
   componentWillUnmount() {
@@ -29,7 +25,7 @@ class MyContent extends Component {
       conteudo = <Spinner />;
     } else {
       conteudo = this.props.posts.results.map(post => (
-        <div key={post.id} className="card mb-3">
+        <div key={post.id} className="card mb-3 shadow-lg">
           <div className="card-header">{post.username}</div>
           <div className="card-body">
             <h5 className="card-title">{post.title}</h5>

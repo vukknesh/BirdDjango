@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import MyMenu from "./MyMenu";
 
 import RigthMenu from "./RigthMenu";
-import Middle from "./Middle";
+import Message from "./Message";
 
 class MyPage extends Component {
   componentWillMount() {}
@@ -10,12 +10,12 @@ class MyPage extends Component {
   render() {
     return (
       <div style={pageStyle} className="mt-3  bg-light">
-        <div className="row h-100">
+        <div className="row h-100 ">
           <div className="w-25">
             <MyMenu />
           </div>
-          <div className="w-50">
-            <Middle />
+          <div className="w-50 d-flex justify-content-center ">
+            <Message />
           </div>
           <div className="w-25">
             <RigthMenu />

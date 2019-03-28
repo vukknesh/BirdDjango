@@ -28,22 +28,25 @@ class Message extends Component {
 
   render() {
     return (
-      <div>
-        <div className="card mb-3">
+      <div className="w-75 ">
+        <div className="card shadow-lg mb-3 ">
           <ul className="list-group list-group-flush">
             <li className="list-group-item">
               <div className="input-group">
-                <div className="input-group-prepend w-25">
+                <div className="input-group-prepend w-25  align-items-center justify-content-center">
                   <img
                     src="https://media.wired.com/photos/598e35fb99d76447c4eb1f28/master/pass/phonepicutres-TA.jpg"
                     alt="..."
-                    className="w-100 h-100 rounded-circle"
+                    className="w-50 h-100 rounded-circle"
                   />
                 </div>
-                <form noValidate onSubmit={this.onSubmit}>
+                <form
+                  noValidate
+                  className=" w-75 d-flex"
+                  onSubmit={this.onSubmit}
+                >
                   <textarea
-                    className="form-control"
-                    aria-label="With textarea"
+                    className="form-control w-100"
                     placeholder="What are you thikning?"
                     type="text"
                     name="content"
@@ -52,14 +55,14 @@ class Message extends Component {
                   />
                   <input
                     type="submit"
-                    className="btn btn-block mt-4"
+                    className="btn btn-block ml-5 w-50"
                     style={colorPrimary}
                   />
                 </form>
               </div>
             </li>
 
-            <li className="list-group-item justify-content-center">
+            <li className="list-group-item d-flex justify-content-between">
               <button
                 type="button"
                 className="btn btn-light  border rounded-pill w-25"
