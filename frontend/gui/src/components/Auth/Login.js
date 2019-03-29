@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { login } from "../../actions/auth";
 import { Redirect } from "react-router-dom";
-import TextFieldGroup from "../common/TextFieldGroup";
+import "./Login.css";
 
 class Login extends Component {
   constructor(props) {
@@ -11,13 +11,22 @@ class Login extends Component {
     this.state = {
       username: "",
       password: "",
-
+      active: false,
       errors: {}
     };
   }
-  componentDidMount() {}
 
-  componentWillReceiveProps(nextProps) {}
+  handleOnFocus = e => {
+    this.setState({
+      active: !this.state.active
+    });
+  };
+  handleFalse = e => {
+    this.setState({
+      active: false
+    });
+  };
+
   onChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
@@ -28,42 +37,63 @@ class Login extends Component {
   };
   render() {
     if (this.props.isAuthenticated) {
-      return <Redirect to="/" />;
+      return <Redirect to="/my-page" />;
     }
     return (
-      <div className="login">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-8  m-auto  ">
-              <h1 className="display-4 text-center">Log In</h1>
-              <p className="lead text-center">
-                Sign in to your BirdWatcher account
-              </p>
-              <form onSubmit={this.onSubmit}>
-                <TextFieldGroup
-                  placeholder="Seu Email . . ."
-                  name="username"
-                  type="text"
-                  value={this.state.username}
-                  onChange={this.onChange}
-                  // error={errors.email}
-                />
-                <TextFieldGroup
-                  placeholder="password"
-                  name="password"
-                  type="password"
-                  value={this.state.password}
-                  onChange={this.onChange}
-                  // error={errors.password}
-                />
-
-                <input
-                  type="submit"
-                  className="btn btn-block mt-4"
-                  style={colorPrimary}
-                />
-              </form>
-            </div>
+      <div className={this.state.active ? "container1 password" : "container1"}>
+        <div className={this.state.active ? "owl password" : "owl"}>
+          <div className={this.state.active ? "hand password" : "hand"} />
+          <div
+            className={
+              this.state.active ? "hand hand-r password" : "hand hand-r"
+            }
+          />
+          <div className={this.state.active ? "arms password" : "arms"}>
+            <div className={this.state.active ? "arm password" : "arm"} />
+            <div
+              className={this.state.active ? "arm arm-r password" : "arm arm-r"}
+            />
+          </div>
+        </div>
+        <div className={this.state.active ? "form password" : "form"}>
+          <div className={this.state.active ? "control password" : "control"}>
+            <label
+              htmlFor="email"
+              className={
+                this.state.active ? "fa fa-envelope password" : "fa fa-envelope"
+              }
+            />
+            <input
+              id="email"
+              onFocus={this.handleFalse}
+              placeholder="Email"
+              type="email"
+              name="username"
+              value={this.state.username}
+              onChange={this.onChange}
+              className={this.state.active ? "password" : ""}
+            />
+          </div>
+          <div className={this.state.active ? "control password" : "control"}>
+            <label
+              htmlFor="password"
+              className={
+                this.state.active ? "fa fa-asterisk password" : "fa fa-asterisk"
+              }
+            />
+            <input
+              onFocus={this.handleOnFocus}
+              id="password"
+              placeholder="Password"
+              type="password"
+              name="password"
+              value={this.state.password}
+              onChange={this.onChange}
+              className={this.state.active ? "password" : ""}
+            />
+            <button onClick={this.onSubmit} className="welcomebtn">
+              Entrar
+            </button>
           </div>
         </div>
       </div>

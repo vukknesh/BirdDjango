@@ -51,7 +51,7 @@ class Navbar extends Component {
             <img
               src={profilepic}
               alt=".."
-              style={{ width: "25px", marginRight: "15px" }}
+              style={{ width: "30px", height: "30px", marginRight: "15px" }}
               className="rounded-circle"
             />
             LOGOUT
@@ -112,7 +112,7 @@ class Navbar extends Component {
 }
 
 const navBg = {
-  backgroundColor: "rgba(2, 206, 179, 0.7)"
+  background: "rgba(71, 45, 32, 0.82)"
 };
 
 Navbar.propTypes = {

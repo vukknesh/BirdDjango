@@ -14,10 +14,13 @@ import Navbar from "./components/layout/Navbar";
 import Topbar from "./components/layout/Topbar";
 import Footer from "./components/layout/Footer";
 import Landing from "./components/layout/Landing";
+import Aboutus from "./components/layout/aboutpages/Aboutus";
+import Contactus from "./components/layout/aboutpages/Contactus";
 import MyPage from "./components/MyPage/MyPage";
 import Login from "./components/Auth/Login";
 import Register from "./components/Auth/Register";
 import Guide from "./components/Guide/Guide";
+import Hotels from "./components/Hotels/Hotels";
 import Enter from "./components/layout/Enter/Enter";
 import EditProfile from "./components/Profile/EditProfile";
 
@@ -49,6 +52,8 @@ class App extends Component {
                   <Route exact path="/enter" component={Enter} />
                   <Route exact path="/login" component={Login} />
                   <Route exact path="/register" component={Register} />
+                  <Route exact path="/about" component={Aboutus} />
+                  <Route exact path="/contact" component={Contactus} />
                   {/* <Route exact path="/profile/:handle" component={Profile} /> */}
                   <Switch>
                     <PrivateRoute exact path="/my-page" component={MyPage} />
@@ -89,6 +94,7 @@ class App extends Component {
               </Switch> */}
                   <Route exact path="/not-found" component={NotFound} />
                   <Route exact path="/guide" component={Guide} />
+                  <Route exact path="/hotels" component={Hotels} />
                   <Footer />
                 </div>
               </div>

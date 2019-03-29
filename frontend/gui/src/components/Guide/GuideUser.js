@@ -5,28 +5,21 @@ import { connect } from "react-redux";
 import Spinner from "../common/Spinner";
 
 class GuideUser extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      profiles: null
-    };
-  }
-  componentDidMount() {
+  componentWillMount() {
     this.props.getProfiles();
-    this.setState({
-      profiles: this.props.profiles.profiles
-    });
   }
+
   componentWillUnmount() {
     this.props.clearAllProfiles();
   }
 
   render() {
+    console.log(this.props.profiles);
     if (this.props.isLoading) {
       var conteudo = <Spinner />;
     } else {
-      if (this.state.profiles) {
-        var conteudo = this.state.profiles.map(profile => (
+      if (this.props.profiles) {
+        var conteudo = this.props.profiles.map(profile => (
           <div className="card shadow m-4 w-25" key={profile.id}>
             <img src={profilepic} className="card-img-top" alt="..." />
             <div className="card-body">
@@ -48,7 +41,7 @@ class GuideUser extends Component {
 }
 const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated,
-  profiles: state.profiles
+  profiles: state.profiles.profiles
 });
 
 export default connect(

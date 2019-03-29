@@ -191,6 +191,27 @@ export const getProfiles = () => dispatch => {
       })
     );
 };
+
+//get profiles filter by city
+
+export const getProfilesByCity = city => dispatch => {
+  dispatch(setProfileLoading());
+  axios
+    .get(`http://localhost:8000/api/profiles/?city=${city}`)
+    .then(res =>
+      dispatch({
+        type: GET_PROFILES,
+        payload: res.data
+      })
+    )
+    .catch(err =>
+      dispatch({
+        type: GET_PROFILES,
+        payload: null
+      })
+    );
+};
+
 // //GET find guides by name
 // export const findGuides = user => dispatch => {
 //   dispatch(setProfileLoading());

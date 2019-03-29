@@ -30,12 +30,12 @@ class MyProfile extends Component {
     }
 
     return (
-      <div className="w-100">
+      <div className="w-75">
         <div className="card">
           <img
-            style={{ width: "250px", marginRight: "250px" }}
+            style={{ width: "100px", height: "100px", marginRight: "250px" }}
             src={profilepic}
-            className="card-img-top  mx-auto"
+            className="card-img-top rounded-circle  mx-auto mt-3"
             alt="my pic"
           />
           <div className="card-body">
@@ -75,26 +75,24 @@ class MyProfile extends Component {
             {isEmpty(instagram || facebook || youtube || wikiaves) ? null : (
               <button
                 type="button"
-                className="btn btn-block"
+                className="btn btn-block btncustom"
                 data-toggle="modal"
                 data-target="#exampleModalScrollable"
-                style={btnColor}
               >
                 Social Medias
               </button>
             )}
             <Link to="/edit-profile">
-              <button type="button" className="btn btn-block" style={btnColor}>
+              <button type="button" className="btn btn-block btncustom">
                 Edit Profile
               </button>
             </Link>
 
             <button
               type="button"
-              className="btn btn-block"
+              className="btn btn-block btncustom"
               data-toggle="modal"
               data-target="#exampleModalScrollable"
-              style={btnColor}
             >
               View Social
             </button>
@@ -150,7 +148,7 @@ class MyProfile extends Component {
                     >
                       Close
                     </button>
-                    <button type="button" className="btn" style={btnColor}>
+                    <button type="button" className="btn btncustom">
                       Save changes
                     </button>
                   </div>
@@ -163,11 +161,6 @@ class MyProfile extends Component {
     );
   }
 }
-
-const btnColor = {
-  backgroundColor: "rgba(2, 206, 179, 0.7)",
-  color: "white"
-};
 
 const mapStateToProps = state => ({
   user: state.auth.user,

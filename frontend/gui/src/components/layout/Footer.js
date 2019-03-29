@@ -3,7 +3,7 @@ import React from "react";
 export default function Footer() {
   return (
     <div>
-      <ul className="nav justify-content-center mt-5 bg-dark">
+      <ul className="nav justify-content-center mt-1 bg-dark">
         <li className="nav-item">
           <a className="nav-link active text-light" href="/landing">
             Active

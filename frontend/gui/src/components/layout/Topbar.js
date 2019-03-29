@@ -13,22 +13,22 @@ export default class Topbar extends Component {
             </Link>
           </li>
           <li className="li1">
-            <Link className="a1" to="/enter">
+            <Link className="a1" to="/about">
               About
             </Link>
           </li>
           <li className="li1">
-            <Link className="a1" to="/enter">
+            <Link className="a1" to="/contact">
               Contact
             </Link>
           </li>
           <li className="li1">
-            <Link className="a1" to="/enter">
+            <Link className="a1" to="/guide">
               Guide
             </Link>
           </li>
           <li className="li1">
-            <Link className="a1" to="/enter">
+            <Link className="a1" to="/hotels">
               Hotels
             </Link>
           </li>

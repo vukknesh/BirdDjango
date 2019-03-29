@@ -5,6 +5,9 @@ import "./css/main.css";
 import anime from "animejs";
 
 export default class Enter extends Component {
+  state = {
+    active: false
+  };
   componentDidMount() {
     let tl = anime.timeline({
       easing: "easeOutExpo",
@@ -14,13 +17,13 @@ export default class Enter extends Component {
     tl.add({
       targets: ".dd",
       width: "100%",
-      backgroundColor: "lightblue",
+      backgroundColor: "rgb(71, 45, 32)",
       delay: anime.stagger(100)
     });
     tl.add({
       targets: ".dd",
       width: "90%",
-      backgroundColor: "rgb(142, 201, 184)"
+      backgroundColor: "rgba(71, 45, 32, 0.8)"
     });
     tl.add(
       {
@@ -41,6 +44,7 @@ export default class Enter extends Component {
   handleNvEnter = event => {
     let rotateMe = anime({
       targets: ".sec",
+
       scaleY: "2",
       scaleX: "2",
       translateX: "40%",
@@ -48,7 +52,17 @@ export default class Enter extends Component {
       duration: 5000,
       autoplay: false
     });
+    let rotateMe2 = anime({
+      targets: ".hh1",
+
+      color: "black",
+      left: "33%",
+      duration: 5000,
+      autoplay: false
+    });
     rotateMe.play();
+    rotateMe2.play();
+    this.setState({ active: true });
   };
   render() {
     return (
@@ -56,7 +70,7 @@ export default class Enter extends Component {
         <h1
           ref={elem => (this.nv = elem)}
           onMouseOver={this.handleNvEnter}
-          className="hh1"
+          className={this.state.active ? "hh1 hh2" : "hh1"}
         >
           Bird Watcher.com
         </h1>

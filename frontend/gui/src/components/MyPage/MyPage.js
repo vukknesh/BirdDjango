@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import MyMenu from "./MyMenu";
+import MyProfile from "./MyProfile";
 
 import RigthMenu from "./RigthMenu";
 import Message from "./Message";
@@ -11,8 +11,8 @@ class MyPage extends Component {
     return (
       <div style={pageStyle} className="mt-3  bg-light">
         <div className="row h-100 ">
-          <div className="w-25">
-            <MyMenu />
+          <div className="w-25 d-flex justify-content-center ">
+            <MyProfile />
           </div>
           <div className="w-50 d-flex justify-content-center ">
             <Message />

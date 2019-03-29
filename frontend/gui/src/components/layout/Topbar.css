@@ -1,7 +1,8 @@
 .nav1 {
   width: 100%;
   height: 50px;
-  background: rgba(2, 206, 179, 0.7);
+  background: rgba(71, 45, 32, 0.82);
+  /* background: rgba(2, 206, 179, 0.7); */
   border-top: 1px solid rgba(255, 255, 255, 0.2);
   border-bottom: 1px solid rgba(133, 136, 43, 0.2);
   position: sticky;
@@ -32,6 +33,7 @@
   line-height: 50px;
 }
 .a1:hover {
-  background: rgb(2, 206, 179);
+  background: #f35404;
   text-decoration: none;
+  border-radius: 10px;
 }

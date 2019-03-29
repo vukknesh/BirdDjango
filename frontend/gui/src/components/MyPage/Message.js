@@ -28,7 +28,7 @@ class Message extends Component {
 
   render() {
     return (
-      <div className="w-75 ">
+      <div className="w-100">
         <div className="card shadow-lg mb-3 ">
           <ul className="list-group list-group-flush">
             <li className="list-group-item">
@@ -37,7 +37,8 @@ class Message extends Component {
                   <img
                     src="https://media.wired.com/photos/598e35fb99d76447c4eb1f28/master/pass/phonepicutres-TA.jpg"
                     alt="..."
-                    className="w-50 h-100 rounded-circle"
+                    className="rounded-circle"
+                    style={{ width: "75px", height: "75px" }}
                   />
                 </div>
                 <form
@@ -55,8 +56,7 @@ class Message extends Component {
                   />
                   <input
                     type="submit"
-                    className="btn btn-block ml-5 w-50"
-                    style={colorPrimary}
+                    className="btn btn-block ml-5 w-50 btncustom"
                   />
                 </form>
               </div>
@@ -84,16 +84,12 @@ class Message extends Component {
             </li>
           </ul>
         </div>
+
         <MyContent />
       </div>
     );
   }
 }
-
-const colorPrimary = {
-  backgroundColor: "rgba(2, 206, 179, 0.7)",
-  color: "white"
-};
 
 const mapStateToProps = state => ({
   auth: state.auth,

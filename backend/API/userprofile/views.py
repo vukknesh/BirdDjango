@@ -7,6 +7,15 @@ from .permissions import (
 )
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django_filters import rest_framework as filters
+
+
+class ProfileFilter(filters.FilterSet):
+    city = filters.CharFilter(lookup_expr='icontains')
+
+    class Meta:
+        model = Profile
+        fields = ('city',)
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -26,5 +35,6 @@ class ProfileViewSet(viewsets.ModelViewSet):
     """
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
-    # permission_classes = (permissions.IsAuthenticatedOrReadOnly,
-    #                       IsOwnerOrReadOnly,)
+    filterset_class = ProfileFilter
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,
+                          IsOwnerOrReadOnly,)

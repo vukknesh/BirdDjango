@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-
+import { getProfilesByCity } from "../../actions/profile";
+import { connect } from "react-redux";
 class Searchbar extends Component {
   state = {
-    search: ""
+    city: ""
   };
 
   onChange = event => {
@@ -11,8 +12,7 @@ class Searchbar extends Component {
 
   onSubmit = event => {
     event.preventDefault();
-
-    console.log(this.state.search);
+    this.props.getProfilesByCity(this.state.city);
   };
 
   render() {
@@ -22,12 +22,12 @@ class Searchbar extends Component {
           <input
             type="text"
             placeholder="Procure seu guia por cidade"
-            name="search"
+            name="city"
             className="w-75 p-2 rounded"
             onChange={this.onChange}
           />
 
-          <button type="submit" className="w-25 p-2  btn-info rounded">
+          <button type="submit" className="w-25 btn p-2 btncustom">
             Procurar
           </button>
         </form>
@@ -36,4 +36,11 @@ class Searchbar extends Component {
   }
 }
 
-export default Searchbar;
+const mapStateToProps = state => ({
+  posts: state.posts.posts
+});
+
+export default connect(
+  mapStateToProps,
+  { getProfilesByCity }
+)(Searchbar);
