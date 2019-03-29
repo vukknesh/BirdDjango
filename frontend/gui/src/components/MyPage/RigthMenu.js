@@ -5,9 +5,9 @@ export default class RigthMenu extends Component {
     return (
       <div
         className="container
-        d-flex flex-column"
+        d-flex flex-column s-top"
       >
-        <div className="mb-4 mr-5">
+        <div className="mb-4 mr-5 ">
           <div className="card">
             <div className="card-header font-weight-bold">Users</div>
             <ul className="list-group list-group-flush">
@@ -23,6 +23,11 @@ export default class RigthMenu extends Component {
             <img
               src="https://images-na.ssl-images-amazon.com/images/I/81W14n4ouIL._SL1500_.jpg"
               className="card-img-top"
+              style={{
+                width: "200px",
+                height: "200px",
+                marginLeft: "80px"
+              }}
               alt="..."
             />
 
@@ -43,8 +48,13 @@ export default class RigthMenu extends Component {
               <div className="col-md-4">
                 <img
                   src="https://content.presspage.com/uploads/1763/1920_year-of-the-bird-george-grall.jpg?10000"
-                  className="card-img rounded-circle mt-5 ml-2"
+                  className="card-img rounded-circle mt-3 ml-2"
                   alt="..."
+                  style={{
+                    width: "100px",
+                    height: "100px",
+                    marginRight: "250px"
+                  }}
                 />
               </div>
               <div className="col-md-8">
@@ -56,7 +66,7 @@ export default class RigthMenu extends Component {
                     longer.
                   </p>
                   <p className="card-text">
-                    <small className="text-muted">
+                    <small className="text-muted mb-5">
                       Last updated 3 mins ago
                     </small>
                   </p>

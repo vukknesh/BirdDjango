@@ -55,13 +55,21 @@ export default class Enter extends Component {
     let rotateMe2 = anime({
       targets: ".hh1",
 
-      color: "black",
       left: "33%",
       duration: 5000,
       autoplay: false
     });
+    let rotateMe3 = anime({
+      targets: ".pp1",
+      opacity: 1,
+
+      left: "23%",
+      duration: 4000,
+      autoplay: false
+    });
     rotateMe.play();
     rotateMe2.play();
+    rotateMe3.play();
     this.setState({ active: true });
   };
   render() {
@@ -72,8 +80,11 @@ export default class Enter extends Component {
           onMouseOver={this.handleNvEnter}
           className={this.state.active ? "hh1 hh2" : "hh1"}
         >
-          Bird Watcher.com
+          Murucututu.Com
         </h1>
+        <p className={this.state.active ? "pp1 pp2" : "pp1"}>
+          Um site criado pra Watchers planejar melhor seu click perfeito!
+        </p>
         <section className="sec">
           <div className="dd" />
           <div className="dd" />

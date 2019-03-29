@@ -16,14 +16,14 @@ class Navbar extends Component {
     const { isAuthenticated } = this.props;
 
     const mypage = (
-      <li className="nav-item active">
+      <li className="nav-item active show1">
         <Link className="nav-link text-light" to="/my-page">
           My page <span className="sr-only">(current)</span>
         </Link>
       </li>
     );
     const guest = (
-      <li className="nav-item active">
+      <li className="nav-item active show1">
         <Link className="nav-link text-light" to="/about-us">
           About <span className="sr-only">(current)</span>
         </Link>
@@ -31,7 +31,7 @@ class Navbar extends Component {
     );
 
     const authLinks = (
-      <ul className="navbar-nav ml-auto font-weight-bold">
+      <ul className="navbar-nav ml-auto font-weight-bold show1">
         <li className="nav-item">
           <Link className="nav-link text-light" to="/hotels">
             Hotels
@@ -60,8 +60,8 @@ class Navbar extends Component {
       </ul>
     );
     const guestLinks = (
-      <ul className="navbar-nav ml-auto font-weight-bold ">
-        <li className="nav-item ">
+      <ul className="navbar-nav ml-auto font-weight-bold show1 ">
+        <li className="nav-item">
           <Link className="nav-link text-light" to="/register">
             Sign Up
           </Link>
@@ -78,7 +78,7 @@ class Navbar extends Component {
       <div>
         <nav className="navbar navbar-expand-lg navbar-dark navz" style={navBg}>
           <Link to="/">
-            <div className="navbar-brand font-weight-bold">BirdWatcher.com</div>
+            <div className="navbar-brand font-weight-bold">Murucututu</div>
           </Link>
           <button
             className="navbar-toggler"
@@ -96,7 +96,7 @@ class Navbar extends Component {
             <ul className="navbar-nav mr-auto font-weight-bold">
               {isAuthenticated ? mypage : guest}
 
-              <li className="nav-item">
+              <li className="nav-item show1">
                 <Link className="nav-link text-light" to="/guide">
                   Guide
                 </Link>

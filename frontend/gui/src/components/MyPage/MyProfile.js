@@ -31,7 +31,7 @@ class MyProfile extends Component {
 
     return (
       <div className="w-75">
-        <div className="card">
+        <div className="card s-top">
           <img
             style={{ width: "100px", height: "100px", marginRight: "250px" }}
             src={profilepic}

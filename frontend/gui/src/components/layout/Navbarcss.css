@@ -1,8 +1,7 @@
-.navz {
-  z-index: 4;
-}
-
 nav li:hover {
   background: #f35404;
   border-radius: 10px;
+}
+.show1 {
+  z-index: 5;
 }

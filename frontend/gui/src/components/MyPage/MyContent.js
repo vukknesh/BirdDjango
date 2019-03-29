@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { getPosts, clearPosts } from "../../actions/Post";
 import Spinner from "../common/Spinner";
 import { connect } from "react-redux";
+import pic from "./profile1.jpg";
 
 class MyContent extends Component {
   componentWillMount() {
@@ -25,12 +26,34 @@ class MyContent extends Component {
       conteudo = <Spinner />;
     } else {
       conteudo = this.props.posts.results.map(post => (
-        <div key={post.id} className="card mb-3 shadow-lg">
-          <div className="card-header">{post.username}</div>
+        <div className="card-container" key={post.id}>
+          <div className="card-head">
+            <div>
+              <img src={pic} alt="" />
+            </div>
+            <section>
+              <span>{post.username}</span>
+              <p>{post.publish}</p>
+            </section>
+          </div>
           <div className="card-body">
-            <h5 className="card-title">{post.title}</h5>
-            <p className="card-text">{post.content}</p>
-            <p className="card-text">{post.publish}</p>
+            <div className="content">
+              <h5>title</h5>
+              <p>{post.content}</p>
+            </div>
+
+            <div className="likes">
+              <i className="far fa-thumbs-up" />
+              <p>3</p>
+            </div>
+          </div>
+          <div className="card-comments">
+            <img src={pic} alt="" />
+            <form action="submit">
+              <input type="text" />
+              <i className="far fa-smile" />
+              <button>Comentar</button>
+            </form>
           </div>
         </div>
       ));

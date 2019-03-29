@@ -1,0 +1,52 @@
+.containerhotel {
+  background: url("https://www.w3schools.com/w3images/photographer.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 4;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.searchfield {
+  background: white;
+  width: 440px;
+  height: 480px;
+  top: 15%;
+  left: 22%;
+  position: absolute;
+  border-radius: 0.4rem;
+  padding: 32px;
+}
+
+.searchfield input {
+  width: 100%;
+  padding: 10px 5px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.searchfield p {
+  font-size: 0.7rem;
+  margin-bottom: 5px;
+}
+
+.searchfield .btnsubmit {
+  width: 100px;
+  float: right;
+  margin-top: 15px;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  background-color: #1a8fb4;
+}
+
+.searchfield .btnsubmit:hover {
+  background-color: #08bff7;
+  text-decoration: none;
+  color: #472d20;
+}
+/*# sourceMappingURL=main.css.map */
