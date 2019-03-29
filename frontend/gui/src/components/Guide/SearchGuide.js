@@ -1,9 +1,6 @@
 import React, { Component } from "react";
-import { getProfilesByCity } from "../../actions/profile";
-import { connect } from "react-redux";
-import "./Searchcss.css";
-import { Redirect } from "react-router-dom";
-class Searchbar extends Component {
+import "./guide.css";
+export default class SearchGuide extends Component {
   state = {
     city: ""
   };
@@ -16,14 +13,10 @@ class Searchbar extends Component {
     event.preventDefault();
     this.props.getProfilesByCity(this.state.city);
   };
-
   render() {
-    if (this.props.profiles) {
-      return <Redirect to="/guide" />;
-    }
     return (
-      <div className="containersearch">
-        <form action="search" className="searchfield" onSubmit={this.onSubmit}>
+      <div>
+        <form action="search" className="searchfield1" onSubmit={this.onSubmit}>
           <h2>Procure seu guia por cidade ou especie.</h2>
           <p>CIDADE</p>
           <input
@@ -48,12 +41,3 @@ class Searchbar extends Component {
     );
   }
 }
-
-const mapStateToProps = state => ({
-  profiles: state.profiles.profiles
-});
-
-export default connect(
-  mapStateToProps,
-  { getProfilesByCity }
-)(Searchbar);

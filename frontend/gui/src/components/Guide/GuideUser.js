@@ -1,14 +1,10 @@
 import React, { Component } from "react";
 import profilepic from "../MyPage/profile1.jpg";
-import { getProfiles, clearAllProfiles } from "../../actions/profile";
+import { clearAllProfiles } from "../../actions/profile";
 import { connect } from "react-redux";
 import Spinner from "../common/Spinner";
 
 class GuideUser extends Component {
-  componentWillMount() {
-    this.props.getProfiles();
-  }
-
   componentWillUnmount() {
     this.props.clearAllProfiles();
   }
@@ -20,23 +16,45 @@ class GuideUser extends Component {
     } else {
       if (this.props.profiles) {
         var conteudo = this.props.profiles.map(profile => (
-          <div className="card shadow m-4 w-25" key={profile.id}>
-            <img src={profilepic} className="card-img-top" alt="..." />
-            <div className="card-body">
-              <h5 className="card-title">{profile.first_name}</h5>
-              <p className="card-text">{profile.email}</p>
-              <p className="card-text">{profile.created_at}</p>
-
-              <a href="/login" className="btn btn-secondary btn-block">
-                {profile.id}
-              </a>
+          <div className="box" key={profile.id}>
+            <div className="imgBx">
+              <img src={profilepic} alt="..." />
+            </div>
+            <ul className="social-icon">
+              <li>
+                <a href="#">
+                  <i className="fab fa-facebook-f" aria-hidden="true" />
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i className="fab fa-youtube" aria-hidden="true" />
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i className="fab fa-instagram" aria-hidden="true" />
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i className="fas fa-dove" aria-hidden="true" />
+                </a>
+              </li>
+            </ul>
+            <div className="details">
+              <h2>
+                {profile.first_name} {profile.last_name}
+                <br />
+                <span>{profile.city}</span>
+              </h2>
             </div>
           </div>
         ));
       }
     }
 
-    return <div className="container d-flex flex-wrap">{conteudo}</div>;
+    return <div className="container d-flex flex-wrap figuras">{conteudo}</div>;
   }
 }
 const mapStateToProps = state => ({
@@ -46,5 +64,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getProfiles, clearAllProfiles }
+  { clearAllProfiles }
 )(GuideUser);
