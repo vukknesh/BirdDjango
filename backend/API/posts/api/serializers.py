@@ -23,7 +23,8 @@ class PostCreateUpdateSerializer(ModelSerializer):
             'title',
             # 'slug',
             'content',
-            'publish'
+            'publish',
+            'image'
         ]
 
 
@@ -83,4 +84,5 @@ class PostListSerializer(ModelSerializer):
             'title',
             'content',
             'publish',
+            'image',
         ]

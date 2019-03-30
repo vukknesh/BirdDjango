@@ -10,7 +10,6 @@ class GuideUser extends Component {
   }
 
   render() {
-    console.log(this.props.profiles);
     if (this.props.isLoading) {
       var conteudo = <Spinner />;
     } else {

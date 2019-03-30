@@ -2,8 +2,10 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Redirect, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { updateProfile } from "../../actions/profile";
+import { updateProfile, getCurrentProfile } from "../../actions/profile";
 import TextFieldGroup from "../common/TextFieldGroup";
+import SelectListGroup from "../common/SelectListGroup";
+import isEmpty from "../../validation/is-empty";
 
 class EditProfile extends Component {
   state = {
@@ -20,8 +22,57 @@ class EditProfile extends Component {
     state: "",
     country: "",
     about_you: "",
+    gender: "",
+    is_guide: false,
+    is_owner: false,
     errors: {}
   };
+  componentDidMount() {
+    this.props.getCurrentProfile(this.props.user.id);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.profile) {
+      const profile = nextProps.profile;
+      console.log(profile);
+
+      profile.youtube = !isEmpty(profile.youtube) ? profile.youtube : "";
+      profile.instagram = !isEmpty(profile.instagram) ? profile.instagram : "";
+      profile.facebook = !isEmpty(profile.facebook) ? profile.facebook : "";
+      profile.wikiaves = !isEmpty(profile.wikiaves) ? profile.wikiaves : "";
+      profile.personal_site = !isEmpty(profile.personal_site)
+        ? profile.personal_site
+        : "";
+      profile.camera = !isEmpty(profile.camera) ? profile.camera : "";
+      profile.lens = !isEmpty(profile.lens) ? profile.lens : "";
+      profile.recorder = !isEmpty(profile.recorder) ? profile.recorder : "";
+      profile.microphone = !isEmpty(profile.microphone)
+        ? profile.microphone
+        : "";
+      profile.city = !isEmpty(profile.city) ? profile.city : "";
+      profile.state = !isEmpty(profile.state) ? profile.state : "";
+      profile.country = !isEmpty(profile.country) ? profile.country : "";
+      profile.about_you = !isEmpty(profile.about_you) ? profile.about_you : "";
+      profile.gender = !isEmpty(profile.gender) ? profile.gender : "";
+
+      this.setState({
+        youtube: profile.youtube,
+        instagram: profile.instagram,
+        facebook: profile.facebook,
+        wikiaves: profile.wikiaves,
+        personal_site: profile.personal_site,
+        camera: profile.camera,
+        lens: profile.lens,
+        recorder: profile.recorder,
+        microphone: profile.microphone,
+        city: profile.city,
+        state: profile.state,
+        country: profile.country,
+        about_you: profile.about_you,
+        gender: profile.gender
+      });
+    }
+  }
   onChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
@@ -40,7 +91,8 @@ class EditProfile extends Component {
       city,
       state,
       country,
-      about_you
+      about_you,
+      gender
     } = this.state;
 
     const newUser = {
@@ -56,7 +108,8 @@ class EditProfile extends Component {
       city,
       state,
       country,
-      about_you
+      about_you,
+      gender
     };
     let id = this.props.user.id;
     let token = this.props.token;
@@ -67,6 +120,13 @@ class EditProfile extends Component {
     if (!this.props.isAuthenticated) {
       return <Redirect to="/" />;
     }
+
+    let options = [
+      { label: "* Gender", value: 0 },
+      { label: "* Male", value: "M" },
+      { label: "* Female", value: "F" }
+    ];
+
     return (
       <div className="container">
         <div className="row">
@@ -132,7 +192,6 @@ class EditProfile extends Component {
                 onChange={this.onChange}
                 // error={errors.name}
               />
-
               <p className="lead text-center">Your Social Media</p>
               <TextFieldGroup
                 placeholder="youtube"
@@ -142,7 +201,6 @@ class EditProfile extends Component {
                 onChange={this.onChange}
                 // error={errors.name}
               />
-
               <TextFieldGroup
                 placeholder="facebook"
                 type="text"
@@ -151,7 +209,6 @@ class EditProfile extends Component {
                 onChange={this.onChange}
                 // error={errors.name}
               />
-
               <TextFieldGroup
                 placeholder="wikiaves"
                 type="text"
@@ -160,7 +217,6 @@ class EditProfile extends Component {
                 onChange={this.onChange}
                 // error={errors.name}
               />
-
               <TextFieldGroup
                 placeholder="instagram"
                 type="text"
@@ -169,7 +225,6 @@ class EditProfile extends Component {
                 onChange={this.onChange}
                 // error={errors.name}
               />
-
               <TextFieldGroup
                 placeholder="Personal Site"
                 type="text"
@@ -186,6 +241,15 @@ class EditProfile extends Component {
                 value={this.state.about_you}
                 onChange={this.onChange}
                 // error={errors.name}
+              />
+              <SelectListGroup
+                placeholder="gender"
+                name="gender"
+                value={this.state.gender}
+                onChange={this.onChange}
+                // error={errors.status}
+                options={options}
+                info="Give an ideia where you are at on your carrer"
               />
               <input
                 type="submit"
@@ -207,16 +271,18 @@ const colorPrimary = {
 
 EditProfile.propTypes = {
   isAuthenticated: PropTypes.bool,
-  updateProfile: PropTypes.func.isRequired
+  updateProfile: PropTypes.func.isRequired,
+  getCurrentProfile: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
   token: state.auth.token,
   user: state.auth.user,
+  profile: state.profiles.profile,
   isAuthenticated: state.auth.isAuthenticated
 });
 
 export default connect(
   mapStateToProps,
-  { updateProfile }
+  { updateProfile, getCurrentProfile }
 )(withRouter(EditProfile));

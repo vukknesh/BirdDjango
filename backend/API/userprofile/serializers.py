@@ -15,7 +15,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class ProfileSerializer(serializers.HyperlinkedModelSerializer):
-    gender = serializers.CharField(source='get_gender_display', read_only=True)
+    # gender = serializers.CharField(source='get_gender_display', read_only=True)
     user_url = serializers.HyperlinkedIdentityField(view_name='user-detail')
     user = serializers.ReadOnlyField(source='user.id')
     id = serializers.IntegerField(source='pk', read_only=True)

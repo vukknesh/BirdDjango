@@ -1,27 +1,12 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
-import "./guide.css";
-export default class SearchGuide extends Component {
-  state = {
-    city: ""
-  };
+import "./main.css";
 
-  onChange = event => {
-    this.setState({ [event.target.name]: event.target.value });
-  };
-
-  onSubmit = event => {
-    event.preventDefault();
-    this.props.getProfilesByCity(this.state.city);
-  };
+export default class SearchHotel extends Component {
   render() {
-    if (this.props.profiles) {
-      return <Redirect to="/hotels" />;
-    }
     return (
       <div>
         <form action="search" className="searchfield1" onSubmit={this.onSubmit}>
-          <h2>Procure seu guia por cidade ou especie.</h2>
+          <h2>Procure um quarto ou Hotel</h2>
           <p>CIDADE</p>
           <input
             type="text"

@@ -85,12 +85,14 @@
 }
 .box:hover .imgBx {
   transform: translateY(-100px);
+  cursor: pointer;
 }
 .imgBx img {
   transition: 0.5s;
 }
 .box:hover .imgBx img {
   opacity: 0.5;
+  cursor: pointer;
 }
 
 .social-icon {

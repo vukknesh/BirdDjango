@@ -24,8 +24,8 @@ export default class RigthMenu extends Component {
               src="https://images-na.ssl-images-amazon.com/images/I/81W14n4ouIL._SL1500_.jpg"
               className="card-img-top"
               style={{
-                width: "200px",
-                height: "200px",
+                width: "100px",
+                height: "100px",
                 marginLeft: "80px"
               }}
               alt="..."
@@ -51,8 +51,8 @@ export default class RigthMenu extends Component {
                   className="card-img rounded-circle mt-3 ml-2"
                   alt="..."
                   style={{
-                    width: "100px",
-                    height: "100px",
+                    width: "75px",
+                    height: "75px",
                     marginRight: "250px"
                   }}
                 />

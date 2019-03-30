@@ -20,7 +20,7 @@ import MyPage from "./components/MyPage/MyPage";
 import Login from "./components/Auth/Login";
 import Register from "./components/Auth/Register";
 import Guide from "./components/Guide/Guide";
-import Hotels from "./components/Hotels/Hotels";
+import FindHotels from "./components/Hotels/FindHotels";
 import Enter from "./components/layout/Enter/Enter";
 import EditProfile from "./components/Profile/EditProfile";
 
@@ -94,7 +94,7 @@ class App extends Component {
               </Switch> */}
                   <Route exact path="/not-found" component={NotFound} />
                   <Route exact path="/guide" component={Guide} />
-                  <Route exact path="/hotels" component={Hotels} />
+                  <Route exact path="/hotels" component={FindHotels} />
                   <Footer />
                 </div>
               </div>

@@ -3,6 +3,7 @@ import { getPosts, clearPosts } from "../../actions/Post";
 import Spinner from "../common/Spinner";
 import { connect } from "react-redux";
 import pic from "./profile1.jpg";
+import "./main.css";
 
 class MyContent extends Component {
   componentWillMount() {
@@ -38,7 +39,7 @@ class MyContent extends Component {
           </div>
           <div className="card-body">
             <div className="content">
-              <h5>title</h5>
+              <img src={post.image} alt="" />
               <p>{post.content}</p>
             </div>
 

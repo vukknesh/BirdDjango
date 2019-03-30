@@ -1,7 +1,7 @@
 .s-top {
   position: -webkit-sticky;
   position: sticky;
-  top: 70px;
+  top: -100px;
 }
 
 .card-container {
@@ -11,6 +11,19 @@
   padding: 20px;
   background: white;
   border: 0.5px solid lightgrey;
+}
+
+.status {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.status p {
+  padding: 10px;
 }
 
 .card-head {
@@ -72,17 +85,17 @@
   border: 1px solid lightgrey;
   border-radius: 1.4rem;
   width: 80%;
-  padding: 4px;
+  padding: 0.5rem;
   background: #f2f3f5;
 }
 
 .card-comments form input {
   border: 0.1px dotted grey;
   border-radius: 40%;
-  padding: 8px 12px;
+  padding: 8px 1rem;
   text-decoration: none;
   background: #f2f3f5;
-  width: 70%;
+  width: 60%;
   margin-right: 5px;
 }
 
@@ -118,5 +131,72 @@
 .likes p {
   margin: 0 10px;
   font-weight: bold;
+}
+
+.myprofile-container {
+  width: 90%;
+  text-align: center;
+}
+
+.submy {
+  margin-left: 8%;
+}
+
+.color {
+  background: rgba(71, 45, 32, 0.82);
+  color: white;
+  border-radius: 10px;
+  margin-bottom: 40px;
+}
+
+.color img {
+  margin-top: 60px;
+  margin-bottom: 35px;
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+}
+
+.menucard {
+  margin-bottom: 50px;
+  text-align: start;
+}
+
+.menucard p {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.menucard p i {
+  margin-left: 15%;
+  margin-right: 5%;
+}
+
+.menucard p:hover {
+  background: #f35404;
+  cursor: pointer;
+  color: white;
+}
+
+.dropdown-menu {
+  background: #472d20;
+  width: 500px;
+  padding: 20px 20px 20px 20px;
+  height: 70px;
+}
+
+.dropdown-menu i {
+  margin-right: 10px;
+}
+
+.dropdown-menu a {
+  text-decoration: none;
+  padding-right: 20px;
+  border-radius: 10px;
+  color: white;
+}
+
+.dropdown-menu a:hover {
+  background: #f35404;
 }
 /*# sourceMappingURL=main.css.map */
