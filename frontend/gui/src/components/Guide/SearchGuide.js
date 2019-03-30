@@ -16,7 +16,7 @@ export default class SearchGuide extends Component {
   };
   render() {
     if (this.props.profiles) {
-      return <Redirect to="/hotels" />;
+      return <Redirect to="/guide" />;
     }
     return (
       <div>

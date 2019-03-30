@@ -74,13 +74,17 @@ class PostDetailSerializer(ModelSerializer):
 
 class PostListSerializer(ModelSerializer):
     # url = post_detail_url
-    username = CharField(source='user.username', read_only=True)
+    user_id = CharField(source='user.id', read_only=True)
+    first_name = CharField(source='user.first_name', read_only=True)
+    last_name = CharField(source='user.last_name', read_only=True)
 
     class Meta:
         model = Post
         fields = [
             'id',
-            'username',
+            'user_id',
+            'first_name',
+            'last_name',
             'title',
             'content',
             'publish',

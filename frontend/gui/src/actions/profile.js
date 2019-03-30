@@ -45,23 +45,23 @@ export const getCurrentProfile = id => (dispatch, getState) => {
 
 // //get current profile by handle
 
-// export const getProfileByHandle = handle => dispatch => {
-//   dispatch(setProfileLoading);
-//   axios
-//     .get(`/api/profile/handle/${handle}`)
-//     .then(res =>
-//       dispatch({
-//         type: GET_PROFILE,
-//         payload: res.data
-//       })
-//     )
-//     .catch(err =>
-//       dispatch({
-//         type: GET_PROFILE,
-//         payload: null
-//       })
-//     );
-// };
+export const getProfileByHandle = id => dispatch => {
+  dispatch(setProfileLoading);
+  axios
+    .get(`http://localhost:8000/api/profiles/${id}/`)
+    .then(res =>
+      dispatch({
+        type: GET_PROFILE,
+        payload: res.data
+      })
+    )
+    .catch(err =>
+      dispatch({
+        type: GET_PROFILE,
+        payload: null
+      })
+    );
+};
 
 // Create profile
 export const updateProfile = (profileData, id, token, history) => dispatch => {

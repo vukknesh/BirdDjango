@@ -9,7 +9,7 @@ class FindHotels extends Component {
   render() {
     return (
       <div>
-        {/* <Hotels /> */}
+        <Hotels />
         <div className="container2">
           <div className="sub1">
             <SearchHotel />

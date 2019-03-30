@@ -18,7 +18,7 @@ class MyProfile extends Component {
     this.props.getCurrentProfile(this.props.user.id);
   }
   componentWillUnmount() {
-    this.props.clearCurrentProfile();
+    // this.props.clearCurrentProfile();
   }
 
   render() {

@@ -3,6 +3,7 @@ import profilepic from "../MyPage/profile1.jpg";
 import { clearAllProfiles } from "../../actions/profile";
 import { connect } from "react-redux";
 import Spinner from "../common/Spinner";
+import { Link } from "react-router-dom";
 
 class GuideUser extends Component {
   componentWillUnmount() {
@@ -16,9 +17,11 @@ class GuideUser extends Component {
       if (this.props.profiles) {
         var conteudo = this.props.profiles.map(profile => (
           <div className="box" key={profile.id}>
-            <div className="imgBx">
-              <img src={profilepic} alt="..." />
-            </div>
+            <Link to={`profilebyhandle/${profile.id}/`}>
+              <div className="imgBx">
+                <img src={profilepic} alt="..." />
+              </div>
+            </Link>
             <ul className="social-icon">
               <li>
                 <a href="#">

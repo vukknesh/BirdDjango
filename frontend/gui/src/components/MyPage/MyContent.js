@@ -4,6 +4,7 @@ import Spinner from "../common/Spinner";
 import { connect } from "react-redux";
 import pic from "./profile1.jpg";
 import "./main.css";
+import { Link } from "react-router-dom";
 
 class MyContent extends Component {
   componentWillMount() {
@@ -30,10 +31,16 @@ class MyContent extends Component {
         <div className="card-container" key={post.id}>
           <div className="card-head">
             <div>
-              <img src={pic} alt="" />
+              <Link to={`profilebyhandle/${post.user_id}/`}>
+                <img src={pic} alt="" />
+              </Link>
             </div>
             <section>
-              <span>{post.username}</span>
+              <span>
+                <Link to={`profilebyhandle/${post.user_id}/`}>
+                  {post.first_name} {post.last_name}
+                </Link>
+              </span>
               <p>{post.publish}</p>
             </section>
           </div>

@@ -23,6 +23,7 @@ import Guide from "./components/Guide/Guide";
 import FindHotels from "./components/Hotels/FindHotels";
 import Enter from "./components/layout/Enter/Enter";
 import EditProfile from "./components/Profile/EditProfile";
+import Profiles from "./components/Profile/Profiles";
 
 //ALERT OPTIONS
 
@@ -95,6 +96,11 @@ class App extends Component {
                   <Route exact path="/not-found" component={NotFound} />
                   <Route exact path="/guide" component={Guide} />
                   <Route exact path="/hotels" component={FindHotels} />
+                  <Route
+                    exact
+                    path="/profilebyhandle/:id/"
+                    component={Profiles}
+                  />
                   <Footer />
                 </div>
               </div>
