@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'userprofile',
     'posts',
     'comments',
+    'hotels',
 
 
 ]

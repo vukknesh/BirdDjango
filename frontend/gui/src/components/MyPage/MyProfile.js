@@ -77,26 +77,45 @@ class MyProfile extends Component {
                 <i class="far fa-thumbs-up" /> Social Medias ->
               </p>
               <div className="dropdown-menu">
-                <a href="#">
-                  <i class="fab fa-instagram" />
-                  Instagram
-                </a>
-                <a href="#">
-                  <i class="fab fa-youtube" />
-                  youtube
-                </a>
-                <a href="#">
-                  <i class="fab fa-facebook" />
-                  facebook
-                </a>
+                {instagram ? (
+                  <a href="#">
+                    <i class="fab fa-instagram" />
+                    Instagram
+                  </a>
+                ) : null}
+                {youtube ? (
+                  <a href="#">
+                    <i class="fab fa-youtube" />
+                    Youtube
+                  </a>
+                ) : null}
+                {facebook ? (
+                  <a href="#">
+                    <i class="fab fa-facebook" />
+                    Facebook
+                  </a>
+                ) : null}
+                {wikiaves ? (
+                  <a href="#">
+                    <i class="fas fa-dove" />
+                    Wikiaves
+                  </a>
+                ) : null}
               </div>
             </div>
+
             <p>
-              <i class="far fa-comments" /> Comentarios Feitos
+              <Link to="/my-comments">
+                <i class="far fa-comments" /> Comentarios Feitos
+              </Link>
             </p>
+
             <p>
-              <i class="far fa-envelope" /> Minhas Menssagens
+              <Link to="/my-messages">
+                <i class="far fa-envelope" /> Minhas Menssagens
+              </Link>
             </p>
+
             <p>
               <Link to="/edit-profile">
                 <i class="far fa-address-card" /> Editar Perfil
@@ -104,7 +123,9 @@ class MyProfile extends Component {
             </p>
 
             <p>
-              <i class="fas fa-camera-retro" /> Editar Foto
+              <Link to="">
+                <i class="fas fa-camera-retro" /> Editar Foto
+              </Link>
             </p>
           </div>
         </div>

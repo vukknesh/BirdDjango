@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import "./guide.css";
-export default class SearchGuide extends Component {
+import { connect } from "react-redux";
+import { getProfilesByCity } from "../../actions/profile";
+
+class SearchGuide extends Component {
   state = {
     city: ""
   };
@@ -15,9 +18,6 @@ export default class SearchGuide extends Component {
     this.props.getProfilesByCity(this.state.city);
   };
   render() {
-    if (this.props.profiles) {
-      return <Redirect to="/guide" />;
-    }
     return (
       <div>
         <form action="search" className="searchfield1" onSubmit={this.onSubmit}>
@@ -45,3 +45,10 @@ export default class SearchGuide extends Component {
     );
   }
 }
+const mapStateToProps = state => ({
+  profiles: state.profiles.profiles
+});
+export default connect(
+  mapStateToProps,
+  { getProfilesByCity }
+)(SearchGuide);
