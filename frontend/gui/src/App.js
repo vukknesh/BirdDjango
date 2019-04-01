@@ -21,6 +21,7 @@ import Login from "./components/Auth/Login";
 import Register from "./components/Auth/Register";
 import Guide from "./components/Guide/Guide";
 import FindHotels from "./components/Hotels/FindHotels";
+import HotelProfile from "./components/Hotels/HotelProfile";
 import Enter from "./components/layout/Enter/Enter";
 import EditProfile from "./components/Profile/EditProfile";
 import Profiles from "./components/Profile/Profiles";
@@ -76,6 +77,7 @@ class App extends Component {
                   <Route exact path="/not-found" component={NotFound} />
                   <Route exact path="/guide" component={Guide} />
                   <Route exact path="/hotels" component={FindHotels} />
+                  <Route exact path="/hotel-profile" component={HotelProfile} />
                   <Route exact path="/my-messages" component={MyMessages} />
                   <Route exact path="/my-comments" component={MyComments} />
                   <Route

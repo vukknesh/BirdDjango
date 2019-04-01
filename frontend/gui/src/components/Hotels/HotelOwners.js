@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import { Link } from "react-router-dom";
 import { clearAllProfiles } from "../../actions/profile";
 import { connect } from "react-redux";
 import Spinner from "../common/Spinner";
@@ -18,9 +18,12 @@ class HotelOwners extends Component {
       //   var conteudo = this.props.profiles.map(profile =>key={profile.id}
       var hotels = (
         <div className="box">
-          <div className="imgBx">
-            <img src={hotelpic} alt="..." />
-          </div>
+          <Link to="/hotel-profile">
+            <div className="imgBx">
+              <img src={hotelpic} alt="..." />
+            </div>
+          </Link>
+
           <ul className="social-icon">
             <li>
               <a href="#">
