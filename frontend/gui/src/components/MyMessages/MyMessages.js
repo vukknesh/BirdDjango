@@ -1,12 +1,34 @@
 import React, { Component } from "react";
+import MyProfile from "../MyPage/MyProfile";
+import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
+import MessageContent from "./MessageContent";
 
-export default class MyMessages extends Component {
+class MyMessages extends Component {
   render() {
+    if (!this.props.isAuthenticated) {
+      return <Redirect to="/" />;
+    }
     return (
-      <div>
-        <h1>My Messages</h1>
-        <h1>My Messages</h1>
+      <div style={pageStyle} className="mt-3  bg-light">
+        <div className="row h-100 ">
+          <div className="w-25 d-flex justify-content-center">
+            <MyProfile />
+          </div>
+          <div className="w-75 d-flex">
+            <MessageContent />
+          </div>
+        </div>
       </div>
     );
   }
 }
+
+const pageStyle = {
+  height: "100%",
+  width: "100%"
+};
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+});
+export default connect(mapStateToProps)(MyMessages);

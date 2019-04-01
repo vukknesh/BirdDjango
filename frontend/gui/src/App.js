@@ -57,7 +57,6 @@ class App extends Component {
                   <Route exact path="/register" component={Register} />
                   <Route exact path="/about" component={Aboutus} />
                   <Route exact path="/contact" component={Contactus} />
-                  {/* <Route exact path="/profile/:handle" component={Profile} /> */}
                   <Switch>
                     <PrivateRoute exact path="/my-page" component={MyPage} />
                   </Switch>{" "}
@@ -68,27 +67,6 @@ class App extends Component {
                       component={EditProfile}
                     />
                   </Switch>{" "}
-                  {/* <Switch>
-                    <PrivateRoute
-                      exact
-                      path="/create-profile"
-                      component={CreateProfile}
-                    />
-                  </Switch> */}
-                  {/* <Switch>
-                <PrivateRoute
-                  exact
-                  path="/add-experience"
-                  component={AddExperience}
-                />
-              </Switch> */}
-                  {/* <Switch>
-                <PrivateRoute
-                  exact
-                  path="/add-education"
-                  component={AddEducation}
-                />
-              </Switch> */}
                   {/* <Switch>
                 <PrivateRoute exact path="/feed" component={Post} />
               </Switch>

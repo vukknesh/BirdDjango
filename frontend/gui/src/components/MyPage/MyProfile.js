@@ -47,19 +47,19 @@ class MyProfile extends Component {
               <p>{city}</p>
               <div className="status">
                 <p>
-                  <i class="fas fa-check" />
+                  <i className="fas fa-check" />
                   Watcher
                 </p>
                 {is_guide ? (
                   <p>
-                    <i class="fas fa-check" />
+                    <i className="fas fa-check" />
                     Guide
                   </p>
                 ) : null}
 
                 {is_owner ? (
                   <p>
-                    <i class="fas fa-check" />
+                    <i className="fas fa-check" />
                     Owner
                   </p>
                 ) : null}
@@ -74,30 +74,30 @@ class MyProfile extends Component {
                 aria-haspopup="true"
                 aria-expanded="false"
               >
-                <i class="far fa-thumbs-up" /> Social Medias ->
+                <i className="far fa-thumbs-up" /> Social Medias ->
               </p>
               <div className="dropdown-menu">
                 {instagram ? (
                   <a href="#">
-                    <i class="fab fa-instagram" />
+                    <i className="fab fa-instagram" />
                     Instagram
                   </a>
                 ) : null}
                 {youtube ? (
                   <a href="#">
-                    <i class="fab fa-youtube" />
+                    <i className="fab fa-youtube" />
                     Youtube
                   </a>
                 ) : null}
                 {facebook ? (
                   <a href="#">
-                    <i class="fab fa-facebook" />
+                    <i className="fab fa-facebook" />
                     Facebook
                   </a>
                 ) : null}
                 {wikiaves ? (
                   <a href="#">
-                    <i class="fas fa-dove" />
+                    <i className="fas fa-dove" />
                     Wikiaves
                   </a>
                 ) : null}

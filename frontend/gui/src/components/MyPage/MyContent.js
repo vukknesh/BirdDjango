@@ -12,7 +12,7 @@ class MyContent extends Component {
   }
 
   componentWillUnmount() {
-    this.props.clearPosts();
+    // this.props.clearPosts();
   }
 
   componentWillReceiveProps(nextProps) {
