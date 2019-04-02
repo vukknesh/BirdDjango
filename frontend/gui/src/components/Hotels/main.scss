@@ -227,3 +227,71 @@
   margin-top: 150px;
   margin-left: 50px;
 }
+.top-content {
+  min-height: 30vh;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+  margin-bottom: 20px;
+  img {
+    border-radius: 30px;
+    transition: all 0.2s ease-in-out;
+    border: 1px solid lightgray;
+    margin: 10px 15px;
+  }
+  img:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+  }
+}
+
+.hotel-content {
+  display: flex;
+  min-height: 70vh;
+}
+.hotel-info {
+  width: 65%;
+  padding-left: 15%;
+  padding-right: 10%;
+}
+.owner-info {
+  width: 35%;
+}
+.comments {
+}
+.comment-owner {
+  display: flex;
+
+  img {
+    height: 65px;
+    width: 65px;
+    margin-right: 2rem;
+    border-radius: 50%;
+  }
+}
+
+.owner-info {
+  border: 1px solid lightgrey;
+  border-radius: 30px;
+  margin-right: 10%;
+  height: 60vh;
+  position: sticky;
+  top: 70px;
+}
+
+.hotel-owner {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+
+  img {
+    height: 65px;
+    width: 65px;
+    margin-right: 2rem;
+    border-radius: 50%;
+  }
+}
+.personal {
+  margin: 30px 20px;
+}
