@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import { getCurrentProfile, clearCurrentProfile } from "../../actions/profile";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import profilepic from "./profile1.jpg";
-import isEmpty from "../../validation/is-empty";
+
 import "./main.css";
 
 class MyProfile extends Component {
@@ -25,6 +24,7 @@ class MyProfile extends Component {
     if (this.props.profile) {
       var first_name = this.props.profile.first_name;
       var last_name = this.props.profile.last_name;
+      var image = this.props.profile.image;
       var email = this.props.profile.email;
       var city = this.props.profile.city;
       var facebook = this.props.profile.facebook;
@@ -39,7 +39,7 @@ class MyProfile extends Component {
       <div className="myprofile-container">
         <div className="card s-top submy">
           <div className="color">
-            <img src={profilepic} alt="my pic" />
+            <img src={image} alt="my pic" />
             <div>
               <h5>
                 {first_name} {last_name}

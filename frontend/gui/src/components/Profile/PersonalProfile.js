@@ -14,6 +14,7 @@ class PersonalProfile extends Component {
     if (this.props.profile) {
       var first_name = this.props.profile.first_name;
       var last_name = this.props.profile.last_name;
+      var image = this.props.profile.image;
       var email = this.props.profile.email;
       var city = this.props.profile.city;
       var facebook = this.props.profile.facebook;
@@ -28,7 +29,7 @@ class PersonalProfile extends Component {
       <div className="myprofile-container">
         <div className="card s-top submy">
           <div className="color">
-            <img src={profilepic} alt="my pic" />
+            <img src={image} alt="my pic" />
             <div>
               <h5>
                 {first_name} {last_name}

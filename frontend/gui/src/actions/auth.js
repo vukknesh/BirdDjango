@@ -56,7 +56,7 @@ export const login = (username, password) => dispatch => {
       });
     })
     .catch(err => {
-      dispatch(returnErrors(err.response.data, err.response.status));
+      console.log(err);
       dispatch({
         type: LOGIN_FAIL
       });

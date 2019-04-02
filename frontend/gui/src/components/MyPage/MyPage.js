@@ -15,7 +15,7 @@ class MyPage extends Component {
             <MyProfile />
           </div>
           <div className="w-50 d-flex justify-content-center ">
-            <Message />
+            <Message profile={this.props.profile} />
           </div>
           <div className="w-25">
             <RigthMenu />

@@ -3,7 +3,7 @@ import { Link, Redirect, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logout } from "../../actions/auth";
-import profilepic from "../MyPage/profile1.jpg";
+
 import "./Navbarcss.css";
 
 class Navbar extends Component {
@@ -48,12 +48,12 @@ class Navbar extends Component {
             onClick={this.handleLogout}
             className="nav-link text-light"
           >
-            <img
-              src={profilepic}
+            {/* <img
+              src={this.state.image}
               alt=".."
               style={{ width: "30px", height: "30px", marginRight: "15px" }}
               className="rounded-circle"
-            />
+            /> */}
             LOGOUT
           </a>
         </li>
@@ -120,7 +120,8 @@ Navbar.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  isAuthenticated: state.auth.isAuthenticated
+  isAuthenticated: state.auth.isAuthenticated,
+  profile: state.profiles.profile
 });
 export default connect(
   mapStateToProps,

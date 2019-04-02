@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { addPost } from "../../actions/Post";
+
 import { connect } from "react-redux";
 import { Redirect, withRouter } from "react-router-dom";
 import MyContent from "./MyContent";
@@ -27,6 +28,9 @@ class Message extends Component {
   };
 
   render() {
+    if (this.props.profile) {
+      var image = this.props.profile.image;
+    }
     return (
       <div className="w-100">
         <div className="card shadow-lg mb-3 ">
@@ -35,7 +39,7 @@ class Message extends Component {
               <div className="input-group">
                 <div className="input-group-prepend w-25  align-items-center justify-content-center">
                   <img
-                    src="https://media.wired.com/photos/598e35fb99d76447c4eb1f28/master/pass/phonepicutres-TA.jpg"
+                    src={image}
                     alt="..."
                     className="rounded-circle"
                     style={{ width: "75px", height: "75px" }}
@@ -93,7 +97,8 @@ class Message extends Component {
 
 const mapStateToProps = state => ({
   auth: state.auth,
-  token: state.auth.token
+  token: state.auth.token,
+  profile: state.profiles.profile
 });
 
 export default connect(

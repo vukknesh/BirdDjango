@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import profilepic from "../MyPage/profile1.jpg";
+
 import { clearAllProfiles } from "../../actions/profile";
 import { connect } from "react-redux";
 import Spinner from "../common/Spinner";
@@ -19,7 +19,7 @@ class GuideUser extends Component {
           <div className="box" key={profile.id}>
             <Link to={`profilebyhandle/${profile.id}/`}>
               <div className="imgBx">
-                <img src={profilepic} alt="..." />
+                <img src={profile.image} alt="..." />
               </div>
             </Link>
             <ul className="social-icon">

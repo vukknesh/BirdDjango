@@ -31,6 +31,8 @@ class Profile(models.Model):
     state = models.CharField(max_length=100, blank=True, default='')
     country = models.CharField(max_length=100, blank=True, default='')
     # personal
+    image = models.ImageField(default='defprofile.jpg',
+                              upload_to='profile_pics')
     about_you = models.TextField(max_length=255, blank=True, default='')
     GENDER_CHOICES = (
         ('M', 'Male'),

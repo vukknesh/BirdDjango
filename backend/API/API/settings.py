@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+
+
     'corsheaders',
     'knox',
     'rest_framework',
@@ -47,6 +50,8 @@ INSTALLED_APPS = [
     'posts',
     'comments',
     'hotels',
+
+    'storages',
 
 
 ]
@@ -144,4 +149,14 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+
 CORS_ORIGIN_ALLOW_ALL = True
+
+AWS_ACCESS_KEY_ID = 'AKIATTKZLJPFCJLVGJJQ'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'murucututu'
+
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
