@@ -35,9 +35,10 @@ class EditProfile extends Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.profile) {
       const profile = nextProps.profile;
-      console.log(profile);
 
       profile.youtube = !isEmpty(profile.youtube) ? profile.youtube : "";
+      profile.is_guide = !isEmpty(profile.is_guide) ? profile.is_guide : false;
+      profile.is_owner = !isEmpty(profile.is_owner) ? profile.is_owner : false;
 
       profile.instagram = !isEmpty(profile.instagram) ? profile.instagram : "";
       profile.facebook = !isEmpty(profile.facebook) ? profile.facebook : "";
@@ -71,7 +72,9 @@ class EditProfile extends Component {
         city: profile.city,
         state: profile.state,
         country: profile.country,
-        about_you: profile.about_you
+        about_you: profile.about_you,
+        is_guide: profile.is_guide,
+        is_owner: profile.is_owner
         // gender: profile.gender
       });
     }
@@ -79,12 +82,25 @@ class EditProfile extends Component {
   onChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
+  handleCheckboxGuide = event => {
+    this.setState(prevState => ({
+      is_guide: !prevState.is_guide
+    }));
+    console.log(this.state.is_guide);
+  };
+  handleCheckboxOwner = event => {
+    this.setState(prevState => ({
+      is_owner: !prevState.is_owner
+    }));
+    console.log(this.state.is_owner);
+  };
 
   onSubmit = event => {
     event.preventDefault();
     const {
       facebook,
-
+      is_guide,
+      is_owner,
       instagram,
       youtube,
       wikiaves,
@@ -102,7 +118,8 @@ class EditProfile extends Component {
 
     const newUser = {
       facebook,
-
+      is_guide,
+      is_owner,
       instagram,
       youtube,
       wikiaves,
@@ -126,6 +143,13 @@ class EditProfile extends Component {
     if (!this.props.isAuthenticated) {
       return <Redirect to="/" />;
     }
+    if (this.state.is_guide) {
+      var is_guide = this.state.is_guide;
+    }
+    if (this.state.is_owner) {
+      var is_owner = this.state.is_owner;
+    }
+    console.log(is_guide + "guide ... " + is_owner + "owner");
 
     return (
       <div className="container">
@@ -133,6 +157,41 @@ class EditProfile extends Component {
           <div className="col-md-8 m-auto">
             <h1 className="display-4 text-center">Profile</h1>
             <p className="lead text-center">Edit Your Bird Watcher Profile</p>
+            <p className="lead text-center">Status</p>
+            {is_guide ? (
+              <input
+                type="checkbox"
+                name="is_guide"
+                checked={this.state.is_guide}
+                value={this.state.is_guide}
+                onChange={this.handleCheckboxGuide}
+              />
+            ) : (
+              <input
+                type="checkbox"
+                name="is_guide"
+                value={this.state.is_guide}
+                onChange={this.handleCheckboxGuide}
+              />
+            )}{" "}
+            - Guia <span className="mr-4" />
+            {is_owner ? (
+              <input
+                type="checkbox"
+                name="is_owner"
+                checked={this.state.is_owner}
+                value={this.state.is_owner}
+                onChange={this.handleCheckboxOwner}
+              />
+            ) : (
+              <input
+                type="checkbox"
+                name="is_owner"
+                value={this.state.is_owner}
+                onChange={this.handleCheckboxOwner}
+              />
+            )}{" "}
+            - Acomodações
             <p className="lead text-center">Adress</p>
             <form noValidate onSubmit={this.onSubmit}>
               <TextFieldGroup

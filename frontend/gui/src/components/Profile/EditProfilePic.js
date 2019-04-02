@@ -9,28 +9,41 @@ import isEmpty from "../../validation/is-empty";
 class EditProfile extends Component {
   state = {
     image: null,
-
+    is_guide: false,
+    is_owner: false,
     errors: {}
   };
   componentDidMount() {
     this.props.getCurrentProfile(this.props.user.id);
   }
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.profile) {
+      const profile = nextProps.profile;
+
+      profile.is_guide = true ? true : false;
+      profile.is_owner = true ? true : false;
+
+      this.setState({
+        is_guide: profile.is_guide,
+        is_owner: profile.is_owner
+      });
+    }
+  }
 
   imageChange = event => {
-    this.setState({ image: event.target.files[0].name });
+    this.setState({ image: event.target.files[0] });
   };
   onSubmit = event => {
     event.preventDefault();
-    const { image } = this.state;
 
-    const newUser = {
-      image
-    };
+    const fd = new FormData();
+    fd.append("image", this.state.image, this.state.image.name);
+    fd.append("is_owner", this.state.is_owner);
+    fd.append("is_guide", this.state.is_guide);
+
     let id = this.props.user.id;
     let token = this.props.token;
-    this.props.updateProfile(newUser, id, token, this.props.history);
-    console.log(newUser);
-    console.log(this.state.image);
+    this.props.updateProfile(fd, id, token, this.props.history);
   };
 
   render() {
@@ -47,7 +60,19 @@ class EditProfile extends Component {
             <p className="lead text-center">Profile Picture</p>
             <form onSubmit={this.onSubmit}>
               <input type="file" name="image" onChange={this.imageChange} />
-
+              {/* <input
+                type="checkbox"
+                name="is_guide"
+                checked={this.state.is_guide}
+                onChange={this.handleCheckboxGuide}
+              />{" "}
+              - Guia <span className="mr-4" />
+              <input
+                type="checkbox"
+                name="is_owner"
+                checked={this.state.is_owner}
+                onChange={this.handleCheckboxOwner}
+              /> */}
               <input
                 type="submit"
                 className="btn btn-block mt-4"
