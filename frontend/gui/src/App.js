@@ -24,6 +24,7 @@ import FindHotels from "./components/Hotels/FindHotels";
 
 import Enter from "./components/layout/Enter/Enter";
 import EditProfile from "./components/Profile/EditProfile";
+import EditProfilePic from "./components/Profile/EditProfilePic";
 import Profiles from "./components/Profile/Profiles";
 import MyMessages from "./components/MyMessages/MyMessages";
 import MyComments from "./components/MyMessages/MyComments";
@@ -67,6 +68,11 @@ class App extends Component {
                       exact
                       path="/edit-profile"
                       component={EditProfile}
+                    />
+                    <PrivateRoute
+                      exact
+                      path="/edit-profile-pic"
+                      component={EditProfilePic}
                     />
                   </Switch>{" "}
                   {/* <Switch>

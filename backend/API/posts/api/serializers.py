@@ -2,7 +2,8 @@ from rest_framework.serializers import (
     HyperlinkedIdentityField,
     ModelSerializer,
     SerializerMethodField,
-    CharField
+    CharField,
+    ImageField
 )
 
 
@@ -77,12 +78,14 @@ class PostListSerializer(ModelSerializer):
     user_id = CharField(source='user.id', read_only=True)
     first_name = CharField(source='user.first_name', read_only=True)
     last_name = CharField(source='user.last_name', read_only=True)
+    user_image = ImageField(source='user.profile.image', read_only=True)
 
     class Meta:
         model = Post
         fields = [
             'id',
             'user_id',
+            'user_image',
             'first_name',
             'last_name',
             'title',

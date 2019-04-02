@@ -22,7 +22,8 @@ class EditProfile extends Component {
     state: "",
     country: "",
     about_you: "",
-    gender: "",
+    // gender: "",
+
     is_guide: false,
     is_owner: false,
     errors: {}
@@ -37,6 +38,7 @@ class EditProfile extends Component {
       console.log(profile);
 
       profile.youtube = !isEmpty(profile.youtube) ? profile.youtube : "";
+
       profile.instagram = !isEmpty(profile.instagram) ? profile.instagram : "";
       profile.facebook = !isEmpty(profile.facebook) ? profile.facebook : "";
       profile.wikiaves = !isEmpty(profile.wikiaves) ? profile.wikiaves : "";
@@ -53,10 +55,11 @@ class EditProfile extends Component {
       profile.state = !isEmpty(profile.state) ? profile.state : "";
       profile.country = !isEmpty(profile.country) ? profile.country : "";
       profile.about_you = !isEmpty(profile.about_you) ? profile.about_you : "";
-      profile.gender = !isEmpty(profile.gender) ? profile.gender : "";
+      // profile.gender = !isEmpty(profile.gender) ? profile.gender : "";
 
       this.setState({
         youtube: profile.youtube,
+        image: profile.image,
         instagram: profile.instagram,
         facebook: profile.facebook,
         wikiaves: profile.wikiaves,
@@ -68,18 +71,20 @@ class EditProfile extends Component {
         city: profile.city,
         state: profile.state,
         country: profile.country,
-        about_you: profile.about_you,
-        gender: profile.gender
+        about_you: profile.about_you
+        // gender: profile.gender
       });
     }
   }
   onChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
+
   onSubmit = event => {
     event.preventDefault();
     const {
       facebook,
+
       instagram,
       youtube,
       wikiaves,
@@ -91,12 +96,13 @@ class EditProfile extends Component {
       city,
       state,
       country,
-      about_you,
-      gender
+      about_you
+      // gender
     } = this.state;
 
     const newUser = {
       facebook,
+
       instagram,
       youtube,
       wikiaves,
@@ -108,8 +114,8 @@ class EditProfile extends Component {
       city,
       state,
       country,
-      about_you,
-      gender
+      about_you
+      // gender
     };
     let id = this.props.user.id;
     let token = this.props.token;
@@ -120,12 +126,6 @@ class EditProfile extends Component {
     if (!this.props.isAuthenticated) {
       return <Redirect to="/" />;
     }
-
-    let options = [
-      { label: "* Gender", value: 0 },
-      { label: "* Male", value: "M" },
-      { label: "* Female", value: "F" }
-    ];
 
     return (
       <div className="container">
@@ -242,7 +242,7 @@ class EditProfile extends Component {
                 onChange={this.onChange}
                 // error={errors.name}
               />
-              <SelectListGroup
+              {/* <SelectListGroup
                 placeholder="gender"
                 name="gender"
                 value={this.state.gender}
@@ -250,7 +250,7 @@ class EditProfile extends Component {
                 // error={errors.status}
                 options={options}
                 info="Give an ideia where you are at on your carrer"
-              />
+              /> */}
               <input
                 type="submit"
                 className="btn btn-block mt-4"

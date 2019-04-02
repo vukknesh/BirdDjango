@@ -32,7 +32,7 @@ class MyContent extends Component {
           <div className="card-head">
             <div>
               <Link to={`profilebyhandle/${post.user_id}/`}>
-                <img src={pic} alt="" />
+                <img src={post.user_image} alt="" />
               </Link>
             </div>
             <section>

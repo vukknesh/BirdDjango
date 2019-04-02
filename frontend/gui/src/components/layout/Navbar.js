@@ -14,7 +14,9 @@ class Navbar extends Component {
   };
   render() {
     const { isAuthenticated } = this.props;
-
+    if (this.props.profile) {
+      var image = this.props.profile.image;
+    }
     const mypage = (
       <li className="nav-item active show1">
         <Link className="nav-link text-light" to="/my-page">
@@ -48,12 +50,12 @@ class Navbar extends Component {
             onClick={this.handleLogout}
             className="nav-link text-light"
           >
-            {/* <img
-              src={this.state.image}
+            <img
+              src={image}
               alt=".."
               style={{ width: "30px", height: "30px", marginRight: "15px" }}
               className="rounded-circle"
-            /> */}
+            />
             LOGOUT
           </a>
         </li>

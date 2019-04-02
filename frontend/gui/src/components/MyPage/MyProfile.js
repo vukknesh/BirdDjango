@@ -123,7 +123,7 @@ class MyProfile extends Component {
             </p>
 
             <p>
-              <Link to="">
+              <Link to="/edit-profile-pic">
                 <i className="fas fa-camera-retro" /> Editar Foto
               </Link>
             </p>

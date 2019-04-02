@@ -38,7 +38,7 @@ class Profile(models.Model):
         ('M', 'Male'),
         ('F', 'Female'),
     )
-    gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
+    # gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
     user = models.OneToOneField(
         User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)

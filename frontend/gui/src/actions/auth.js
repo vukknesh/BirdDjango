@@ -28,7 +28,8 @@ export const loadUser = () => (dispatch, getState) => {
       });
     })
     .catch(err => {
-      dispatch(returnErrors(err.response.data, err.response.status));
+      // dispatch(returnErrors(err.response.data, err.response.status));
+      console.log(err);
       dispatch({
         type: AUTH_ERROR
       });
@@ -52,6 +53,7 @@ export const login = (username, password) => dispatch => {
     .then(res => {
       dispatch({
         type: LOGIN_SUCCESS,
+
         payload: res.data
       });
     })

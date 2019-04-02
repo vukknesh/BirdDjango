@@ -4,7 +4,8 @@ from rest_framework.serializers import (
     ValidationError,
     Serializer,
     CharField,
-    ValidationError
+    ValidationError,
+    ImageField
 )
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
@@ -14,14 +15,18 @@ from django.contrib.auth import authenticate
 
 
 class UserSerializer(ModelSerializer):
+    image = ImageField(source='user.profile.image', read_only=True)
+
     class Meta:
         model = User
-        fields = ('id', 'username', 'email', 'first_name', 'last_name')
+        fields = ('id', 'username', 'email', 'first_name',
+                  'last_name', 'image')
 
 # Register Serializer
 
 
 class RegisterSerializer(ModelSerializer):
+
     class Meta:
         model = User
         fields = [
@@ -29,7 +34,9 @@ class RegisterSerializer(ModelSerializer):
             'email',
             'password',
             'first_name',
-            'last_name'
+            'last_name',
+
+
 
         ]
         extra_kwargs = {'password': {'write_only': True}}

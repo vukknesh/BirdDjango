@@ -77,12 +77,7 @@ export const updateProfile = (profileData, id, token, history) => dispatch => {
   axios
     .put(`http://localhost:8000/api/profiles/${id}/`, profileData, config)
     .then(res => history.push("/my-page"))
-    .catch(err =>
-      dispatch({
-        type: GET_PROFILE,
-        payload: "alou"
-      })
-    );
+    .catch(err => console.log(err.detail));
 };
 
 // Profile Loading
