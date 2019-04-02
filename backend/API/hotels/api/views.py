@@ -47,7 +47,7 @@ class HotelCreateAPIView(CreateAPIView):
 class HotelDetailAPIView(RetrieveAPIView):
     queryset = Hotel.objects.all()
     serializer_class = HotelDetailSerializer
-    lookup_field = 'slug'
+    lookup_field = 'id'
     permission_classes = [AllowAny]
     #lookup_url_kwarg = "abc"
 
@@ -55,7 +55,7 @@ class HotelDetailAPIView(RetrieveAPIView):
 class HotelUpdateAPIView(RetrieveUpdateAPIView):
     queryset = Hotel.objects.all()
     serializer_class = HotelCreateUpdateSerializer
-    lookup_field = 'slug'
+    lookup_field = 'id'
     permission_classes = [IsOwnerOrReadOnly]
 
     def perform_update(self, serializer):
@@ -66,7 +66,7 @@ class HotelUpdateAPIView(RetrieveUpdateAPIView):
 class HotelDeleteAPIView(DestroyAPIView):
     queryset = Hotel.objects.all()
     serializer_class = HotelDetailSerializer
-    lookup_field = 'slug'
+    lookup_field = 'id'
     permission_classes = [IsOwnerOrReadOnly]
 
 

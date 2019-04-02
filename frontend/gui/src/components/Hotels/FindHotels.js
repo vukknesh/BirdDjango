@@ -3,6 +3,7 @@ import Hotels from "./Hotels";
 import HotelOwners from "./HotelOwners";
 import SearchHotel from "./SearchHotel";
 import { connect } from "react-redux";
+
 import "./main.css";
 
 class FindHotels extends Component {
@@ -23,7 +24,8 @@ class FindHotels extends Component {
   }
 }
 const mapStateToProps = state => ({
-  isAuthenticated: state.auth.isAuthenticated
+  isAuthenticated: state.auth.isAuthenticated,
+  hotels: state.hotels.hotels
 });
 
 export default connect(mapStateToProps)(FindHotels);

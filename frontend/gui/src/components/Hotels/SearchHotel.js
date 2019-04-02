@@ -1,7 +1,22 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import "./main.css";
+import { getHotels, getHotelsByCity } from "../../actions/hotels";
 
-export default class SearchHotel extends Component {
+class SearchHotel extends Component {
+  state = {
+    city: ""
+  };
+
+  onChange = event => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
+
+  onSubmit = event => {
+    event.preventDefault();
+    // this.props.getHotelsByCity(this.state.city);
+    // this.props.getHotels();
+  };
   render() {
     return (
       <div>
@@ -30,3 +45,11 @@ export default class SearchHotel extends Component {
     );
   }
 }
+const mapStateToProps = state => ({
+  hotels: state.hotels.hotels
+});
+
+export default connect(
+  mapStateToProps,
+  { getHotels, getHotelsByCity }
+)(SearchHotel);

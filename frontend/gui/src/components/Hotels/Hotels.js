@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./main.css";
-import { getProfilesByCity } from "../../actions/profile";
+import { getHotels, getHotelsByCity } from "../../actions/hotels";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 class Hotels extends Component {
@@ -14,10 +14,10 @@ class Hotels extends Component {
 
   onSubmit = event => {
     event.preventDefault();
-    this.props.getProfilesByCity(this.state.city);
+    this.props.getHotels();
   };
   render() {
-    if (this.props.profiles) {
+    if (this.props.hotels) {
       return <Redirect to="/hotels" />;
     }
     return (
@@ -46,9 +46,9 @@ class Hotels extends Component {
   }
 }
 const mapStateToProps = state => ({
-  profiles: state.profiles.profiles
+  hotels: state.hotels.hotels
 });
 export default connect(
   mapStateToProps,
-  { getProfilesByCity }
+  { getHotels, getHotelsByCity }
 )(Hotels);

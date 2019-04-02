@@ -12,9 +12,9 @@ from .views import (
 urlpatterns = [
     url(r'^$', HotelListAPIView.as_view(), name='list'),
     url(r'^create/$', HotelCreateAPIView.as_view(), name='create'),
-    url(r'^(?P<slug>[\w-]+)/$', HotelDetailAPIView.as_view(), name='detail'),
-    url(r'^(?P<slug>[\w-]+)/edit/$',
+    url(r'^(?P<id>[\w-]+)/$', HotelDetailAPIView.as_view(), name='detail'),
+    url(r'^(?P<id>[\w-]+)/edit/$',
         HotelUpdateAPIView.as_view(), name='update'),
-    url(r'^(?P<slug>[\w-]+)/delete/$',
+    url(r'^(?P<id>[\w-]+)/delete/$',
         HotelDeleteAPIView.as_view(), name='delete'),
 ]

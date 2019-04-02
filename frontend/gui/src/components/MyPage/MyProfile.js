@@ -106,25 +106,25 @@ class MyProfile extends Component {
 
             <p>
               <Link to="/my-comments">
-                <i class="far fa-comments" /> Comentarios Feitos
+                <i className="far fa-comments" /> Comentarios Feitos
               </Link>
             </p>
 
             <p>
               <Link to="/my-messages">
-                <i class="far fa-envelope" /> Minhas Menssagens
+                <i className="far fa-envelope" /> Minhas Menssagens
               </Link>
             </p>
 
             <p>
               <Link to="/edit-profile">
-                <i class="far fa-address-card" /> Editar Perfil
+                <i className="far fa-address-card" /> Editar Perfil
               </Link>
             </p>
 
             <p>
               <Link to="">
-                <i class="fas fa-camera-retro" /> Editar Foto
+                <i className="fas fa-camera-retro" /> Editar Foto
               </Link>
             </p>
           </div>

@@ -31,3 +31,12 @@ export const GET_POST = "GET_POST";
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
 export const DELETE_POST = "DELETE_POST";
 export const CLEAR_POSTS = "CLEAR_POSTS";
+
+// hotels
+
+export const GET_HOTELS = "GET_HOTELS";
+export const ADD_HOTEL = "ADD_HOTEL";
+export const GET_HOTEL = "GET_HOTEL";
+export const DELETE_HOTEL = "DELETE_HOTEL";
+export const HOTEL_LOADING = "HOTEL_LOADING";
+export const CLEAR_HOTELS = "CLEAR_HOTELS";

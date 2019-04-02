@@ -1,9 +1,24 @@
 import React, { Component } from "react";
 import "./main.css";
 import pic from "../MyPage/profile1.jpg";
+import { Redirect } from "react-router-dom";
 
-export default class HotelProfile extends Component {
+import { connect } from "react-redux";
+
+class HotelProfile extends Component {
   render() {
+    if (!this.props.isAuthenticated) {
+      return <Redirect to="/login" />;
+    }
+    if (this.props.hotel) {
+      var title = this.props.hotel.title;
+      var city = this.props.hotel.city;
+      var content = this.props.hotel.content;
+      var state = this.props.hotel.state;
+      var address = this.props.hotel.address;
+      var first_name = this.props.hotel.user.first_name;
+      var last_name = this.props.hotel.user.last_name;
+    }
     return (
       <div className="hotel-container">
         <div className="top-content">
@@ -16,26 +31,24 @@ export default class HotelProfile extends Component {
 
         <div className="hotel-content">
           <div className="hotel-info">
-            <h1>Hotel 5 estrelas</h1>
-            <p>asa norte</p>
+            <h1>{title}</h1>
+            <p>
+              {city}-{state}
+            </p>
             <p>*****</p>
             <p>numero de votos</p>
-            <i class="fas fa-home" />
-            <p>Address: asa sul q1</p>
-            <i class="fas fa-phone-square" />
+            <i className="fas fa-home" />
+            <p>Address: {address}</p>
+            <i className="fas fa-phone-square" />
             <p>telefone: (019)99645499</p>
-            <i class="fas fa-info" />
-            <p>
-              a descricao do hotel aqui Lorem ipsum dolor sit amet consectetur
-              adipisicing elit. Hic reiciendis voluptatum quas deleniti
-              accusamus culpa facilis ut omnis neque libero?
-            </p>
+            <i className="fas fa-info" />
+            <p>{content}</p>
             <div className="commodities">
-              <i class="fas fa-wifi" />
-              <i class="fas fa-check" />- <i class="fas fa-coffee" />{" "}
-              <i class="fas fa-check" />
-              <i class="fas fa-igloo" />
-              <i class="fas fa-check" />
+              <i className="fas fa-wifi" />
+              <i className="fas fa-check" />- <i className="fas fa-coffee" />{" "}
+              <i className="fas fa-check" />
+              <i className="fas fa-igloo" />
+              <i className="fas fa-check" />
             </div>
             <div className="comments">
               <div className="comment-owner">
@@ -74,7 +87,9 @@ export default class HotelProfile extends Component {
           <div className="owner-info">
             <div className="hotel-owner">
               <img src={pic} alt="" />
-              <h5>Leonardo Neshich</h5>
+              <h5>
+                {first_name} {last_name}
+              </h5>
             </div>
             <div className="personal">
               <p>email</p>
@@ -89,3 +104,10 @@ export default class HotelProfile extends Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  hotel: state.hotels.hotel,
+  isAuthenticated: state.auth.isAuthenticated
+});
+
+export default connect(mapStateToProps)(HotelProfile);

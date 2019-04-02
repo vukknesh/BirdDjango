@@ -5,11 +5,14 @@ import messages from "./messages";
 import auth from "./auth";
 import profiles from "./profiles";
 import posts from "./posts";
+import hotels from "./hotels";
 
 export default combineReducers({
   auth,
   profiles,
-  messages,
   posts,
+  hotels,
+  messages,
+
   errors
 });

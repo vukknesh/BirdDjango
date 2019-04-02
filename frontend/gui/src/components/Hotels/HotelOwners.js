@@ -6,63 +6,62 @@ import Spinner from "../common/Spinner";
 import hotelpic from "./hotel.jpg";
 
 class HotelOwners extends Component {
-  componentWillUnmount() {
-    this.props.clearAllProfiles();
-  }
-
   render() {
+    let hotels;
     if (this.props.isLoading) {
-      var hotels = <Spinner />;
+      hotels = <Spinner />;
     } else {
-      // if (this.props.profiles) {
-      //   var conteudo = this.props.profiles.map(profile =>key={profile.id}
-      var hotels = (
-        <div className="box">
-          <Link to="/hotel-profile">
-            <div className="imgBx">
-              <img src={hotelpic} alt="..." />
-            </div>
-          </Link>
+      if (this.props.hotels) {
+        hotels = this.props.hotels.results.map(hotel => (
+          <div className="box" key={hotel.id}>
+            <Link to={`hotelByHandle/${hotel.id}/`}>
+              <div className="imgBx">
+                <img src={hotelpic} alt="..." />
+              </div>
+            </Link>
 
-          <ul className="social-icon">
-            <li>
-              <a href="#">
-                <i className="fab fa-facebook-f" aria-hidden="true" />
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i className="fab fa-youtube" aria-hidden="true" />
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i className="fab fa-instagram" aria-hidden="true" />
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i className="fas fa-dove" aria-hidden="true" />
-              </a>
-            </li>
-          </ul>
-          <div className="details">
-            <h2>
-              Hotel do Guia
-              <br />
-              <span>City</span>
-              <p>R$ 137 por dia ****</p>
-            </h2>
+            <ul className="social-icon">
+              <li>
+                <a href="#">
+                  <i className="fab fa-facebook-f" aria-hidden="true" />
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i className="fab fa-youtube" aria-hidden="true" />
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i className="fab fa-instagram" aria-hidden="true" />
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i className="fas fa-dove" aria-hidden="true" />
+                </a>
+              </li>
+            </ul>
+            <div className="details">
+              <h2>
+                {hotel.title}
+                <br />
+                <span>
+                  {hotel.city}- {hotel.state}
+                </span>
+                <p>R$ {hotel.price}</p>
+              </h2>
+            </div>
           </div>
-        </div>
-      );
+        ));
+      }
     }
     return <div className="container d-flex flex-wrap figuras1">{hotels}</div>;
   }
 }
 const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated,
-  profiles: state.profiles.profiles
+  hotels: state.hotels.hotels
 });
 
 export default connect(

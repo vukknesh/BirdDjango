@@ -33,7 +33,7 @@ class HotelCreateUpdateSerializer(ModelSerializer):
 
 hotel_detail_url = HyperlinkedIdentityField(
     view_name='hotels-api:detail',
-    lookup_field='slug'
+    lookup_field='id'
 )
 
 
