@@ -1,5 +1,9 @@
 import React, { Component } from "react";
-import { getCurrentProfile, clearCurrentProfile } from "../../actions/profile";
+import {
+  getCurrentProfile,
+  clearCurrentProfile,
+  getMyProfile
+} from "../../actions/profile";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
@@ -15,6 +19,7 @@ class MyProfile extends Component {
   }
   componentDidMount() {
     this.props.getCurrentProfile(this.props.user.id);
+    this.props.getMyProfile(this.props.user.id);
   }
   componentWillUnmount() {
     // this.props.clearCurrentProfile();
@@ -136,9 +141,10 @@ class MyProfile extends Component {
 
 const mapStateToProps = state => ({
   user: state.auth.user,
-  profile: state.profiles.profile
+  profile: state.profiles.profile,
+  myprofile: state.profiles.myprofile
 });
 export default connect(
   mapStateToProps,
-  { getCurrentProfile, clearCurrentProfile }
+  { getCurrentProfile, clearCurrentProfile, getMyProfile }
 )(MyProfile);

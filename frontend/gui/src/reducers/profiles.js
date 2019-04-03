@@ -3,11 +3,14 @@ import {
   PROFILE_LOADING,
   GET_PROFILE,
   CLEAR_PROFILES,
-  CLEAR_CURRENT_PROFILE
+  CLEAR_CURRENT_PROFILE,
+  SET_CURRENT_USER
 } from "../actions/types";
 
 const initialState = {
+  myprofile: null,
   profile: null,
+
   profiles: null,
   loading: false
 };
@@ -29,6 +32,14 @@ export default function(state = initialState, action) {
       return {
         ...state,
         profile: action.payload,
+
+        loading: false
+      };
+    case SET_CURRENT_USER:
+      return {
+        ...state,
+        myprofile: action.payload,
+
         loading: false
       };
     case CLEAR_CURRENT_PROFILE:

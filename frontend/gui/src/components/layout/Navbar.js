@@ -14,8 +14,8 @@ class Navbar extends Component {
   };
   render() {
     const { isAuthenticated } = this.props;
-    if (this.props.profile) {
-      var image = this.props.profile.image;
+    if (this.props.myprofile) {
+      var image = this.props.myprofile.image;
     }
     const mypage = (
       <li className="nav-item active show1">
@@ -123,7 +123,7 @@ Navbar.propTypes = {
 
 const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated,
-  profile: state.profiles.profile
+  myprofile: state.profiles.myprofile
 });
 export default connect(
   mapStateToProps,

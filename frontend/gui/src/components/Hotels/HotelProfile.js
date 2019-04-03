@@ -18,15 +18,19 @@ class HotelProfile extends Component {
       var address = this.props.hotel.address;
       var first_name = this.props.hotel.user.first_name;
       var last_name = this.props.hotel.user.last_name;
+      var image1 = this.props.hotel.user.image1;
+      var image2 = this.props.hotel.user.image2;
+      var image3 = this.props.hotel.user.image3;
+      var image4 = this.props.hotel.user.image4;
     }
     return (
       <div className="hotel-container">
         <div className="top-content">
-          <img src={pic} alt="" className="first-image" />
+          <img src={image1} alt="" />
 
-          <img src={pic} alt="" className="second-image" />
-          <img src={pic} alt="" className="third-image" />
-          <img src={pic} alt="" className="fourth-image" />
+          <img src={image2} alt="" />
+          <img src={image3} alt="" />
+          <img src={image4} alt="" />
         </div>
 
         <div className="hotel-content">
@@ -52,7 +56,7 @@ class HotelProfile extends Component {
             </div>
             <div className="comments">
               <div className="comment-owner">
-                <img src={pic} alt="" />
+                <img src={image2} alt="" />
                 <h5>Leonardo Neshich</h5>
               </div>
 

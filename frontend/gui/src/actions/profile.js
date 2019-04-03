@@ -43,6 +43,37 @@ export const getCurrentProfile = id => (dispatch, getState) => {
     );
 };
 
+// myprofile
+export const getMyProfile = id => (dispatch, getState) => {
+  //headers
+  const config = {
+    headers: {
+      "Content-Type": "application/json"
+    }
+  };
+
+  //if token, add to headers config
+  // if (token) {
+  //   config.headers["Authorization"] = `Token ${token}`;
+  // }
+
+  dispatch(setProfileLoading);
+  axios
+    .get(`http://localhost:8000/api/profiles/${id}/`)
+    .then(res =>
+      dispatch({
+        type: SET_CURRENT_USER,
+        payload: res.data
+      })
+    )
+    .catch(err =>
+      dispatch({
+        type: GET_PROFILE,
+        payload: {}
+      })
+    );
+};
+
 // //get current profile by handle
 
 export const getProfileByHandle = id => dispatch => {

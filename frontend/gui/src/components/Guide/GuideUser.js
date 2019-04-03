@@ -5,6 +5,8 @@ import { connect } from "react-redux";
 import Spinner from "../common/Spinner";
 import { Link } from "react-router-dom";
 
+import "./guide.css";
+
 class GuideUser extends Component {
   componentWillUnmount() {
     this.props.clearAllProfiles();
@@ -19,7 +21,7 @@ class GuideUser extends Component {
           <div className="box" key={profile.id}>
             <Link to={`profilebyhandle/${profile.id}/`}>
               <div className="imgBx">
-                <img src={profile.image} alt="..." />
+                <img src={profile.image} className="imgBx" alt="..." />
               </div>
             </Link>
             <ul className="social-icon">
@@ -29,7 +31,10 @@ class GuideUser extends Component {
                 </a>
               </li>
               <li>
-                <a href="#">
+                <a
+                  href={`https://www.youtube.com/${profile.youtube}`}
+                  target="_blank"
+                >
                   <i className="fab fa-youtube" aria-hidden="true" />
                 </a>
               </li>
@@ -44,13 +49,15 @@ class GuideUser extends Component {
                 </a>
               </li>
             </ul>
-            <div className="details">
-              <h2>
-                {profile.first_name} {profile.last_name}
-                <br />
-                <span>{profile.city}</span>
-              </h2>
-            </div>
+            <Link to={`profilebyhandle/${profile.id}/`}>
+              <div className="details">
+                <h2>
+                  {profile.first_name} {profile.last_name}
+                  <br />
+                  <span>{profile.city}</span>
+                </h2>
+              </div>
+            </Link>
           </div>
         ));
       }

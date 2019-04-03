@@ -4,7 +4,7 @@ import { Redirect, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { updateProfile, getCurrentProfile } from "../../actions/profile";
 import TextFieldGroup from "../common/TextFieldGroup";
-import SelectListGroup from "../common/SelectListGroup";
+
 import isEmpty from "../../validation/is-empty";
 
 class EditProfile extends Component {
