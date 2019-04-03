@@ -13,7 +13,7 @@ import {
 
 //add post
 
-export const addHotel = (content, token) => dispatch => {
+export const addHotel = (hotelData, token, history) => dispatch => {
   // dispatch(clearErrors());
   const config = {
     headers: {
@@ -23,16 +23,18 @@ export const addHotel = (content, token) => dispatch => {
   if (token) {
     config.headers["Authorization"] = `Token ${token}`;
   }
-  const body = JSON.stringify({ content });
+
   axios
-    .post("http://localhost:8000/api/hotels/create/", body, config)
+    .post("http://localhost:8000/api/hotels/create/", hotelData, config)
     .then(res =>
       dispatch({
         type: ADD_HOTEL,
         payload: res.data
       })
     )
-    .catch(err => console.log(err));
+    .then(res => history.push("/hotels"))
+
+    .catch(err => console.log(err.response.data));
 };
 
 //Get post
