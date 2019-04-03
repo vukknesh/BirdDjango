@@ -5,7 +5,7 @@ from rest_framework.serializers import (
     CharField
 )
 
-
+from userprofile.serializers import ProfileSerializer
 from accounts.serializers import UserSerializer
 from comments.api.serializers import CommentSerializer
 from comments.models import Comment
@@ -43,6 +43,7 @@ hotel_detail_url = HyperlinkedIdentityField(
 class HotelDetailSerializer(ModelSerializer):
     url = hotel_detail_url
     user = UserSerializer(read_only=True)
+
     image1 = SerializerMethodField()
     image2 = SerializerMethodField()
     image3 = SerializerMethodField()
