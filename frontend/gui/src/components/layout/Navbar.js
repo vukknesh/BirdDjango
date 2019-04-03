@@ -35,6 +35,11 @@ class Navbar extends Component {
     const authLinks = (
       <ul className="navbar-nav ml-auto font-weight-bold show1">
         <li className="nav-item">
+          <Link className="nav-link text-light" to="/add-hotel">
+            Register Hotel
+          </Link>
+        </li>
+        <li className="nav-item">
           <Link className="nav-link text-light" to="/hotels">
             Hotels
           </Link>

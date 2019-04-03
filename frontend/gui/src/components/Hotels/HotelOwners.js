@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { clearAllProfiles } from "../../actions/profile";
 import { connect } from "react-redux";
 import Spinner from "../common/Spinner";
-import hotelpic from "./hotel.jpg";
 
 class HotelOwners extends Component {
   render() {
@@ -16,7 +15,7 @@ class HotelOwners extends Component {
           <div className="box" key={hotel.id}>
             <Link to={`hotelByHandle/${hotel.id}/`}>
               <div className="imgBx">
-                <img src={hotelpic} alt="..." />
+                <img src={hotel.image1} className="imgBx" alt="..." />
               </div>
             </Link>
 

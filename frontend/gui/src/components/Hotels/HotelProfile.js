@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./main.css";
 import pic from "../MyPage/profile1.jpg";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 
 import { connect } from "react-redux";
 
@@ -18,11 +18,12 @@ class HotelProfile extends Component {
       var address = this.props.hotel.address;
       var first_name = this.props.hotel.user.first_name;
       var last_name = this.props.hotel.user.last_name;
-      var image1 = this.props.hotel.user.image1;
-      var image2 = this.props.hotel.user.image2;
-      var image3 = this.props.hotel.user.image3;
-      var image4 = this.props.hotel.user.image4;
+      var image1 = this.props.hotel.image1;
+      var image2 = this.props.hotel.image2;
+      var image3 = this.props.hotel.image3;
+      var image4 = this.props.hotel.image4;
     }
+
     return (
       <div className="hotel-container">
         <div className="top-content">

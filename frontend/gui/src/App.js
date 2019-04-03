@@ -21,6 +21,7 @@ import Login from "./components/Auth/Login";
 import Register from "./components/Auth/Register";
 import Guide from "./components/Guide/Guide";
 import FindHotels from "./components/Hotels/FindHotels";
+import AddHotel from "./components/Hotels/AddHotel";
 
 import Enter from "./components/layout/Enter/Enter";
 import EditProfile from "./components/Profile/EditProfile";
@@ -73,6 +74,11 @@ class App extends Component {
                       exact
                       path="/edit-profile-pic"
                       component={EditProfilePic}
+                    />
+                    <PrivateRoute
+                      exact
+                      path="/add-hotel"
+                      component={AddHotel}
                     />
                   </Switch>{" "}
                   {/* <Switch>

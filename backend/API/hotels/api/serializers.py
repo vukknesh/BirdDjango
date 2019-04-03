@@ -27,7 +27,10 @@ class HotelCreateUpdateSerializer(ModelSerializer):
             'state',
             'content',
 
-            'image'
+            'image1',
+            'image2',
+            'image3',
+            'image4'
         ]
 
 
@@ -40,7 +43,10 @@ hotel_detail_url = HyperlinkedIdentityField(
 class HotelDetailSerializer(ModelSerializer):
     url = hotel_detail_url
     user = UserSerializer(read_only=True)
-    image = SerializerMethodField()
+    image1 = SerializerMethodField()
+    image2 = SerializerMethodField()
+    image3 = SerializerMethodField()
+    image4 = SerializerMethodField()
 
     comments = SerializerMethodField()
 
@@ -58,19 +64,43 @@ class HotelDetailSerializer(ModelSerializer):
             'city',
             'state',
             'publish',
-            'image',
+            'image1',
+            'image2',
+            'image3',
+            'image4',
             'comments',
         ]
 
     def get_html(self, obj):
         return obj.get_markdown()
 
-    def get_image(self, obj):
+    def get_image1(self, obj):
         try:
-            image = obj.image.url
+            image1 = obj.image1.url
         except:
-            image = None
-        return image
+            image1 = None
+        return image1
+
+    def get_image2(self, obj):
+        try:
+            image2 = obj.image2.url
+        except:
+            image2 = None
+        return image2
+
+    def get_image3(self, obj):
+        try:
+            image3 = obj.image3.url
+        except:
+            image3 = None
+        return image3
+
+    def get_image4(self, obj):
+        try:
+            image4 = obj.image4.url
+        except:
+            image4 = None
+        return image4
 
     def get_comments(self, obj):
         c_qs = Comment.objects.filter_by_instance(obj)
@@ -94,7 +124,10 @@ class HotelListSerializer(ModelSerializer):
             'title',
             'content',
             'publish',
-            'image',
+            'image1',
+            'image2',
+            'image3',
+            'image4',
             'address',
             'city',
             'state',

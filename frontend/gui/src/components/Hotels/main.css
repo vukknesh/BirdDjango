@@ -75,11 +75,15 @@
   transition: 0.5s;
   z-index: 2;
   background: #000;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .box:hover .imgBx {
   -webkit-transform: translateY(-100px);
           transform: translateY(-100px);
+  cursor: pointer;
 }
 
 .imgBx img {
@@ -89,6 +93,7 @@
 
 .box:hover .imgBx img {
   opacity: 0.5;
+  cursor: pointer;
 }
 
 .social-icon {
@@ -276,10 +281,18 @@
 
 .top-content img {
   border-radius: 30px;
+  max-width: 25%;
+  max-height: 30vh;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
   border: 1px solid lightgray;
   margin: 10px 15px;
+}
+
+.top-content a {
+  border-radius: 30px;
+  max-width: 25%;
+  max-height: 30vh;
 }
 
 .top-content img:hover {

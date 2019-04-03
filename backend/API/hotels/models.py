@@ -35,11 +35,14 @@ class Hotel(models.Model):
                              on_delete=models.CASCADE)
     title = models.CharField(max_length=120, default='')
     slug = models.SlugField(unique=True)
-    image = models.ImageField(upload_to=upload_location,
-                              null=True,
-                              blank=True,
-                              width_field="width_field",
-                              height_field="height_field")
+    image1 = models.ImageField(default='defhotel.jpg',
+                               upload_to='hotel_pics')
+    image2 = models.ImageField(default='defhotel.jpg',
+                               upload_to='hotel_pics')
+    image3 = models.ImageField(default='defhotel.jpg',
+                               upload_to='hotel_pics')
+    image4 = models.ImageField(default='defhotel.jpg',
+                               upload_to='hotel_pics')
     address = models.CharField(max_length=255)
     city = models.CharField(max_length=100)
     state = models.CharField(max_length=20)
