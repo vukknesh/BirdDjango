@@ -43,10 +43,10 @@ class Hotel(models.Model):
                                upload_to='hotel_pics')
     image4 = models.ImageField(default='defhotel.jpg',
                                upload_to='hotel_pics')
-    address = models.CharField(max_length=255)
-    city = models.CharField(max_length=100)
-    state = models.CharField(max_length=20)
-    content = models.TextField()
+    address = models.CharField(max_length=255, blank=True, null=True)
+    city = models.CharField(max_length=100, blank=True, null=True)
+    state = models.CharField(max_length=20, blank=True, null=True)
+    content = models.TextField(blank=True, null=True)
     price = models.IntegerField(default=0)
     publish = models.DateField(auto_now=True, auto_now_add=False)
 

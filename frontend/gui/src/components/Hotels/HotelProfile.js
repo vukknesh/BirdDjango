@@ -11,6 +11,7 @@ class HotelProfile extends Component {
       return <Redirect to="/login" />;
     }
     if (this.props.hotel) {
+      var id = this.props.hotel.user.id;
       var title = this.props.hotel.title;
       var city = this.props.hotel.city;
       var content = this.props.hotel.content;
@@ -36,6 +37,11 @@ class HotelProfile extends Component {
 
         <div className="hotel-content">
           <div className="hotel-info">
+            {this.props.myprofile.id === id ? (
+              <Link to="/edit-hotel-pics">
+                <button>Edit</button>
+              </Link>
+            ) : null}
             <h1>{title}</h1>
             <p>
               {city}-{state}
@@ -112,7 +118,8 @@ class HotelProfile extends Component {
 
 const mapStateToProps = state => ({
   hotel: state.hotels.hotel,
-  isAuthenticated: state.auth.isAuthenticated
+  isAuthenticated: state.auth.isAuthenticated,
+  myprofile: state.profiles.myprofile
 });
 
 export default connect(mapStateToProps)(HotelProfile);

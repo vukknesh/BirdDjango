@@ -43,6 +43,7 @@ class EditProfile extends Component {
 
     let id = this.props.user.id;
     let token = this.props.token;
+
     this.props.updateProfile(fd, id, token, this.props.history);
   };
 

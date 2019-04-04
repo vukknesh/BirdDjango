@@ -89,6 +89,23 @@ export const getHotelsByCity = city => dispatch => {
     );
 };
 
+// update hotel
+export const updateHotel = (profileData, id, token, history) => dispatch => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json"
+    }
+  };
+  if (token) {
+    config.headers["Authorization"] = `Token ${token}`;
+  }
+
+  axios
+    .put(`http://localhost:8000/api/hotels/${id}/edit/`, profileData, config)
+    .then(res => history.push("/my-page"))
+    .catch(err => console.log(err.response.data));
+};
+
 //delete Post
 
 // export const deletePost = id => dispatch => {
