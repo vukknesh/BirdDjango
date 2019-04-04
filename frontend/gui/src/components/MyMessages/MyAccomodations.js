@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import MyProfile from "../MyPage/MyProfile";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
-import MessageContent from "./MessageContent";
+import Accomodations from "./Accomodations";
 
-class MyMessages extends Component {
+class MyAccomodations extends Component {
   render() {
     if (!this.props.isAuthenticated) {
       return <Redirect to="/" />;
@@ -15,8 +15,8 @@ class MyMessages extends Component {
           <div className="w-25 d-flex justify-content-center">
             <MyProfile />
           </div>
-          <div className="w-50 d-flex">
-            <MessageContent />
+          <div className="w-75 d-flex">
+            <Accomodations />
           </div>
         </div>
       </div>
@@ -31,4 +31,4 @@ const pageStyle = {
 const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated
 });
-export default connect(mapStateToProps)(MyMessages);
+export default connect(mapStateToProps)(MyAccomodations);

@@ -30,6 +30,7 @@ import EditProfilePic from "./components/Profile/EditProfilePic";
 import Profiles from "./components/Profile/Profiles";
 import MyMessages from "./components/MyMessages/MyMessages";
 import MyComments from "./components/MyMessages/MyComments";
+import MyAccomodations from "./components/MyMessages/MyAccomodations";
 import HotelPersonalProfile from "./components/Hotels/HotelPersonalProfile";
 
 //ALERT OPTIONS
@@ -103,6 +104,11 @@ class App extends Component {
                   />
                   <Route exact path="/my-messages" component={MyMessages} />
                   <Route exact path="/my-comments" component={MyComments} />
+                  <Route
+                    exact
+                    path="/my-accomodations"
+                    component={MyAccomodations}
+                  />
                   <Route
                     exact
                     path="/profilebyhandle/:id/"

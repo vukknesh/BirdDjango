@@ -32,7 +32,12 @@ export const addPost = (content, token) => dispatch => {
         payload: res.data
       })
     )
-    .catch(err => console.log(err));
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
 };
 
 //Get post

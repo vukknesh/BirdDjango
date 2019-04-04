@@ -34,7 +34,7 @@ class MessageContent extends Component {
               <div className="card-head">
                 <div>
                   <Link to={`profilebyhandle/${post.user_id}/`}>
-                    <img src={pic} alt="" />
+                    <img src={this.props.myprofile.image} alt="" />
                   </Link>
                 </div>
                 <section>
@@ -68,7 +68,8 @@ class MessageContent extends Component {
 }
 const mapStateToProps = state => ({
   user: state.auth.user,
-  posts: state.posts.posts
+  posts: state.posts.posts,
+  myprofile: state.profiles.myprofile
 });
 
 export default connect(

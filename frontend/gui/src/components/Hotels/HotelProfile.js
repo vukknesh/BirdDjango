@@ -37,11 +37,11 @@ class HotelProfile extends Component {
 
         <div className="hotel-content">
           <div className="hotel-info">
-            {this.props.myprofile.id === id ? (
+            {/* {this.props.myprofile.id === id ? (
               <Link to="/edit-hotel-pics">
-                <button>Edit</button>
+                <button className="edit-btn">Editar Fotos</button>
               </Link>
-            ) : null}
+            ) : null} */}
             <h1>{title}</h1>
             <p>
               {city}-{state}

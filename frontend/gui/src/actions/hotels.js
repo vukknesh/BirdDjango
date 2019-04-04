@@ -32,7 +32,7 @@ export const addHotel = (hotelData, token, history) => dispatch => {
         payload: res.data
       })
     )
-    .then(res => history.push("/hotels"))
+    .then(res => history.push("/my-accomodations"))
 
     .catch(err =>
       dispatch({

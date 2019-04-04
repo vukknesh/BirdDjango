@@ -165,17 +165,12 @@
 .menucard p {
   width: 100%;
   border-radius: 10px;
+  text-decoration: none;
 }
 
 .menucard p i {
   margin-left: 15%;
   margin-right: 5%;
-}
-
-.menucard p:hover {
-  background: #f35404;
-  cursor: pointer;
-  color: white;
 }
 
 .dropdown-menu {
@@ -198,5 +193,55 @@
 
 .dropdown-menu a:hover {
   background: #f35404;
+}
+
+.dropright p:hover {
+  cursor: pointer;
+  text-decoration: none;
+  background: #f35404;
+  color: white;
+}
+
+.link-to {
+  text-decoration: none;
+  color: black;
+}
+
+.link-to:hover {
+  text-decoration: none;
+}
+
+.link-to:hover p {
+  background: #f35404;
+  color: white;
+}
+
+.content-hotel {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.content-hotel img {
+  margin-right: 2rem;
+  width: 150px;
+  height: 150px;
+  border-radius: 40%;
+}
+
+.edit-btn {
+  width: 100px;
+  float: right;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  background-color: #1a8fb4;
+  border-radius: 1rem;
+}
+
+.edit-btn:hover {
+  background-color: #08bff7;
+  text-decoration: none;
+  color: #472d20;
 }
 /*# sourceMappingURL=main.css.map */

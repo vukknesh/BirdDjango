@@ -80,6 +80,7 @@ class MyProfile extends Component {
                 aria-expanded="false"
               >
                 <i className="far fa-thumbs-up" /> Social Medias ->
+                <hr />
               </p>
               <div className="dropdown-menu">
                 {instagram ? (
@@ -108,30 +109,43 @@ class MyProfile extends Component {
                 ) : null}
               </div>
             </div>
-
-            <p>
-              <Link to="/my-comments">
-                <i className="far fa-comments" /> Comentarios Feitos
+            {is_owner ? (
+              <Link to="/my-accomodations" className="link-to">
+                <p>
+                  <i class="fas fa-home" /> Minhas Acomodações
+                </p>
+                <hr />
               </Link>
-            </p>
+            ) : null}
 
-            <p>
-              <Link to="/my-messages">
+            <Link to="/my-comments" className="link-to">
+              <p>
+                <i className="far fa-comments" />
+                <span>Comentarios Feitos</span>
+              </p>
+              <hr />
+            </Link>
+
+            <Link to="/my-messages" className="link-to">
+              <p>
                 <i className="far fa-envelope" /> Minhas Menssagens
-              </Link>
-            </p>
+              </p>
+              <hr />
+            </Link>
+            <Link to="/edit-profile" className="link-to">
+              <p>
+                <i className="far fa-address-card" />
+                Editar Perfil
+              </p>
+              <hr />
+            </Link>
 
-            <p>
-              <Link to="/edit-profile">
-                <i className="far fa-address-card" /> Editar Perfil
-              </Link>
-            </p>
-
-            <p>
-              <Link to="/edit-profile-pic">
+            <Link to="/edit-profile-pic" className="link-to">
+              <p>
                 <i className="fas fa-camera-retro" /> Editar Foto
-              </Link>
-            </p>
+              </p>
+              <hr />
+            </Link>
           </div>
         </div>
       </div>

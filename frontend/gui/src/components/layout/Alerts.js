@@ -21,6 +21,8 @@ export class Alerts extends Component {
       if (error.msg.username) alert.error(`Digite um email valido!`);
       if (error.msg.title) alert.error(`Digite titulo para sua acomodação!`);
       if (error.msg.price) alert.error(`Digite um preço valido!`);
+      if (error.msg.content)
+        alert.error(`Menssagem precisa ter no min 10 caractéres!`);
     }
 
     if (message !== prevProps.message) {
