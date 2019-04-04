@@ -34,7 +34,12 @@ export const addHotel = (hotelData, token, history) => dispatch => {
     )
     .then(res => history.push("/hotels"))
 
-    .catch(err => console.log(err.response.data));
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
 };
 
 //Get post
@@ -102,8 +107,13 @@ export const updateHotel = (profileData, id, token, history) => dispatch => {
 
   axios
     .put(`http://localhost:8000/api/hotels/${id}/edit/`, profileData, config)
-    .then(res => history.push("/my-page"))
-    .catch(err => console.log(err.response.data));
+    .then(res => history.push(`/hotelByHandle/${id}/`))
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
 };
 
 //delete Post

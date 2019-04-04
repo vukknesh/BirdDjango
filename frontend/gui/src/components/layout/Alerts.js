@@ -18,7 +18,9 @@ export class Alerts extends Component {
         alert.error(`Message: ${error.msg.message.join()}`);
       if (error.msg.non_field_errors)
         alert.error(error.msg.non_field_errors.join());
-      if (error.msg.username) alert.error(error.msg.username.join());
+      if (error.msg.username) alert.error(`Digite um email valido!`);
+      if (error.msg.title) alert.error(`Digite titulo para sua acomodação!`);
+      if (error.msg.price) alert.error(`Digite um preço valido!`);
     }
 
     if (message !== prevProps.message) {

@@ -16,6 +16,7 @@ class Navbar extends Component {
     const { isAuthenticated } = this.props;
     if (this.props.myprofile) {
       var image = this.props.myprofile.image;
+      var is_owner = this.props.myprofile.is_owner;
     }
     const mypage = (
       <li className="nav-item active show1">
@@ -34,11 +35,14 @@ class Navbar extends Component {
 
     const authLinks = (
       <ul className="navbar-nav ml-auto font-weight-bold show1">
-        <li className="nav-item">
-          <Link className="nav-link text-light" to="/add-hotel">
-            Register Hotel
-          </Link>
-        </li>
+        {is_owner ? (
+          <li className="nav-item">
+            <Link className="nav-link text-light" to="/add-hotel">
+              Register Hotel
+            </Link>
+          </li>
+        ) : null}
+
         <li className="nav-item">
           <Link className="nav-link text-light" to="/hotels">
             Hotels

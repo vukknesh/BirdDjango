@@ -11,7 +11,8 @@ import {
   LOGIN_FAIL,
   LOGOUT_SUCCESS,
   REGISTER_SUCCESS,
-  REGISTER_FAIL
+  REGISTER_FAIL,
+  GET_ERRORS
 } from "./types";
 
 // CHECK TOKEN & LOAD USER
@@ -28,10 +29,8 @@ export const loadUser = () => (dispatch, getState) => {
       });
     })
     .catch(err => {
-      // dispatch(returnErrors(err.response.data, err.response.status));
-      console.log(err);
       dispatch({
-        type: AUTH_ERROR
+        type: GET_ERRORS
       });
     });
 };
@@ -58,9 +57,9 @@ export const login = (username, password) => dispatch => {
       });
     })
     .catch(err => {
-      console.log(err);
       dispatch({
-        type: LOGIN_FAIL
+        type: GET_ERRORS,
+        payload: err.response.data
       });
     });
 };
