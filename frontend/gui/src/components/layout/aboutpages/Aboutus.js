@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Aboutus() {
   return (
-    <div style={bg}>
+    <div className="about-container">
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate
         earum placeat quas dolor facere optio nulla dolores obcaecati. Deleniti
@@ -17,7 +17,3 @@ export default function Aboutus() {
     </div>
   );
 }
-const bg = {
-  color: "black",
-  height: "90vh"
-};

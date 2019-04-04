@@ -97,7 +97,7 @@ class HotelProfile extends Component {
               </Link>
             ) : null}
             {this.props.myprofile.id === id ? (
-              <Link to="/edit-hotel-pics">
+              <Link to="/edit-hotel">
                 <button className="edit-btn">Editar Dados</button>
               </Link>
             ) : null}

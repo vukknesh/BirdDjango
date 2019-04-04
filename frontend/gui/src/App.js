@@ -32,6 +32,7 @@ import MyMessages from "./components/MyMessages/MyMessages";
 import MyComments from "./components/MyMessages/MyComments";
 import MyAccomodations from "./components/MyMessages/MyAccomodations";
 import HotelPersonalProfile from "./components/Hotels/HotelPersonalProfile";
+import EditHotel from "./components/Hotels/EditHotel";
 
 //ALERT OPTIONS
 
@@ -86,6 +87,11 @@ class App extends Component {
                       exact
                       path="/add-hotel"
                       component={AddHotel}
+                    />
+                    <PrivateRoute
+                      exact
+                      path="/edit-hotel"
+                      component={EditHotel}
                     />
                   </Switch>{" "}
                   {/* <Switch>

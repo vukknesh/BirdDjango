@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import owllogo from "../layout/images.png";
 
 export default class RigthMenu extends Component {
   render() {
@@ -10,11 +11,7 @@ export default class RigthMenu extends Component {
         <div className="mb-4 mr-5 ">
           <div className="card">
             <div className="card-header font-weight-bold">Users</div>
-            <ul className="list-group list-group-flush">
-              <li className="list-group-item">Cras justo odio</li>
-              <li className="list-group-item">Dapibus ac facilisis in</li>
-              <li className="list-group-item">Vestibulum at eros</li>
-            </ul>
+            <img src={owllogo} alt="" />
           </div>
         </div>
         <div className="mb-4  mr-5">

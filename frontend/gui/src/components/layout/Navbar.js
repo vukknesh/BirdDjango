@@ -3,6 +3,7 @@ import { Link, Redirect, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logout } from "../../actions/auth";
+import owl from "./owly.png";
 
 import "./Navbarcss.css";
 
@@ -84,6 +85,7 @@ class Navbar extends Component {
         >
           <Link to="/">
             <div className="navbar-brand font-weight-bold ml-5">
+              <img className="owlimage" alt="" src={owl} />
               Murucututu.com.br
             </div>
           </Link>
