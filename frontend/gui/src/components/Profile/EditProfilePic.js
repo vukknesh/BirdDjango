@@ -74,11 +74,7 @@ class EditProfile extends Component {
                 checked={this.state.is_owner}
                 onChange={this.handleCheckboxOwner}
               /> */}
-              <input
-                type="submit"
-                className="btn btn-block mt-4"
-                style={colorPrimary}
-              />
+              <input type="submit" className="edit-btn" />
             </form>
           </div>
         </div>
@@ -86,11 +82,6 @@ class EditProfile extends Component {
     );
   }
 }
-
-const colorPrimary = {
-  backgroundColor: "rgba(2, 206, 179, 0.7)",
-  color: "white"
-};
 
 EditProfile.propTypes = {
   isAuthenticated: PropTypes.bool,

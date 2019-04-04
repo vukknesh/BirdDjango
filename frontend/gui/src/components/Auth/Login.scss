@@ -13,7 +13,6 @@
   color: #472d20;
 }
 .container1 {
-  background-color: #1a8fb4;
   font-family: "Roboto", sans-serif;
   font-size: 14px;
   height: 88vh;
@@ -24,7 +23,7 @@
   margin: auto;
   width: 211px;
   height: 108px;
-  background-image: url("https://dash.readme.io/img/owl-login.png");
+  background-image: url("./owl-login.png");
   position: relative;
 
   .hand {
@@ -59,7 +58,7 @@
     .arm {
       width: 40px;
       height: 65px;
-      background-image: url("https://dash.readme.io/img/owl-login-arm.png");
+      background-image: url("./owl-login-arm.png");
       position: absolute;
       left: 20px;
       top: 40px;
@@ -84,8 +83,9 @@
   margin: auto;
   margin-top: -9px;
   padding: 30px;
-  background-color: white;
+  background-color: #1a8fb4;
   width: 280px;
+  border-radius: 20px;
 
   .control {
     margin-bottom: 10px;

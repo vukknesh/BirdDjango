@@ -310,11 +310,7 @@ class EditProfile extends Component {
                 options={options}
                 info="Give an ideia where you are at on your carrer"
               /> */}
-              <input
-                type="submit"
-                className="btn btn-block mt-4"
-                style={colorPrimary}
-              />
+              <input type="submit" className="edit-btn" />
             </form>
           </div>
         </div>
@@ -322,11 +318,6 @@ class EditProfile extends Component {
     );
   }
 }
-
-const colorPrimary = {
-  backgroundColor: "rgba(2, 206, 179, 0.7)",
-  color: "white"
-};
 
 EditProfile.propTypes = {
   isAuthenticated: PropTypes.bool,

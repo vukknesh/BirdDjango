@@ -18,23 +18,9 @@ class Navbar extends Component {
       var image = this.props.myprofile.image;
       var is_owner = this.props.myprofile.is_owner;
     }
-    const mypage = (
-      <li className="nav-item active show1">
-        <Link className="nav-link text-light" to="/my-page">
-          My page <span className="sr-only">(current)</span>
-        </Link>
-      </li>
-    );
-    const guest = (
-      <li className="nav-item active show1">
-        <Link className="nav-link text-light" to="/about-us">
-          About <span className="sr-only">(current)</span>
-        </Link>
-      </li>
-    );
 
     const authLinks = (
-      <ul className="navbar-nav ml-auto font-weight-bold show1">
+      <ul className="navbar-nav ml-auto font-weight-bold show1 mr-5">
         {is_owner ? (
           <li className="nav-item">
             <Link className="nav-link text-light" to="/add-hotel">
@@ -42,6 +28,11 @@ class Navbar extends Component {
             </Link>
           </li>
         ) : null}
+        <li className="nav-item active show1">
+          <Link className="nav-link text-light" to="/my-page">
+            My page <span className="sr-only">(current)</span>
+          </Link>
+        </li>
 
         <li className="nav-item">
           <Link className="nav-link text-light" to="/hotels">
@@ -71,7 +62,7 @@ class Navbar extends Component {
       </ul>
     );
     const guestLinks = (
-      <ul className="navbar-nav ml-auto font-weight-bold show1 ">
+      <ul className="mr-5 navbar-nav ml-auto font-weight-bold show1">
         <li className="nav-item">
           <Link className="nav-link text-light" to="/register">
             Sign Up
@@ -87,9 +78,14 @@ class Navbar extends Component {
 
     return (
       <div>
-        <nav className="navbar navbar-expand-lg navbar-dark navz" style={navBg}>
+        <nav
+          className="pl-5 pr-5 navbar navbar-expand-lg navbar-dark navz"
+          style={navBg}
+        >
           <Link to="/">
-            <div className="navbar-brand font-weight-bold">Murucututu</div>
+            <div className="navbar-brand font-weight-bold ml-5">
+              Murucututu.com.br
+            </div>
           </Link>
           <button
             className="navbar-toggler"
@@ -104,16 +100,6 @@ class Navbar extends Component {
           </button>
 
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav mr-auto font-weight-bold">
-              {isAuthenticated ? mypage : guest}
-
-              <li className="nav-item show1">
-                <Link className="nav-link text-light" to="/guide">
-                  Guide
-                </Link>
-              </li>
-            </ul>
-
             {isAuthenticated ? authLinks : guestLinks}
           </div>
         </nav>

@@ -101,10 +101,6 @@ class Login extends Component {
   }
 }
 
-const colorPrimary = {
-  backgroundColor: "rgba(2, 206, 179, 0.7)",
-  color: "white"
-};
 Login.propTypes = {
   isAuthenticated: PropTypes.bool,
   login: PropTypes.func.isRequired

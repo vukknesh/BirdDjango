@@ -43,10 +43,9 @@ class Accomodations extends Component {
                 </div>
 
                 <div>
-                  <Link to="/edit-hotel-pics">
+                  <Link to={`hotelByHandle/${hotel.id}/`}>
                     <button className="edit-btn">Edit Fotos</button>
                   </Link>
-                  <button className="edit-btn">Edit Hotel</button>
                 </div>
               </div>
             </div>
@@ -55,7 +54,7 @@ class Accomodations extends Component {
       });
     }
 
-    return <div className="d-flex flex-wrap">{conteudoA}</div>;
+    return <div className="d-flex flex-wrap w-100">{conteudoA}</div>;
   }
 }
 const mapStateToProps = state => ({

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { getPosts, clearPosts } from "../../actions/Post";
 import Spinner from "../common/Spinner";
 import { connect } from "react-redux";
-import pic from "../MyPage/profile1.jpg";
+
 import "../MyPage/main.css";
 import { Link } from "react-router-dom";
 
@@ -63,7 +63,7 @@ class MessageContent extends Component {
       });
     }
 
-    return <div className="d-flex flex-wrap">{conteudo}</div>;
+    return <div className="d-flex flex-wrap w-100">{conteudo}</div>;
   }
 }
 const mapStateToProps = state => ({

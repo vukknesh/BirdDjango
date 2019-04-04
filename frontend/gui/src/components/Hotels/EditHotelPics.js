@@ -4,7 +4,7 @@ import { Redirect, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { getCurrentProfile } from "../../actions/profile";
 import { updateHotel, getHotel } from "../../actions/hotels";
-
+import "./main.css";
 import isEmpty from "../../validation/is-empty";
 
 class EditHotelPics extends Component {
@@ -93,10 +93,30 @@ class EditHotelPics extends Component {
             <p className="lead text-center">Edit Your Bird Watcher Profile</p>
             <p className="lead text-center">Profile Picture</p>
             <form onSubmit={this.onSubmit}>
-              <input type="file" name="image1" onChange={this.image1Change} />
-              <input type="file" name="image2" onChange={this.image2Change} />
-              <input type="file" name="image3" onChange={this.image3Change} />
-              <input type="file" name="image4" onChange={this.image4Change} />
+              <input type="file" name="image1" onChange={this.image1Change} />{" "}
+              Imagem 1
+              <br />
+              <input
+                type="file"
+                name="image2"
+                onChange={this.image2Change}
+              />{" "}
+              Imagem 2
+              <br />
+              <input
+                type="file"
+                name="image3"
+                onChange={this.image3Change}
+              />{" "}
+              Imagem 3
+              <br />
+              <input
+                type="file"
+                name="image4"
+                onChange={this.image4Change}
+              />{" "}
+              Imagem 4
+              <br />
               {/* <input
                 type="checkbox"
                 name="is_guide"
@@ -110,11 +130,7 @@ class EditHotelPics extends Component {
                 checked={this.state.is_owner}
                 onChange={this.handleCheckboxOwner}
               /> */}
-              <input
-                type="submit"
-                className="btn btn-block mt-4"
-                style={colorPrimary}
-              />
+              <input type="submit" className="edit-btn" />
             </form>
           </div>
         </div>
@@ -122,11 +138,6 @@ class EditHotelPics extends Component {
     );
   }
 }
-
-const colorPrimary = {
-  backgroundColor: "rgba(2, 206, 179, 0.7)",
-  color: "white"
-};
 
 EditHotelPics.propTypes = {
   isAuthenticated: PropTypes.bool,

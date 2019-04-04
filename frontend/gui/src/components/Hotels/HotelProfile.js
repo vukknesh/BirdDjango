@@ -37,11 +37,6 @@ class HotelProfile extends Component {
 
         <div className="hotel-content">
           <div className="hotel-info">
-            {/* {this.props.myprofile.id === id ? (
-              <Link to="/edit-hotel-pics">
-                <button className="edit-btn">Editar Fotos</button>
-              </Link>
-            ) : null} */}
             <h1>{title}</h1>
             <p>
               {city}-{state}
@@ -96,12 +91,23 @@ class HotelProfile extends Component {
             </div>
           </div>
           <div className="owner-info">
+            {this.props.myprofile.id === id ? (
+              <Link to="/edit-hotel-pics">
+                <button className="edit-btn">Editar Fotos</button>
+              </Link>
+            ) : null}
+            {this.props.myprofile.id === id ? (
+              <Link to="/edit-hotel-pics">
+                <button className="edit-btn">Editar Dados</button>
+              </Link>
+            ) : null}
             <div className="hotel-owner">
               <img src={pic} alt="" />
               <h5>
                 {first_name} {last_name}
               </h5>
             </div>
+
             <div className="personal">
               <p>email</p>
               <p>instagram</p>

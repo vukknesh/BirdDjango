@@ -183,11 +183,7 @@ class AddHotel extends Component {
                 // error={errors.name}
               />
 
-              <input
-                type="submit"
-                className="btn btn-block mt-4"
-                style={colorPrimary}
-              />
+              <input type="submit" className="edit-btn" />
             </form>
           </div>
         </div>

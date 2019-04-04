@@ -18,7 +18,6 @@ export default function Aboutus() {
   );
 }
 const bg = {
-  backgroundColor: "#1a8fb4",
-  color: "white",
+  color: "black",
   height: "90vh"
 };

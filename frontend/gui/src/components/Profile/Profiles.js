@@ -28,9 +28,7 @@ class Profiles extends Component {
       });
     }
   }
-  // componentWillUnmount() {
-  //   this.props.clearCurrentProfile();
-  // }
+
   render() {
     console.log(this.state.profile);
     let content;
@@ -44,11 +42,11 @@ class Profiles extends Component {
           <div className="w-25 d-flex justify-content-center">
             <PersonalProfile />
           </div>
-          <div className="w-50 d-flex justify-content-center ">
+          <div className="w-50 d-flex justify-content-center border border-primary">
             <h2>Meio</h2>
           </div>
-          <div className="w-25">
-            <h1>Hello</h1>
+          <div className="w-25 justify-content-center">
+            <h1>Contact Me</h1>
           </div>
         </div>
       </div>

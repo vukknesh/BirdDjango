@@ -17,14 +17,10 @@ export default class Enter extends Component {
     tl.add({
       targets: ".dd",
       width: "100%",
-      backgroundColor: "rgb(71, 45, 32)",
+
       delay: anime.stagger(100)
     });
-    tl.add({
-      targets: ".dd",
-      width: "90%",
-      backgroundColor: "rgba(71, 45, 32, 0.8)"
-    });
+
     tl.add(
       {
         targets: ".hh1",
@@ -42,16 +38,16 @@ export default class Enter extends Component {
     this.nv.removeEventListener("nv-enter", this.handleNvEnter);
   }
   handleNvEnter = event => {
-    let rotateMe = anime({
-      targets: ".sec",
+    // let rotateMe = anime({
+    //   targets: ".sec",
 
-      scaleY: "2",
-      scaleX: "2",
-      translateX: "40%",
-      rotate: "45deg",
-      duration: 5000,
-      autoplay: false
-    });
+    //   scaleY: "2",
+    //   scaleX: "2",
+    //   translateX: "40%",
+    //   rotate: "45deg",
+    //   duration: 5000,
+    //   autoplay: false
+    // });
     let rotateMe2 = anime({
       targets: ".hh1",
 
@@ -63,11 +59,11 @@ export default class Enter extends Component {
       targets: ".pp1",
       opacity: 1,
 
-      left: "23%",
+      left: "20%",
       duration: 4000,
       autoplay: false
     });
-    rotateMe.play();
+
     rotateMe2.play();
     rotateMe3.play();
     this.setState({ active: true });
@@ -80,7 +76,7 @@ export default class Enter extends Component {
           onMouseOver={this.handleNvEnter}
           className={this.state.active ? "hh1 hh2" : "hh1"}
         >
-          Murucututu.Com
+          Murucututu.com.br
         </h1>
         <p className={this.state.active ? "pp1 pp2" : "pp1"}>
           Um site criado pra Watchers planejar melhor seu click perfeito!
