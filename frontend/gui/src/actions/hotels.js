@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import { getProfileByHandle } from "./profile";
 import {
   GET_HOTEL,
   GET_HOTELS,
@@ -63,12 +63,14 @@ export const getHotel = id => dispatch => {
   dispatch(setHotelLoading());
   axios
     .get(`http://localhost:8000/api/hotels/${id}/`)
-    .then(res =>
+    .then(res => {
+      dispatch(getProfileByHandle(res.data.user.id));
+      console.log(res.data.user);
       dispatch({
         type: GET_HOTEL,
         payload: res.data
-      })
-    )
+      });
+    })
     .catch(err =>
       dispatch({
         type: GET_HOTEL,

@@ -27,29 +27,46 @@ class GuideUser extends Component {
                   </div>
                 </Link>
                 <ul className="social-icon">
-                  <li>
-                    <a href="#">
-                      <i className="fab fa-facebook-f" aria-hidden="true" />
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href={`https://www.youtube.com/${profile.youtube}`}
-                      target="_blank"
-                    >
-                      <i className="fab fa-youtube" aria-hidden="true" />
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i className="fab fa-instagram" aria-hidden="true" />
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i className="fas fa-dove" aria-hidden="true" />
-                    </a>
-                  </li>
+                  {profile.facebook ? (
+                    <li>
+                      <a
+                        href={`https://www.facebook.com/${profile.facebook}`}
+                        target="_blank"
+                      >
+                        <i className="fab fa-facebook-f" aria-hidden="true" />
+                      </a>
+                    </li>
+                  ) : null}
+                  {profile.youtube ? (
+                    <li>
+                      <a
+                        href={`https://www.youtube.com/${profile.youtube}`}
+                        target="_blank"
+                      >
+                        <i className="fab fa-youtube" aria-hidden="true" />
+                      </a>
+                    </li>
+                  ) : null}
+                  {profile.instagram ? (
+                    <li>
+                      <a
+                        href={`https://www.instagram.com/${profile.instagram}`}
+                        target="_blank"
+                      >
+                        <i className="fab fa-instagram" aria-hidden="true" />
+                      </a>
+                    </li>
+                  ) : null}
+                  {profile.wikiaves ? (
+                    <li>
+                      <a
+                        href={`https://www.wikiaves.com.br/${profile.wikiaves}`}
+                        target="_blank"
+                      >
+                        <i className="fas fa-dove" aria-hidden="true" />
+                      </a>
+                    </li>
+                  ) : null}
                 </ul>
                 <Link to={`profilebyhandle/${profile.id}/`}>
                   <div className="details">

@@ -30,15 +30,21 @@ class Register extends Component {
     if (password !== password2) {
       this.props.createMessage({ passwordNotMatch: "Passwords do not match" });
     } else {
-      let email = username;
-      const newUser = {
-        email,
-        password,
-        username,
-        first_name,
-        last_name
-      };
-      this.props.register(newUser);
+      if ((username, password, password2, first_name, last_name)) {
+        let email = username;
+        const newUser = {
+          email,
+          password,
+          username,
+          first_name,
+          last_name
+        };
+        this.props.register(newUser);
+      } else {
+        this.props.createMessage({
+          campoLimpo: "Todos os campos devem ser preenchidos!"
+        });
+      }
     }
   };
   handleOnFocus = e => {
@@ -53,7 +59,7 @@ class Register extends Component {
   };
   render() {
     if (this.props.isAuthenticated) {
-      return <Redirect to="/" />;
+      return <Redirect to="/my-page" />;
     }
     return (
       <div className={this.state.active ? "container1 password" : "container1"}>

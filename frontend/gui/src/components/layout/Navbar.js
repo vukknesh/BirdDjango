@@ -25,24 +25,24 @@ class Navbar extends Component {
         {is_owner ? (
           <li className="nav-item">
             <Link className="nav-link text-light" to="/add-hotel">
-              Register Hotel
+              Registrar Hotel
             </Link>
           </li>
         ) : null}
-        <li className="nav-item active show1">
-          <Link className="nav-link text-light" to="/my-page">
-            My page <span className="sr-only">(current)</span>
-          </Link>
-        </li>
 
         <li className="nav-item">
           <Link className="nav-link text-light" to="/hotels">
-            Hotels
+            Hoteis
           </Link>
         </li>
         <li className="nav-item">
           <Link className="nav-link text-light" to="/guide">
-            Guides
+            Guias
+          </Link>
+        </li>
+        <li className="nav-item active show1">
+          <Link className="nav-link text-light" to="/my-page">
+            Meu Perfil <span className="sr-only">(current)</span>
           </Link>
         </li>
         <li className="nav-item ">
@@ -53,11 +53,11 @@ class Navbar extends Component {
           >
             <img
               src={image}
-              alt=".."
+              alt=""
               style={{ width: "30px", height: "30px", marginRight: "15px" }}
               className="rounded-circle"
             />
-            LOGOUT
+            SAIR
           </a>
         </li>
       </ul>
@@ -66,7 +66,7 @@ class Navbar extends Component {
       <ul className="mr-5 navbar-nav ml-auto font-weight-bold show1">
         <li className="nav-item">
           <Link className="nav-link text-light" to="/register">
-            Sign Up
+            Cadastrar
           </Link>
         </li>
         <li className="nav-item">

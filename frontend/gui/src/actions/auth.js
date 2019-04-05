@@ -96,10 +96,11 @@ export const register = ({
         payload: res.data
       });
     })
+
     .catch(err => {
-      dispatch(returnErrors(err.response.data, err.response.status));
       dispatch({
-        type: REGISTER_FAIL
+        type: GET_ERRORS,
+        payload: err.response.data
       });
     });
 };

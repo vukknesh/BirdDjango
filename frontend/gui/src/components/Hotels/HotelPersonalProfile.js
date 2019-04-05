@@ -8,6 +8,7 @@ class HotelPersonalProfile extends Component {
   state = {
     hotel: null
   };
+
   componentWillMount() {
     if (this.props.match.params.id) {
       // this.props.getProfileByHandle(this.props.match.params.id);
@@ -33,7 +34,8 @@ class HotelPersonalProfile extends Component {
 }
 const mapStateToProps = state => ({
   hotel: state.hotels.hotel,
-  isAuthenticated: state.auth.isAuthenticated
+  isAuthenticated: state.auth.isAuthenticated,
+  profile: state.profiles.profile
 });
 export default connect(
   mapStateToProps,

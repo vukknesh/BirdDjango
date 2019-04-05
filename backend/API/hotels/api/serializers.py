@@ -14,19 +14,19 @@ from hotels.models import Hotel
 
 
 class HotelCreateUpdateSerializer(ModelSerializer):
-    username = CharField(source='user.username', read_only=True)
+    user = UserSerializer(read_only=True)
 
     class Meta:
         model = Hotel
         fields = [
-            'username',
+
             'title',
             'price',
             'address',
             'city',
             'state',
             'content',
-
+            'user',
             'image1',
             'image2',
             'image3',

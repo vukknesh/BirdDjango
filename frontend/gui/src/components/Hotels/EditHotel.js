@@ -27,8 +27,8 @@ class EditHotel extends Component {
       const hotel = nextProps.hotel;
 
       hotel.title = !isEmpty(hotel.title) ? hotel.title : "";
-      hotel.price = !isEmpty(hotel.price) ? hotel.price : false;
-      hotel.address = !isEmpty(hotel.address) ? hotel.address : false;
+      hotel.price = !isEmpty(hotel.price) ? hotel.price : "";
+      hotel.address = !isEmpty(hotel.address) ? hotel.address : "";
 
       hotel.city = !isEmpty(hotel.city) ? hotel.city : "";
       hotel.state = !isEmpty(hotel.state) ? hotel.state : "";
@@ -83,19 +83,13 @@ class EditHotel extends Component {
     if (!this.props.isAuthenticated) {
       return <Redirect to="/" />;
     }
-    // if (this.state.is_guide) {
-    //   var is_guide = this.state.is_guide;
-    // }
-    // if (this.state.is_owner) {
-    //   var is_owner = this.state.is_owner;
-    // }
 
     return (
       <div className="container">
         <div className="row">
           <div className="col-md-8 m-auto">
             <h1 className="display-4 text-center">Hotel</h1>
-            <p className="lead text-center">Registre sua acomodação</p>
+            <p className="lead text-center">Editar sua acomodação</p>
 
             {/* {is_guide ? (
               <input

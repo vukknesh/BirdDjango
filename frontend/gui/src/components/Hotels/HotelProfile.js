@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./main.css";
-import pic from "../MyPage/profile1.jpg";
+
 import { Redirect, Link } from "react-router-dom";
 
 import { connect } from "react-redux";
@@ -23,6 +23,9 @@ class HotelProfile extends Component {
       var image2 = this.props.hotel.image2;
       var image3 = this.props.hotel.image3;
       var image4 = this.props.hotel.image4;
+    }
+    if (this.props.profile) {
+      var image = this.props.profile.image;
     }
 
     return (
@@ -56,39 +59,6 @@ class HotelProfile extends Component {
               <i className="fas fa-igloo" />
               <i className="fas fa-check" />
             </div>
-            <div className="comments">
-              <div className="comment-owner">
-                <img src={image2} alt="" />
-                <h5>Leonardo Neshich</h5>
-              </div>
-
-              <hr />
-              <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Delectus earum explicabo aperiam aut necessitatibus voluptate
-                maiores, expedita ipsum id ratione totam quibusdam, a distinctio
-                temporibus vitae cumque facilis sit mollitia.
-              </p>
-
-              <div className="comment-owner">
-                <img src={pic} alt="" />
-                <h5>Leonardo Neshich</h5>
-              </div>
-              <hr />
-              <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Delectus earum explicabo aperiam aut necessitatibus voluptate ma
-              </p>
-              <div className="comment-owner">
-                <img src={pic} alt="" />
-                <h5>Leonardo Neshich</h5>
-              </div>
-              <hr />
-              <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Delectus xplicabo aperiam aut necessitatibus voluptate ma
-              </p>
-            </div>
           </div>
           <div className="owner-info">
             {this.props.myprofile.id === id ? (
@@ -102,7 +72,7 @@ class HotelProfile extends Component {
               </Link>
             ) : null}
             <div className="hotel-owner">
-              <img src={pic} alt="" />
+              <img src={image} alt="" />
               <h5>
                 {first_name} {last_name}
               </h5>
@@ -125,7 +95,8 @@ class HotelProfile extends Component {
 const mapStateToProps = state => ({
   hotel: state.hotels.hotel,
   isAuthenticated: state.auth.isAuthenticated,
-  myprofile: state.profiles.myprofile
+  myprofile: state.profiles.myprofile,
+  profile: state.profiles.profile
 });
 
 export default connect(mapStateToProps)(HotelProfile);

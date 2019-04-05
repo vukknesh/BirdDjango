@@ -8,12 +8,6 @@ export default class RigthMenu extends Component {
         className="container
         d-flex flex-column s-top"
       >
-        <div className="mb-4 mr-5 ">
-          <div className="card">
-            <div className="card-header font-weight-bold">Users</div>
-            <img src={owllogo} alt="" />
-          </div>
-        </div>
         <div className="mb-4  mr-5">
           <div className="card">
             <div className="card-header font-weight-bold">Advertise</div>

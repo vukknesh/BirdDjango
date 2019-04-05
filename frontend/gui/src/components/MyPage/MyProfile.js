@@ -1,9 +1,5 @@
 import React, { Component } from "react";
-import {
-  getCurrentProfile,
-  clearCurrentProfile,
-  getMyProfile
-} from "../../actions/profile";
+import { getCurrentProfile, getMyProfile } from "../../actions/profile";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
@@ -20,9 +16,6 @@ class MyProfile extends Component {
   componentDidMount() {
     this.props.getCurrentProfile(this.props.user.id);
     this.props.getMyProfile(this.props.user.id);
-  }
-  componentWillUnmount() {
-    // this.props.clearCurrentProfile();
   }
 
   render() {
@@ -80,8 +73,8 @@ class MyProfile extends Component {
                 aria-expanded="false"
               >
                 <i className="far fa-thumbs-up" /> Social Medias ->
-                <hr />
               </p>
+              <hr />
               <div className="dropdown-menu">
                 {instagram ? (
                   <a href="#">
@@ -112,7 +105,7 @@ class MyProfile extends Component {
             {is_owner ? (
               <Link to="/my-accomodations" className="link-to">
                 <p>
-                  <i class="fas fa-home" /> Minhas Acomodações
+                  <i className="fas fa-home" /> Minhas Acomodações
                 </p>
                 <hr />
               </Link>
@@ -123,15 +116,14 @@ class MyProfile extends Component {
                 <i className="far fa-comments" />
                 <span>Comentarios Feitos</span>
               </p>
-              <hr />
             </Link>
-
+            <hr />
             <Link to="/my-messages" className="link-to">
               <p>
                 <i className="far fa-envelope" /> Minhas Menssagens
               </p>
-              <hr />
             </Link>
+            <hr />
             <Link to="/edit-profile" className="link-to">
               <p>
                 <i className="far fa-address-card" />
@@ -160,5 +152,5 @@ const mapStateToProps = state => ({
 });
 export default connect(
   mapStateToProps,
-  { getCurrentProfile, clearCurrentProfile, getMyProfile }
+  { getCurrentProfile, getMyProfile }
 )(MyProfile);

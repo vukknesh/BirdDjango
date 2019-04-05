@@ -27,8 +27,8 @@ class AddHotel extends Component {
       const hotel = nextProps.hotel;
 
       hotel.title = !isEmpty(hotel.title) ? hotel.title : "";
-      hotel.price = !isEmpty(hotel.price) ? hotel.price : false;
-      hotel.address = !isEmpty(hotel.address) ? hotel.address : false;
+      hotel.price = !isEmpty(hotel.price) ? hotel.price : "";
+      hotel.address = !isEmpty(hotel.address) ? hotel.address : "";
 
       hotel.city = !isEmpty(hotel.city) ? hotel.city : "";
       hotel.state = !isEmpty(hotel.state) ? hotel.state : "";

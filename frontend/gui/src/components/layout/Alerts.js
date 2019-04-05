@@ -18,7 +18,7 @@ export class Alerts extends Component {
         alert.error(`Message: ${error.msg.message.join()}`);
       if (error.msg.non_field_errors)
         alert.error(error.msg.non_field_errors.join());
-      if (error.msg.username) alert.error(`Digite um email valido!`);
+      if (error.msg.username) alert.error(`${error.msg.username[0]}`);
       if (error.msg.title) alert.error(`Digite titulo para sua acomodação!`);
       if (error.msg.price) alert.error(`Digite um preço valido!`);
       if (error.msg.content)
@@ -26,7 +26,7 @@ export class Alerts extends Component {
     }
 
     if (message !== prevProps.message) {
-      if (message.deleteLead) alert.success(message.deleteLead);
+      if (message.campoLimpo) alert.error(message.campoLimpo);
       if (message.addLead) alert.success(message.addLead);
       if (message.passwordNotMatch) alert.error(message.passwordNotMatch);
     }

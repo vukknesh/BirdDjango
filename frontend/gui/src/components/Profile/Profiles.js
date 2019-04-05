@@ -21,7 +21,7 @@ class Profiles extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.profile.profile === null) {
+    if (nextProps.profile === null) {
       this.props.history.push("/not-found");
       this.setState({
         profile: this.props.profiles.profile
