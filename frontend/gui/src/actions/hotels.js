@@ -10,6 +10,7 @@ import {
   GET_ERRORS,
   CLEAR_ERRORS
 } from "./types";
+import { createMessage } from "./messages";
 
 //add post
 
@@ -26,12 +27,13 @@ export const addHotel = (hotelData, token, history) => dispatch => {
 
   axios
     .post("http://localhost:8000/api/hotels/create/", hotelData, config)
-    .then(res =>
+    .then(res => {
+      dispatch(createMessage({ hotelAdd: "Acomodação criada com sucesso!" }));
       dispatch({
         type: ADD_HOTEL,
         payload: res.data
-      })
-    )
+      });
+    })
     .then(res => history.push("/my-accomodations"))
 
     .catch(err =>
