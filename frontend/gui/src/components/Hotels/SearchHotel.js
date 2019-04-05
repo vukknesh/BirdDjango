@@ -14,8 +14,7 @@ class SearchHotel extends Component {
 
   onSubmit = event => {
     event.preventDefault();
-    // this.props.getHotelsByCity(this.state.city);
-    // this.props.getHotels();
+    this.props.getHotelsByCity(this.state.city);
   };
   render() {
     return (

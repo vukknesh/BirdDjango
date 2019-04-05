@@ -32,7 +32,7 @@ class Landing extends Component {
             onFocus={this.toggleState}
             type="text"
           />
-          <i class="fas fa-mail-bulk" />
+          <i className="fas fa-mail-bulk" />
         </div>
         <div className="voos">
           <h1>Que tal planejar sua viagem em um so lugar?</h1>

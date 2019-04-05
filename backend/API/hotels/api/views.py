@@ -22,7 +22,7 @@ from rest_framework.permissions import (
     IsAuthenticatedOrReadOnly,
 
 )
-
+from django_filters import rest_framework as filters
 from hotels.models import Hotel
 
 from .pagination import HotelLimitOffsetPagination, HotelPageNumberPagination
@@ -33,6 +33,14 @@ from .serializers import (
     HotelDetailSerializer,
     HotelListSerializer
 )
+
+
+class HotelFilter(filters.FilterSet):
+    city = filters.CharFilter(lookup_expr='icontains')
+
+    class Meta:
+        model = Hotel
+        fields = ('city',)
 
 
 class HotelCreateAPIView(CreateAPIView):
@@ -72,9 +80,10 @@ class HotelDeleteAPIView(DestroyAPIView):
 
 class HotelListAPIView(ListAPIView):
     serializer_class = HotelListSerializer
-    filter_backends = [SearchFilter, OrderingFilter]
+    # filter_backends = [SearchFilter, OrderingFilter]
+    filterset_class = HotelFilter
     permission_classes = [AllowAny]
-    search_fields = ['title', 'content', 'user__first_name']
+    # search_fields = ['title', 'content', 'user__first_name']
     pagination_class = HotelPageNumberPagination
 
     def get_queryset(self, *args, **kwargs):

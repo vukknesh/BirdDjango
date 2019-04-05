@@ -9,7 +9,7 @@ import {
 
 const initialState = {
   hotel: null,
-  hotels: null,
+  hotels: [],
   isLoading: false
 };
 
@@ -18,7 +18,7 @@ export default function(state = initialState, action) {
     case ADD_HOTEL:
       return {
         ...state,
-        hotel: action.payload
+        hotels: [action.payload, ...state.hotels]
       };
     case HOTEL_LOADING:
       return {

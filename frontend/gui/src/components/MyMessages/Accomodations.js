@@ -17,7 +17,7 @@ class Accomodations extends Component {
     if (this.props.hotels === null) {
       conteudoA = <Spinner />;
     } else {
-      conteudoA = this.props.hotels.results.map(hotel => {
+      conteudoA = this.props.hotels.map(hotel => {
         if (hotel.user_id == this.props.user.id) {
           return (
             <div className="card-container" key={hotel.id}>

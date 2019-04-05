@@ -57,11 +57,10 @@ export const login = (username, password) => dispatch => {
       });
     })
     .catch(err => {
-      console.log(err);
-      // dispatch({
-      //   type: GET_ERRORS,
-      //   payload: err.response.data
-      // });
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      });
     });
 };
 

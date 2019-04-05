@@ -3,6 +3,7 @@ import "./main.css";
 import { getHotels, getHotelsByCity } from "../../actions/hotels";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
+import isEmpty from "../../validation/is-empty";
 class Hotels extends Component {
   state = {
     city: ""
@@ -14,10 +15,12 @@ class Hotels extends Component {
 
   onSubmit = event => {
     event.preventDefault();
-    this.props.getHotels();
+    const { city } = this.state;
+    this.props.getHotelsByCity(city);
+    console.log(city);
   };
   render() {
-    if (this.props.hotels) {
+    if (!isEmpty(this.props.hotels)) {
       return <Redirect to="/hotels" />;
     }
     return (
@@ -30,6 +33,7 @@ class Hotels extends Component {
             onChange={this.onChange}
             type="text"
             name="city"
+            value={this.state.city}
           />
           <p>DATA</p>
           <input placeholder="Data" onChange={this.onChange} type="text" />

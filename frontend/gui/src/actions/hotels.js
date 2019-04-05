@@ -53,10 +53,15 @@ export const getHotels = () => dispatch => {
     .then(res =>
       dispatch({
         type: GET_HOTELS,
-        payload: res.data
+        payload: res.data.results
       })
     )
-    .catch(err => console.log(err));
+    .catch(err => {
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      });
+    });
 };
 
 //Get post
@@ -67,7 +72,7 @@ export const getHotel = id => dispatch => {
     .get(`http://localhost:8000/api/hotels/${id}/`)
     .then(res => {
       dispatch(getProfileByHandle(res.data.user.id));
-      console.log(res.data.user);
+
       dispatch({
         type: GET_HOTEL,
         payload: res.data
@@ -87,7 +92,7 @@ export const getHotelsByCity = city => dispatch => {
     .then(res =>
       dispatch({
         type: GET_HOTELS,
-        payload: res.data
+        payload: res.data.results
       })
     )
     .catch(err =>

@@ -1,9 +1,10 @@
 import React from "react";
 import owly from "./images.png";
+import "../Auth/Login.css";
 
 export default function Footer() {
   return (
-    <div>
+    <div className="footer">
       <ul className="nav justify-content-center mt-1 bg-dark">
         <li className="nav-item">
           <a className="nav-link active text-light" href="/login">

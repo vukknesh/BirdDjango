@@ -27,7 +27,7 @@ class MessageContent extends Component {
     if (this.props.posts === null) {
       conteudo = <Spinner />;
     } else {
-      conteudo = this.props.posts.results.map(post => {
+      conteudo = this.props.posts.map(post => {
         if (post.user_id == this.props.user.id) {
           return (
             <div className="card-container" key={post.id}>
