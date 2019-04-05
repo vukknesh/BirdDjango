@@ -2,12 +2,13 @@ import {
   ADD_POST,
   GET_POSTS,
   POST_LOADING,
-  CLEAR_POSTS
+  CLEAR_POSTS,
+  DELETE_POST
 } from "../actions/types";
 
 const initialState = {
-  post: null,
-  posts: null,
+  post: {},
+  posts: [],
   isLoading: false
 };
 
@@ -16,13 +17,13 @@ export default function(state = initialState, action) {
     case ADD_POST:
       return {
         ...state,
-        post: action.payload
+        posts: [action.payload, ...state.posts]
       };
-    // case PROFILE_LOADING:
-    //   return {
-    //     ...state,
-    //     loading: true
-    //   };
+    case DELETE_POST:
+      return {
+        ...state,
+        posts: state.posts.filter(post => post.id !== action.payload)
+      };
     case POST_LOADING:
       return {
         ...state,

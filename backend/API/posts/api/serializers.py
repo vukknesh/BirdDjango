@@ -15,14 +15,23 @@ from posts.models import Post
 
 
 class PostCreateUpdateSerializer(ModelSerializer):
-    username = CharField(source='user.username', read_only=True)
+
+    user_id = CharField(source='user.id', read_only=True)
+    first_name = CharField(source='user.first_name', read_only=True)
+    last_name = CharField(source='user.last_name', read_only=True)
+    user_image = ImageField(source='user.profile.image', read_only=True)
 
     class Meta:
         model = Post
         fields = [
-            'username',
+            'id',
+            'user_id',
+            'user_image',
+            'first_name',
+            'last_name',
+
             'title',
-            # 'slug',
+
             'content',
             'publish',
             'image'
@@ -31,7 +40,7 @@ class PostCreateUpdateSerializer(ModelSerializer):
 
 post_detail_url = HyperlinkedIdentityField(
     view_name='posts-api:detail',
-    lookup_field='slug'
+    lookup_field='id'
 )
 
 

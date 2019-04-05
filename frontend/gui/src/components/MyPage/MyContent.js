@@ -1,24 +1,15 @@
 import React, { Component } from "react";
-import { getPosts, clearPosts } from "../../actions/Post";
+import { getPosts, deletePost } from "../../actions/Post";
 import Spinner from "../common/Spinner";
+
 import { connect } from "react-redux";
 import pic from "./profile1.jpg";
 import "./main.css";
 import { Link } from "react-router-dom";
 
-class MyContent extends Component {
-  componentWillMount() {
+export class MyContent extends Component {
+  componentDidMount() {
     this.props.getPosts();
-  }
-
-  componentWillUnmount() {
-    // this.props.clearPosts();
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.newPost) {
-      this.props.posts.results.unshift(nextProps.newPost);
-    }
   }
 
   render() {
@@ -27,7 +18,7 @@ class MyContent extends Component {
     if (this.props.posts === null) {
       conteudo = <Spinner />;
     } else {
-      conteudo = this.props.posts.results.map(post => (
+      conteudo = this.props.posts.map(post => (
         <div className="card-container" key={post.id}>
           <div className="card-head">
             <div>
@@ -43,6 +34,20 @@ class MyContent extends Component {
               </span>
               <p>{post.publish}</p>
             </section>
+            {this.props.myprofile.id === parseInt(post.user_id, 10) ? (
+              <div className=" ml-5">
+                <button
+                  onClick={this.props.deletePost.bind(
+                    this,
+                    post.id,
+                    this.props.token
+                  )}
+                  className="btn btn-danger deletemsg ml-5"
+                >
+                  Deletar Post
+                </button>
+              </div>
+            ) : null}
           </div>
           <div className="card-body">
             <div className="content">
@@ -72,10 +77,12 @@ class MyContent extends Component {
 }
 const mapStateToProps = state => ({
   posts: state.posts.posts,
-  newPost: state.posts.post
+  newPost: state.posts.post,
+  myprofile: state.profiles.myprofile,
+  token: state.auth.token
 });
 
 export default connect(
   mapStateToProps,
-  { getPosts, clearPosts }
+  { getPosts, deletePost }
 )(MyContent);

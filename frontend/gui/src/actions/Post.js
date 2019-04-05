@@ -10,6 +10,7 @@ import {
   CLEAR_ERRORS,
   DELETE_POST
 } from "./types";
+import { createMessage } from "./messages";
 
 //add post
 
@@ -26,18 +27,19 @@ export const addPost = (content, token) => dispatch => {
   const body = JSON.stringify({ content });
   axios
     .post("http://localhost:8000/api/posts/create/", body, config)
-    .then(res =>
+    .then(res => {
+      dispatch(createMessage({ postSucesso: "Post criado com sucesso!" }));
       dispatch({
         type: ADD_POST,
         payload: res.data
-      })
-    )
-    .catch(err =>
+      });
+    })
+    .catch(err => {
       dispatch({
         type: GET_ERRORS,
         payload: err.response.data
-      })
-    );
+      });
+    });
 };
 
 //Get post
@@ -46,18 +48,18 @@ export const getPosts = () => dispatch => {
   dispatch({ type: POST_LOADING });
   axios
     .get("http://localhost:8000/api/posts/")
-    .then(res =>
+    .then(res => {
       dispatch({
         type: GET_POSTS,
-        payload: res.data
-      })
-    )
-    .catch(err =>
+        payload: res.data.results
+      });
+    })
+    .catch(err => {
       dispatch({
-        type: GET_POSTS,
-        payload: null
-      })
-    );
+        type: GET_ERRORS,
+        payload: err.response.data
+      });
+    });
 };
 
 //Get post
@@ -72,31 +74,42 @@ export const getPost = id => dispatch => {
         payload: res.data
       })
     )
-    .catch(err =>
+    .catch(err => {
       dispatch({
-        type: GET_POSTS,
-        payload: null
-      })
-    );
+        type: GET_ERRORS,
+        payload: err.response.data
+      });
+    });
 };
 
 //delete Post
 
-export const deletePost = id => dispatch => {
+export const deletePost = (id, token) => dispatch => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json"
+    }
+  };
+  if (token) {
+    config.headers["Authorization"] = `Token ${token}`;
+  }
+
   axios
-    .delete(`/api/posts/${id}`)
-    .then(res =>
+    .delete(`http://localhost:8000/api/posts/${id}/delete/`, config)
+    .then(res => {
+      dispatch(createMessage({ deletePost: "Post deletado com sucesso!" }));
       dispatch({
         type: DELETE_POST,
         payload: id
-      })
-    )
-    .catch(err =>
-      dispatch({
-        type: GET_ERRORS,
-        payload: err.response.data
-      })
-    );
+      });
+    })
+    .catch(err => {
+      console.log(err);
+      // dispatch({
+      //   type: GET_ERRORS,
+      //   payload: err.response
+      // });
+    });
 };
 
 //Add Likes

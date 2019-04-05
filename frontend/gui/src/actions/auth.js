@@ -1,5 +1,5 @@
 import axios from "axios";
-import { returnErrors } from "./messages";
+import { returnErrors, createMessage } from "./messages";
 import { clearCurrentProfile, clearAllProfiles } from "./profile";
 import { clearPosts } from "./Post";
 
@@ -57,10 +57,11 @@ export const login = (username, password) => dispatch => {
       });
     })
     .catch(err => {
-      dispatch({
-        type: GET_ERRORS,
-        payload: err.response.data
-      });
+      console.log(err);
+      // dispatch({
+      //   type: GET_ERRORS,
+      //   payload: err.response.data
+      // });
     });
 };
 
@@ -91,6 +92,13 @@ export const register = ({
   axios
     .post("http://localhost:8000/api/auth/register", body, config)
     .then(res => {
+      dispatch(
+        createMessage({
+          registerSuccess: `Bem vindo ao Murucututu.com.br ${
+            res.data.user.first_name
+          } ${res.data.user.last_name}`
+        })
+      );
       dispatch({
         type: REGISTER_SUCCESS,
         payload: res.data
