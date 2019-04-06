@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { getCurrentProfile, clearCurrentProfile } from "../../actions/profile";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import profilepic from "../MyPage/profile1.jpg";
+
 import { Redirect } from "react-router-dom";
 import "../MyPage/main.css";
 
@@ -96,28 +96,28 @@ class PersonalProfile extends Component {
             {this.props.user.id === this.props.profile.id ? (
               <p>
                 <Link to="/my-comments">
-                  <i class="far fa-comments" /> Comentarios Feitos
+                  <i className="far fa-comments" /> Comentarios Feitos
                 </Link>
               </p>
             ) : null}
             {this.props.user.id === this.props.profile.id ? (
               <p>
                 <Link to="/my-messages">
-                  <i class="far fa-envelope" /> Minhas Menssagens
+                  <i className="far fa-envelope" /> Minhas Menssagens
                 </Link>
               </p>
             ) : null}
             {this.props.user.id === this.props.profile.id ? (
               <p>
                 <Link to="/edit-profile">
-                  <i class="far fa-address-card" /> Editar Perfil
+                  <i className="far fa-address-card" /> Editar Perfil
                 </Link>
               </p>
             ) : null}
             {this.props.user.id === this.props.profile.id ? (
               <p>
                 <Link to="">
-                  <i class="fas fa-camera-retro" /> Editar Foto
+                  <i className="fas fa-camera-retro" /> Editar Foto
                 </Link>
               </p>
             ) : null}
