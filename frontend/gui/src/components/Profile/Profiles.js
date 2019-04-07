@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import YouEnter from "../youtube/YouEnter";
+import Youtube from "../youtube/Youtube";
 import PersonalProfile from "./PersonalProfile";
+import ContactProfile from "./ContactProfile";
 import {
   getProfileByHandle,
   clearCurrentProfile,
@@ -11,33 +12,26 @@ import {
 class Profiles extends Component {
   componentWillMount() {
     if (this.props.match.params.id) {
-      // this.props.getProfileByHandle(this.props.match.params.id);
       this.props.getCurrentProfile(this.props.match.params.id);
     }
   }
 
   render() {
-    // console.log(this.state.profile);
-    // let content;
-    // if (this.props.profile) {
-    //   content = <div>{this.props.profile.username}</div>;
-    // }
-
     return (
       <div style={pageStyle} className="mt-3  bg-light">
         <div className="row h-100 ">
           <div className="w-25 d-flex justify-content-center">
             <PersonalProfile />
           </div>
-          <div className="w-50 d-flex justify-content-center border border-primary">
+          <div className="w-50 d-flex justify-content-center border rouded">
             <h1>middle</h1>
           </div>
-          <div className="w-25 justify-content-center">
-            <h1>Contact Me</h1>
+          <div className="w-25 justify-content-center border rounded bg-light">
+            <ContactProfile />
           </div>
         </div>
         <div>
-          <YouEnter />
+          <Youtube />
         </div>
       </div>
     );

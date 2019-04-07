@@ -94,11 +94,11 @@ class App extends Component {
                       path="/edit-hotel"
                       component={EditHotel}
                     />
-                    <PrivateRoute
+                    {/* <PrivateRoute
                       exact
                       path="/marketplace"
                       component={MarketPlace}
-                    />
+                    /> */}
                   </Switch>{" "}
                   {/* <Switch>
                 <PrivateRoute exact path="/feed" component={Post} />
@@ -108,6 +108,7 @@ class App extends Component {
               </Switch> */}
                   <Route exact path="/not-found" component={NotFound} />
                   <Route exact path="/guide" component={Guide} />
+                  <Route exact path="/marketplace" component={MarketPlace} />
                   <Route exact path="/hotels" component={FindHotels} />
                   <Route
                     exact

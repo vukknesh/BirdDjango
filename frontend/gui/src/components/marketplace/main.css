@@ -1,0 +1,51 @@
+.market {
+  min-height: 90vh;
+  padding: 50px;
+}
+
+.searchbox {
+  min-height: 65vh;
+  background: url("./Bird-watching-guide.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 20px;
+}
+
+.searchbox h1 {
+  padding-top: 5rem;
+  text-align: center;
+  color: #441802;
+}
+
+.searchmarket {
+  text-align: center;
+  height: 40px;
+}
+
+.searchmarket form {
+  margin-top: 5rem;
+}
+
+.searchmarket form select {
+  height: 40px;
+  padding: 5px;
+}
+
+.searchmarket form input {
+  padding-left: 20px;
+  height: 40px;
+  width: 350px;
+}
+
+.submit-btn {
+  padding: 7px;
+  width: 60px;
+  background: #472d20;
+  color: white;
+}
+
+.submit-btn:hover {
+  background: #f35404;
+}
+/*# sourceMappingURL=main.css.map */

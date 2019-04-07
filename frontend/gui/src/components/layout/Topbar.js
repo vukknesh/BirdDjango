@@ -8,7 +8,7 @@ export default class Topbar extends Component {
       <nav className="nav1">
         <ul className="ul1">
           <li className="li1">
-            <Link className="a1" to="/enter">
+            <Link className="a1" to="/">
               Home
             </Link>
           </li>
@@ -30,6 +30,11 @@ export default class Topbar extends Component {
           <li className="li1">
             <Link className="a1" to="/hotels">
               Hotels
+            </Link>
+          </li>
+          <li className="li1">
+            <Link className="a1" to="/marketplace">
+              Marketplace
             </Link>
           </li>
         </ul>

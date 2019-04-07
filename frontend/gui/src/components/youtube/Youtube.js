@@ -3,8 +3,8 @@ import SearchBar from "./search_bar";
 import YTSearch from "youtube-api-search";
 import VideoList from "./video_list";
 import VideoDetail from "./video_detail";
-import "./youtube.css";
 import { connect } from "react-redux";
+import "./youtube.css";
 
 const API_KEY = "AIzaSyBQ-JHAdkRpnFIUlQekQUrn4UHCwQfVucw";
 
@@ -14,10 +14,20 @@ class Youtube extends Component {
 
     this.state = {
       videos: [],
-      selectedVideo: null
+      selectedVideo: null,
+      youtube: ""
     };
-    console.log(this.props.youtube);
-    this.videoSearch(`birds`);
+    this.videoSearch("Birds");
+    if (this.props.profile.youtube) {
+      this.videoSearch(this.props.profile.youtube);
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    // Any time props.email changes, update state.
+    if (nextProps.profile.youtube !== this.props.profile.youtube) {
+      this.videoSearch(`${nextProps.profile.youtube}`);
+    }
   }
 
   videoSearch(searchTerm) {
@@ -35,16 +45,21 @@ class Youtube extends Component {
         <SearchBar
           onSearchTermChange={searchTerm => this.videoSearch(searchTerm)}
         />
-        <VideoDetail video={this.state.selectedVideo} />
-        <VideoList
-          onVideoSelect={userSelected =>
-            this.setState({ selectedVideo: userSelected })
-          }
-          videos={this.state.videos}
-        />
+        <div className="d-flex">
+          <VideoDetail video={this.state.selectedVideo} />
+          <VideoList
+            onVideoSelect={userSelected =>
+              this.setState({ selectedVideo: userSelected })
+            }
+            videos={this.state.videos}
+          />
+        </div>
       </div>
     );
   }
 }
 
-export default connect(null)(Youtube);
+const mapStateToProps = state => ({
+  profile: state.profiles.profile
+});
+export default connect(mapStateToProps)(Youtube);
