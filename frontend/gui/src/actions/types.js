@@ -40,3 +40,12 @@ export const GET_HOTEL = "GET_HOTEL";
 export const DELETE_HOTEL = "DELETE_HOTEL";
 export const HOTEL_LOADING = "HOTEL_LOADING";
 export const CLEAR_HOTELS = "CLEAR_HOTELS";
+
+//products
+
+export const GET_PRODUCTS = "GET_PRODUCTS";
+export const ADD_PRODUCT = "ADD_PRODUCT";
+export const GET_PRODUCT = "GET_PRODUCT";
+export const DELETE_PRODUCT = "DELETE_PRODUCT";
+export const PRODUCT_LOADING = "HOTEL_LOADING";
+export const CLEAR_PRODUCTS = "CLEAR_HOTELS";

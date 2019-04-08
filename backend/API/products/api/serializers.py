@@ -69,7 +69,7 @@ class ProductDetailSerializer(ModelSerializer):
             'image2',
             'image3',
             'image4',
-            'comments',
+
         ]
 
     def get_html(self, obj):

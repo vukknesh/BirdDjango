@@ -13,4 +13,6 @@ urlpatterns = [
                                 'comments'), namespace='comments-api')),
     url(r'^api/posts/', inc(("posts.api.urls", 'posts'), namespace='posts-api')),
     url(r'^api/hotels/', inc(("hotels.api.urls", 'hotels'), namespace='hotels-api')),
+    url(r'^api/products/', inc(("products.api.urls",
+                                'products'), namespace='products-api')),
 ]

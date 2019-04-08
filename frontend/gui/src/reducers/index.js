@@ -6,6 +6,7 @@ import auth from "./auth";
 import profiles from "./profiles";
 import posts from "./posts";
 import hotels from "./hotels";
+import products from "./products";
 
 export default combineReducers({
   auth,
@@ -13,6 +14,7 @@ export default combineReducers({
   posts,
   hotels,
   messages,
+  products,
 
   errors
 });

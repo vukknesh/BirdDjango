@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     'posts',
     'comments',
     'hotels',
-
+    'products',
     'storages',
 
 

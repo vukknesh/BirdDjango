@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { getPosts, deletePost } from "../../actions/Post";
-import Spinner from "../common/Spinner";
+import { deletePost } from "../../actions/Post";
 
 import { connect } from "react-redux";
 import pic from "./profile1.jpg";
@@ -8,16 +7,9 @@ import "./main.css";
 import { Link } from "react-router-dom";
 
 export class MyContent extends Component {
-  componentWillMount() {
-    this.props.getPosts();
-  }
-
   render() {
     let conteudo;
-
-    if (this.props.posts === null) {
-      conteudo = <Spinner />;
-    } else {
+    if (this.props.posts) {
       conteudo = this.props.posts.map(post => (
         <div className="card-container" key={post.id}>
           <div className="card-head">
@@ -76,7 +68,6 @@ export class MyContent extends Component {
   }
 }
 const mapStateToProps = state => ({
-  posts: state.posts.posts,
   newPost: state.posts.post,
   myprofile: state.profiles.myprofile,
   token: state.auth.token
@@ -84,5 +75,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getPosts, deletePost }
+  { deletePost }
 )(MyContent);

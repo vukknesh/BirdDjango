@@ -1,14 +1,37 @@
 import React, { Component } from "react";
 import "./main.css";
+import Items from "./Items";
+import { connect } from "react-redux";
+import { getProducts } from "../../actions/products";
 
-export default class MarketPlace extends Component {
+class MarketPlace extends Component {
+  state = {
+    termo: ""
+  };
+
+  // componentWillMount() {
+  //   this.props.getProducts();
+  // }
+  onChange = event => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
+
+  onSubmit = event => {
+    event.preventDefault();
+    // const { termo } = this.state;
+    // this.props.getProductsByCity(termo);
+
+    this.props.getProducts();
+    // console.log(city);
+  };
+
   render() {
     return (
       <div className="market">
         <div className="searchbox">
           <div className="searchmarket">
             <h1>MarketPlace</h1>
-            <form action="">
+            <form onSubmit={this.onSubmit}>
               <select>
                 <option value="all">Categorias</option>
                 <option value="volvo">Cameras</option>
@@ -17,14 +40,32 @@ export default class MarketPlace extends Component {
                 <option value="audi">Acessorios</option>
               </select>
 
-              <input type="text" placeholder="O que procura?" />
+              <input
+                type="text"
+                placeholder="O que procura?"
+                name="termo"
+                value={this.state.termo}
+              />
               <button type="submit" className="submit-btn" value="Procurar">
-                <i class="fas fa-search" />
+                <i className="fas fa-search" />
               </button>
             </form>
+          </div>
+          <div className="produtos">
+            {this.props.products ? (
+              <Items products={this.props.products} />
+            ) : null}
           </div>
         </div>
       </div>
     );
   }
 }
+const mapStateToProps = state => ({
+  products: state.products.products
+});
+
+export default connect(
+  mapStateToProps,
+  { getProducts }
+)(MarketPlace);
