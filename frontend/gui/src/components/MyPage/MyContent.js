@@ -8,7 +8,7 @@ import "./main.css";
 import { Link } from "react-router-dom";
 
 export class MyContent extends Component {
-  componentDidMount() {
+  componentWillMount() {
     this.props.getPosts();
   }
 

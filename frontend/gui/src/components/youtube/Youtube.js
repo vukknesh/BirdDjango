@@ -14,10 +14,9 @@ class Youtube extends Component {
 
     this.state = {
       videos: [],
-      selectedVideo: null,
-      youtube: ""
+      selectedVideo: null
     };
-    this.videoSearch("Birds");
+    this.videoSearch(`${this.props.profile.youtube}`);
     if (this.props.profile.youtube) {
       this.videoSearch(this.props.profile.youtube);
     }

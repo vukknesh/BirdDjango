@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import Youtube from "../youtube/Youtube";
 import PersonalProfile from "./PersonalProfile";
 import ContactProfile from "./ContactProfile";
+import Map from "../Maps/Map";
 import {
   getProfileByHandle,
   clearCurrentProfile,
@@ -24,7 +25,12 @@ class Profiles extends Component {
             <PersonalProfile />
           </div>
           <div className="w-50 d-flex justify-content-center border rouded">
-            <h1>middle</h1>
+            <Map
+              google={this.props.google}
+              center={{ lat: 18.5204, lng: 73.8567 }}
+              height="300px"
+              zoom={15}
+            />
           </div>
           <div className="w-25 justify-content-center border rounded bg-light">
             <ContactProfile />
