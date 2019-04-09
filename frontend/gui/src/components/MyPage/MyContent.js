@@ -1,16 +1,31 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { deletePost } from "../../actions/Post";
 
 import { connect } from "react-redux";
 import pic from "./profile1.jpg";
 import "./main.css";
 import { Link } from "react-router-dom";
+import isEmpty from "../../validation/is-empty";
+import Spinner from "../common/Spinner";
+import { getPosts } from "../../actions/Post";
+import PropTypes from "prop-types";
 
 export class MyContent extends Component {
+  static propTypes = {
+    posts: PropTypes.array.isRequired
+  };
+  componentWillMount() {
+    this.props.getPosts();
+  }
   render() {
-    let conteudo;
-    if (this.props.posts) {
-      conteudo = this.props.posts.map(post => (
+    let content;
+    if (this.props.posts === null || this.props.posts.isLoading) {
+      console.log("vazio");
+      content = <Spinner />;
+    } else if (!isEmpty(this.props.myprofile)) {
+      console.log(this.props.posts);
+      console.log(this.props.myprofile);
+      content = this.props.posts.map(post => (
         <div className="card-container" key={post.id}>
           <div className="card-head">
             <div>
@@ -64,16 +79,18 @@ export class MyContent extends Component {
       ));
     }
 
-    return <div>{conteudo}</div>;
+    return <Fragment>{content}</Fragment>;
   }
 }
+
 const mapStateToProps = state => ({
   newPost: state.posts.post,
   myprofile: state.profiles.myprofile,
+  posts: state.posts.posts,
   token: state.auth.token
 });
 
 export default connect(
   mapStateToProps,
-  { deletePost }
+  { deletePost, getPosts }
 )(MyContent);

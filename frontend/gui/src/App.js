@@ -94,6 +94,8 @@ class App extends Component {
                       path="/edit-hotel"
                       component={EditHotel}
                     />
+                    <PrivateRoute exact path="/hotels" component={FindHotels} />
+                    <PrivateRoute exact path="/guide" component={Guide} />
                     {/* <PrivateRoute
                       exact
                       path="/marketplace"
@@ -107,9 +109,7 @@ class App extends Component {
                 <PrivateRoute exact path="/post/:id" component={Post1} />
               </Switch> */}
                   <Route exact path="/not-found" component={NotFound} />
-                  <Route exact path="/guide" component={Guide} />
                   <Route exact path="/marketplace" component={MarketPlace} />
-                  <Route exact path="/hotels" component={FindHotels} />
                   <Route
                     exact
                     path="/hotelByHandle/:id/"

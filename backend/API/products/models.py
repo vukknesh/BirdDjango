@@ -9,7 +9,7 @@ from django.utils import timezone
 from django.utils.safestring import mark_safe
 from django.utils.text import slugify
 
-
+from model_utils import Choices
 from markdown_deux import markdown
 from comments.models import Comment
 
@@ -31,9 +31,35 @@ def upload_location(instance, filename):
 
 
 class Product(models.Model):
+
+    # CAMERAS = "CAMERAS"
+    # ROUPAS = "ROUPAS"
+    # LENTES = "LENTES"
+    # ROUPAS = "ROUPAS"
+    # ACESSORIOS = "ACESSORIOS"
+    # TODAS = "TODAS"
+    # # (...)
+
+    # CATEGORIAS_CHOICES = (
+    #     (ROUPAS, "Roupas"),
+    #     (LENTES, "Lentes"),
+    #     (CAMERAS, "Cameras"),
+    #     (ACESSORIOS, "Acessorios"),
+    #     # ....
+    #     (TODAS, "Todas"),
+    # )
+
+    STATUS = Choices('todas', 'roupas', 'lentes', 'acessorios', 'cameras')
+    categorias = models.CharField(
+        choices=STATUS, default=STATUS.todas, max_length=20)
+
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
                              on_delete=models.CASCADE)
+
     title = models.CharField(max_length=120, default='')
+    # categoria = models.CharField(max_length=15,
+    #                              choices=CATEGORIAS_CHOICES,
+    #                              default='Todas')
     slug = models.SlugField(unique=True)
     image1 = models.ImageField(default='defproduct.jpg',
                                upload_to='product_pics')

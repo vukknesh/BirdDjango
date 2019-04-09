@@ -19,7 +19,7 @@ class ProductCreateUpdateSerializer(ModelSerializer):
     class Meta:
         model = Product
         fields = [
-
+            'categorias',
             'title',
             'price',
             'address',
@@ -58,7 +58,7 @@ class ProductDetailSerializer(ModelSerializer):
             'id',
             'user',
             'title',
-
+            'categorias',
             'content',
             'price',
             'address',
@@ -132,5 +132,6 @@ class ProductListSerializer(ModelSerializer):
             'address',
             'city',
             'state',
-            'price'
+            'price',
+            'categorias'
         ]
