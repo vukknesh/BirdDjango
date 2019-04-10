@@ -23,8 +23,6 @@ export class MyContent extends Component {
       console.log("vazio");
       content = <Spinner />;
     } else if (!isEmpty(this.props.myprofile)) {
-      console.log(this.props.posts);
-      console.log(this.props.myprofile);
       content = this.props.posts.map(post => (
         <div className="card-container" key={post.id}>
           <div className="card-head">

@@ -57,7 +57,7 @@ export const getPosts = () => dispatch => {
     .catch(err => {
       dispatch({
         type: GET_ERRORS,
-        payload: err
+        payload: err.response.data
       });
     });
 };

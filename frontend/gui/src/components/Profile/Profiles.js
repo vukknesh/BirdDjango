@@ -25,12 +25,7 @@ class Profiles extends Component {
             <PersonalProfile />
           </div>
           <div className="w-50 d-flex justify-content-center border rouded">
-            <Map
-              google={this.props.google}
-              center={{ lat: 18.5204, lng: 73.8567 }}
-              height="300px"
-              zoom={15}
-            />
+            <h1>middle</h1>
           </div>
           <div className="w-25 justify-content-center border rounded bg-light">
             <ContactProfile />
@@ -38,6 +33,14 @@ class Profiles extends Component {
         </div>
         <div>
           <Youtube />
+        </div>
+        <div className="google">
+          <Map
+            google={this.props.google}
+            center={{ lat: 18.5204, lng: 73.8567 }}
+            height="300px"
+            zoom={15}
+          />
         </div>
       </div>
     );
