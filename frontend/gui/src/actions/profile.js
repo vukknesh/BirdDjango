@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import { showLoading, hideLoading } from "react-redux-loading-bar";
 import {
   GET_PROFILE,
   USER_LOADING,
@@ -96,6 +96,7 @@ export const getProfileByHandle = id => dispatch => {
 
 // Create profile
 export const updateProfile = (profileData, id, token, history) => dispatch => {
+  dispatch(showLoading());
   const config = {
     headers: {
       "Content-Type": "application/json"
@@ -107,8 +108,10 @@ export const updateProfile = (profileData, id, token, history) => dispatch => {
 
   axios
     .put(`http://localhost:8000/api/profiles/${id}/`, profileData, config)
+
     .then(res => history.push("/my-page"))
     .catch(err => console.log(err.detail));
+  dispatch(hideLoading());
 };
 
 // Profile Loading

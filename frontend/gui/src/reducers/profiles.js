@@ -52,6 +52,7 @@ export default function(state = initialState, action) {
         ...state,
         profiles: null
       };
+
     default:
       return state;
   }

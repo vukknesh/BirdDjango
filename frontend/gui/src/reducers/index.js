@@ -1,4 +1,5 @@
 import { combineReducers } from "redux";
+import { loadingBarReducer } from "react-redux-loading-bar";
 
 import errors from "./errors";
 import messages from "./messages";
@@ -15,6 +16,6 @@ export default combineReducers({
   hotels,
   messages,
   products,
-
+  loadingBar: loadingBarReducer,
   errors
 });

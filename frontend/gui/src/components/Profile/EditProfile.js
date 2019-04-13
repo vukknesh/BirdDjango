@@ -86,13 +86,11 @@ class EditProfile extends Component {
     this.setState(prevState => ({
       is_guide: !prevState.is_guide
     }));
-    console.log(this.state.is_guide);
   };
   handleCheckboxOwner = event => {
     this.setState(prevState => ({
       is_owner: !prevState.is_owner
     }));
-    console.log(this.state.is_owner);
   };
 
   onSubmit = event => {
@@ -149,7 +147,6 @@ class EditProfile extends Component {
     if (this.state.is_owner) {
       var is_owner = this.state.is_owner;
     }
-    console.log(is_guide + "guide ... " + is_owner + "owner");
 
     return (
       <div className="container">

@@ -20,7 +20,6 @@ export class MyContent extends Component {
   render() {
     let content;
     if (this.props.posts === null || this.props.posts.isLoading) {
-      console.log("vazio");
       content = <Spinner />;
     } else if (!isEmpty(this.props.myprofile)) {
       content = this.props.posts.map(post => (

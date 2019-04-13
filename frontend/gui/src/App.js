@@ -35,6 +35,8 @@ import HotelPersonalProfile from "./components/Hotels/HotelPersonalProfile";
 import EditHotel from "./components/Hotels/EditHotel";
 import MarketPlace from "./components/marketplace/MarketPlace";
 
+import LoadingBar from "react-redux-loading-bar";
+
 //ALERT OPTIONS
 
 const options = {
@@ -56,8 +58,9 @@ class App extends Component {
               <div>
                 <Navbar />
                 <Topbar />
-                <Alerts />
 
+                <Alerts />
+                <LoadingBar />
                 <Route exact path="/" component={Landing} />
                 <div>
                   <Route exact path="/enter" component={Enter} />

@@ -20,9 +20,8 @@ class MarketPlace extends Component {
     event.preventDefault();
     // const { termo } = this.state;
     // this.props.getProductsByCity(termo);
-
+    console.log(this.state.termo);
     this.props.getProducts();
-    // console.log(city);
   };
 
   render() {
@@ -45,6 +44,7 @@ class MarketPlace extends Component {
                 placeholder="O que procura?"
                 name="termo"
                 value={this.state.termo}
+                onChange={this.onChange}
               />
               <button type="submit" className="submit-btn" value="Procurar">
                 <i className="fas fa-search" />
