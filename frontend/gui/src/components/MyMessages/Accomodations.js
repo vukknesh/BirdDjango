@@ -44,7 +44,7 @@ class Accomodations extends Component {
 
                 <div>
                   <Link to={`hotelByHandle/${hotel.id}/`}>
-                    <button className="edit-btn">Edit Fotos</button>
+                    <button className="edit-btn">Editar</button>
                   </Link>
                 </div>
               </div>

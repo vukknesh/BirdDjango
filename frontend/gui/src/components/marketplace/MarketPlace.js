@@ -3,6 +3,7 @@ import "./main.css";
 import Items from "./Items";
 import { connect } from "react-redux";
 import { getProducts } from "../../actions/products";
+import isEmpty from "../../validation/is-empty";
 
 class MarketPlace extends Component {
   state = {
@@ -33,6 +34,7 @@ class MarketPlace extends Component {
             <form onSubmit={this.onSubmit}>
               <select>
                 <option value="all">Categorias</option>
+                <option value="todas">Todas</option>
                 <option value="volvo">Cameras</option>
                 <option value="saab">Lentes</option>
                 <option value="mercedes">Roupas</option>
@@ -51,11 +53,11 @@ class MarketPlace extends Component {
               </button>
             </form>
           </div>
-          <div className="produtos">
-            {this.props.products ? (
-              <Items products={this.props.products} />
-            ) : null}
-          </div>
+        </div>
+        <div>
+          {this.props.products ? (
+            <Items products={this.props.products} />
+          ) : null}
         </div>
       </div>
     );

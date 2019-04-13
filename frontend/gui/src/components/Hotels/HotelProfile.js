@@ -1,11 +1,18 @@
 import React, { Component } from "react";
 import "./main.css";
+import { deleteHotel } from "../../actions/hotels";
 
-import { Redirect, Link } from "react-router-dom";
+import { Redirect, Link, withRouter } from "react-router-dom";
 
 import { connect } from "react-redux";
 
 class HotelProfile extends Component {
+  deleteHotel = e => {
+    let token = this.props.token;
+    let id = this.props.hotel.id;
+    this.props.deleteHotel(id, token, this.props.history);
+  };
+
   render() {
     if (!this.props.isAuthenticated) {
       return <Redirect to="/login" />;
@@ -31,11 +38,18 @@ class HotelProfile extends Component {
     return (
       <div className="hotel-container">
         <div className="top-content">
-          <img src={image1} alt="" />
-
-          <img src={image2} alt="" />
-          <img src={image3} alt="" />
-          <img src={image4} alt="" />
+          <a target="_blank" href={image1}>
+            <img src={image1} alt="" />
+          </a>
+          <a target="_blank" href={image2}>
+            <img src={image2} alt="" />
+          </a>
+          <a target="_blank" href={image3}>
+            <img src={image3} alt="" />
+          </a>
+          <a target="_blank" href={image4}>
+            <img src={image4} alt="" />
+          </a>
         </div>
 
         <div className="hotel-content">
@@ -44,34 +58,23 @@ class HotelProfile extends Component {
             <p>
               {city}-{state}
             </p>
-            <p>*****</p>
-            <p>numero de votos</p>
-            <i className="fas fa-home" />
-            <p>Address: {address}</p>
+            <hr />
+            <i className="fas fa-home" /> <p>Address: {address}</p>
             <i className="fas fa-phone-square" />
             <p>telefone: (019)99645499</p>
             <i className="fas fa-info" />
             <p>{content}</p>
             <div className="commodities">
               <i className="fas fa-wifi" />
-              <i className="fas fa-check" />- <i className="fas fa-coffee" />{" "}
-              <i className="fas fa-check" />
+              <i className="fas fa-check pr-3" />-{" "}
+              <i className="fas fa-coffee" />{" "}
+              <i className="fas fa-check pr-3" />
               <i className="fas fa-igloo" />
               <i className="fas fa-check" />
             </div>
           </div>
           <div className="owner-info">
-            {this.props.myprofile.id === id ? (
-              <Link to="/edit-hotel-pics">
-                <button className="edit-btn">Editar Fotos</button>
-              </Link>
-            ) : null}
-            {this.props.myprofile.id === id ? (
-              <Link to="/edit-hotel">
-                <button className="edit-btn">Editar Dados</button>
-              </Link>
-            ) : null}
-            <div className="hotel-owner">
+            <div className="hotel-owner p-5">
               <img src={image} alt="" />
               <h5>
                 {first_name} {last_name}
@@ -85,6 +88,23 @@ class HotelProfile extends Component {
               <p>wikiaves</p>
               <p>youtube</p>
             </div>
+            <div className="editar-botoes">
+              {this.props.myprofile.id === id ? (
+                <Link to="/edit-hotel-pics">
+                  <button className="edit-btn">Editar Fotos</button>
+                </Link>
+              ) : null}
+              {this.props.myprofile.id === id ? (
+                <Link to="/edit-hotel">
+                  <button className="edit-btn">Editar Dados</button>
+                </Link>
+              ) : null}
+              {this.props.myprofile.id === id ? (
+                <button onClick={this.deleteHotel} className="btn btn-danger ">
+                  Deletar
+                </button>
+              ) : null}
+            </div>
           </div>
         </div>
       </div>
@@ -96,7 +116,11 @@ const mapStateToProps = state => ({
   hotel: state.hotels.hotel,
   isAuthenticated: state.auth.isAuthenticated,
   myprofile: state.profiles.myprofile,
-  profile: state.profiles.profile
+  profile: state.profiles.profile,
+  token: state.auth.token
 });
 
-export default connect(mapStateToProps)(HotelProfile);
+export default connect(
+  mapStateToProps,
+  { deleteHotel }
+)(withRouter(HotelProfile));

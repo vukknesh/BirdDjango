@@ -5,7 +5,8 @@ import "../Auth/Login.css";
 export default function Footer() {
   return (
     <div className="footer">
-      <ul className="nav justify-content-center mt-1 bg-dark">
+      <h4>FIQUE CONECTADO</h4>
+      <ul className="nav justify-content-center">
         <li className="nav-item">
           <a className="nav-link active text-light" href="/login">
             <img
@@ -35,16 +36,6 @@ export default function Footer() {
             href="https://www.wikiaves.com.br/perfil_gneshich"
           >
             <i className="fas fa-dove" />
-          </a>
-        </li>
-        <li className="nav-item">
-          <a
-            className="nav-link disabled"
-            href="/landing"
-            tabIndex="-1"
-            aria-disabled="true"
-          >
-            Murucututu.com.br
           </a>
         </li>
       </ul>

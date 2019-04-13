@@ -34,6 +34,7 @@ import MyAccomodations from "./components/MyMessages/MyAccomodations";
 import HotelPersonalProfile from "./components/Hotels/HotelPersonalProfile";
 import EditHotel from "./components/Hotels/EditHotel";
 import MarketPlace from "./components/marketplace/MarketPlace";
+import ItemInfo from "./components/marketplace/ItemInfo";
 
 import LoadingBar from "react-redux-loading-bar";
 
@@ -113,6 +114,7 @@ class App extends Component {
               </Switch> */}
                   <Route exact path="/not-found" component={NotFound} />
                   <Route exact path="/marketplace" component={MarketPlace} />
+                  <Route exact path="/item-info/:id/" component={ItemInfo} />
                   <Route
                     exact
                     path="/hotelByHandle/:id/"

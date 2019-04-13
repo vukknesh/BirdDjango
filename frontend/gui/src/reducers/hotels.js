@@ -49,6 +49,11 @@ export default function(state = initialState, action) {
         hotel: null,
         isLoading: false
       };
+    case DELETE_HOTEL:
+      return {
+        ...state,
+        hotels: state.hotels.filter(hotel => hotel.id !== action.payload)
+      };
     default:
       return state;
   }

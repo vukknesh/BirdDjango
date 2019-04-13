@@ -239,20 +239,24 @@
   justify-content: space-between;
   overflow: hidden;
   margin-bottom: 20px;
-  img {
-    border-radius: 30px;
-    max-width: 25%;
-    max-height: 30vh;
-    transition: all 0.2s ease-in-out;
-    border: 1px solid lightgray;
-    margin: 10px 15px;
-  }
+  padding-bottom: 20px;
+
   a {
-    border-radius: 30px;
     max-width: 25%;
-    max-height: 30vh;
+    min-height: 30vh;
+    transition: all 0.2s ease-in-out;
+
+    margin: 10px 15px;
+    img {
+      border-radius: 30px;
+      max-width: 100%;
+      min-height: 100%;
+      transition: all 0.2s ease-in-out;
+      border: 1px solid lightgray;
+      margin: 10px 15px;
+    }
   }
-  img:hover {
+  a:hover {
     transform: scale(1.1);
     cursor: pointer;
   }
@@ -305,4 +309,9 @@
 }
 .personal {
   margin: 30px 20px;
+}
+
+.editar-botoes {
+  justify-content: center;
+  display: flex;
 }

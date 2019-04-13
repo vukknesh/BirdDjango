@@ -47,18 +47,6 @@ class AddHotel extends Component {
   onChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
-  // handleCheckboxGuide = event => {
-  //   this.setState(prevState => ({
-  //     is_guide: !prevState.is_guide
-  //   }));
-  //   console.log(this.state.is_guide);
-  // };
-  // handleCheckboxOwner = event => {
-  //   this.setState(prevState => ({
-  //     is_owner: !prevState.is_owner
-  //   }));
-  //   console.log(this.state.is_owner);
-  // };
 
   onSubmit = event => {
     event.preventDefault();

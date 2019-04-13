@@ -26,6 +26,9 @@ export class Alerts extends Component {
     }
 
     if (message !== prevProps.message) {
+      if (message.hotelDelete) alert.success(message.hotelDelete);
+      if (message.contactusError) alert.error(message.contactusError);
+      if (message.contactus) alert.success(message.contactus);
       if (message.registerSuccess) alert.success(message.registerSuccess);
       if (message.hotelAdd) alert.success(message.hotelAdd);
       if (message.postSucesso) alert.success(message.postSucesso);

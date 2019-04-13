@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'hotels',
     'products',
     'storages',
+    'contactus',
 
 
 ]

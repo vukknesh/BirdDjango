@@ -125,24 +125,38 @@ export const updateHotel = (profileData, id, token, history) => dispatch => {
     );
 };
 
-//delete Post
+// delete hotel
 
-// export const deletePost = id => dispatch => {
-//   axios
-//     .delete(`/api/posts/${id}`)
-//     .then(res =>
-//       dispatch({
-//         type: DELETE_POST,
-//         payload: id
-//       })
-//     )
-//     .catch(err =>
-//       dispatch({
-//         type: GET_ERRORS,
-//         payload: err.response.data
-//       })
-//     );
-// };
+export const deleteHotel = (id, token, history) => dispatch => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json"
+    }
+  };
+  if (token) {
+    config.headers["Authorization"] = `Token ${token}`;
+  }
+  axios
+    .delete(`http://localhost:8000/api/hotels/${id}/delete/`, config)
+
+    .then(res => {
+      history.push("/my-accomodations");
+      dispatch(
+        createMessage({ hotelDelete: "Acomodação removida com sucesso!" })
+      );
+      dispatch({
+        type: DELETE_HOTEL,
+        payload: id
+      });
+    })
+    .catch(
+      err => console.log(err)
+      // dispatch({
+      //   type: GET_ERRORS,
+      //   payload: err.response.data
+      // })
+    );
+};
 
 //Add Likes
 // export const addLike = id => dispatch => {

@@ -65,7 +65,6 @@ export class MyContent extends Component {
             </div>
           </div>
           <div className="card-comments">
-            <img src={pic} alt="" />
             <form action="submit">
               <input type="text" />
               <i className="far fa-smile" />

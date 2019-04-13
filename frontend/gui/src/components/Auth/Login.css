@@ -12,8 +12,8 @@
 .container1 {
   font-family: "Roboto", sans-serif;
   font-size: 14px;
-  height: 88vh;
-  padding-top: 35px;
+  height: 60vh;
+  padding-top: 40px;
 }
 
 .owl {
@@ -240,5 +240,38 @@
   right: 30%;
   width: 250px;
   border-radius: 10px;
+}
+
+.footer {
+  min-height: 250px;
+  margin-top: 200px;
+  background: #282828;
+  font-family: "Gravity-Regular";
+}
+
+.footer ul li {
+  width: 50px;
+  height: 50px;
+  background: #fcfcfc;
+  margin: 10px;
+  padding-top: 5px;
+  border-radius: 50%;
+}
+
+.footer ul li:hover {
+  background: #868080;
+  color: white;
+}
+
+.footer ul li i {
+  color: #212529;
+  font-size: 20px;
+}
+
+.footer h4 {
+  padding-top: 50px;
+  text-align: center;
+  color: white;
+  padding-bottom: 20px;
 }
 /*# sourceMappingURL=Login.css.map */

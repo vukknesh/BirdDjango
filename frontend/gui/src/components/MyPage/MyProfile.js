@@ -72,30 +72,42 @@ class MyProfile extends Component {
                 aria-haspopup="true"
                 aria-expanded="false"
               >
-                <i className="far fa-thumbs-up" /> Social Medias ->
+                <i className="far fa-thumbs-up" /> Social Medias
               </p>
               <hr />
               <div className="dropdown-menu">
                 {instagram ? (
-                  <a href="#">
+                  <a
+                    target="_blank"
+                    href={`https://www.instagram.com/${instagram}`}
+                  >
                     <i className="fab fa-instagram" />
                     Instagram
                   </a>
                 ) : null}
                 {youtube ? (
-                  <a href="#">
+                  <a
+                    target="_blank"
+                    href={`https://www.youtube.com/${youtube}`}
+                  >
                     <i className="fab fa-youtube" />
                     Youtube
                   </a>
                 ) : null}
                 {facebook ? (
-                  <a href="#">
+                  <a
+                    target="_blank"
+                    href={`https://www.facebook.com/${facebook}`}
+                  >
                     <i className="fab fa-facebook" />
                     Facebook
                   </a>
                 ) : null}
                 {wikiaves ? (
-                  <a href="#">
+                  <a
+                    target="_blank"
+                    href={`https://www.wikiaves.com.br/perfil_${wikiaves}`}
+                  >
                     <i className="fas fa-dove" />
                     Wikiaves
                   </a>
@@ -120,7 +132,7 @@ class MyProfile extends Component {
             <hr />
             <Link to="/my-messages" className="link-to">
               <p>
-                <i className="far fa-envelope" /> Minhas Menssagens
+                <i className="far fa-envelope" /> Meus Posts
               </p>
             </Link>
             <hr />
@@ -136,7 +148,6 @@ class MyProfile extends Component {
               <p>
                 <i className="fas fa-camera-retro" /> Editar Foto
               </p>
-              <hr />
             </Link>
           </div>
         </div>

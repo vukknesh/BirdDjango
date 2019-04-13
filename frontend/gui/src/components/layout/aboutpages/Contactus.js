@@ -1,23 +1,103 @@
-import React from "react";
+import React, { Component } from "react";
+import TextFieldGroup from "../../common/TextFieldGroup";
+import axios from "axios";
+import { createMessage } from "../../../actions/messages";
+import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 
-export default function Contactus() {
-  return (
-    <div style={bg}>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate
-        earum placeat quas dolor facere optio nulla dolores obcaecati. Deleniti
-        minus necessitatibus ratione placeat odio officia ad, natus vitae nihil
-        hic? Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Perspiciatis libero magni, nostrum deserunt molestias maxime nam. Vel,
-        commodi? Nulla, fuga.lorem100 Lorem ipsum dolor sit amet consectetur
-        adipisicing elit. Atque similique laboriosam deserunt suscipit?
-        Laboriosam fugiat sunt cupiditate rem, expedita assumenda et aliquam
-        illum nulla sequi officia dicta cumque reiciendis obcaecati.
-      </p>
-    </div>
-  );
+class Contactus extends Component {
+  state = {
+    name: "",
+    email: "",
+    subject: "",
+    reason: "",
+    message: ""
+  };
+  onSubmit = e => {
+    e.preventDefault();
+    const { name, email, message } = this.state;
+    let menssagem = this.state;
+    if ((name, email, message)) {
+      axios.post(`http://localhost:8000/api/contactus/create/`, menssagem);
+      this.props.createMessage({ contactus: "Menssagem enviada com sucesso!" });
+      this.props.history.push("/");
+    } else {
+      this.props.createMessage({
+        contactusError: "Algum campo nao preenchido!"
+      });
+    }
+
+    this.setState({
+      name: "",
+      email: "",
+      subject: "",
+      reason: "",
+      message: ""
+    });
+  };
+
+  onChange = event => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
+  render() {
+    return (
+      <div className="container">
+        <div className="row">
+          <div className="col-md-8 m-auto">
+            <h1 className="display-4 text-center">Contato</h1>
+            <p className="lead text-center">Mande-nos um Email</p>
+            <p className="lead">Nome</p>
+            <form noValidate onSubmit={this.onSubmit}>
+              <TextFieldGroup
+                type="text"
+                name="name"
+                value={this.state.name}
+                onChange={this.onChange}
+                // error={errors.email}
+              />
+              <p className="lead">Email</p>
+              <TextFieldGroup
+                name="email"
+                value={this.state.email}
+                onChange={this.onChange}
+                // error={errors.password}
+                type="email"
+              />
+              <p className="lead">Referente</p>
+              <TextFieldGroup
+                type="text"
+                name="subject"
+                value={this.state.subject}
+                onChange={this.onChange}
+                // error={errors.name}
+              />
+              <p className="lead">Motivo</p>
+              <TextFieldGroup
+                type="text"
+                name="reason"
+                value={this.state.reason}
+                onChange={this.onChange}
+                // error={errors.name}
+              />
+              <p className="lead">Menssagem</p>
+              <TextFieldGroup
+                type="text"
+                name="message"
+                value={this.state.message}
+                onChange={this.onChange}
+                // error={errors.name}
+              />
+
+              <input type="submit" className="edit-btn" />
+            </form>
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
-const bg = {
-  color: "black",
-  height: "90vh"
-};
+
+export default connect(
+  null,
+  { createMessage }
+)(Contactus);

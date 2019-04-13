@@ -50,7 +50,55 @@
 }
 
 .produtos {
-  position: relative;
-  top: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100%;
+}
+
+.produto-cartao {
+  min-width: 200px;
+  min-height: 250px;
+  max-width: 250px;
+  margin: 20px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  padding: 10px;
+  background: rgba(71, 45, 32, 0.82);
+  color: white;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.produto-cartao:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  text-decoration: none;
+}
+
+.produto-cartao:hover h2 {
+  color: white;
+}
+
+.produto-cartao:hover p {
+  color: white;
+}
+
+.produto-img {
+  height: 70%;
+  background: #fcfcfc;
+  border-radius: 10px;
+}
+
+.produto-img img {
+  border-radius: 30px;
+  height: 100%;
+  width: 100%;
+}
+
+.produto-info {
+  padding-top: 10px;
 }
 /*# sourceMappingURL=main.css.map */

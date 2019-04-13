@@ -277,25 +277,28 @@
           justify-content: space-between;
   overflow: hidden;
   margin-bottom: 20px;
+  padding-bottom: 20px;
 }
 
-.top-content img {
-  border-radius: 30px;
+.top-content a {
   max-width: 25%;
-  max-height: 30vh;
+  min-height: 30vh;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  margin: 10px 15px;
+}
+
+.top-content a img {
+  border-radius: 30px;
+  max-width: 100%;
+  min-height: 100%;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
   border: 1px solid lightgray;
   margin: 10px 15px;
 }
 
-.top-content a {
-  border-radius: 30px;
-  max-width: 25%;
-  max-height: 30vh;
-}
-
-.top-content img:hover {
+.top-content a:hover {
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
   cursor: pointer;
@@ -360,5 +363,14 @@
 
 .personal {
   margin: 30px 20px;
+}
+
+.editar-botoes {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 /*# sourceMappingURL=main.css.map */

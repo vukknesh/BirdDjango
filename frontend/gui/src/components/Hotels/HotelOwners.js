@@ -42,16 +42,18 @@ class HotelOwners extends Component {
                 </a>
               </li>
             </ul>
-            <div className="details">
-              <h2>
-                {hotel.title}
-                <br />
-                <span>
-                  {hotel.city}- {hotel.state}
-                </span>
-                <p>R$ {hotel.price}</p>
-              </h2>
-            </div>
+            <Link to={`hotelByHandle/${hotel.id}/`}>
+              <div className="details">
+                <h2>
+                  {hotel.title}
+                  <br />
+                  <span>
+                    {hotel.city}- {hotel.state}
+                  </span>
+                  <p>R$ {hotel.price}</p>
+                </h2>
+              </div>
+            </Link>
           </div>
         ));
       }
