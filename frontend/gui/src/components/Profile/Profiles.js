@@ -4,9 +4,7 @@ import { connect } from "react-redux";
 import Youtube from "../youtube/Youtube";
 import PersonalProfile from "./PersonalProfile";
 import ContactProfile from "./ContactProfile";
-import Home from "../Maps/Home";
-import "./gm.css";
-
+import MapContainer from "../Maps/MapContainer";
 import {
   getProfileByHandle,
   clearCurrentProfile,
@@ -30,9 +28,7 @@ class Profiles extends Component {
           <div className="w-25 d-flex justify-content-center">
             <PersonalProfile />
           </div>
-          <div className="w-50 d-flex justify-content-center border rouded">
-            <h1>middle</h1>
-          </div>
+          <div className="w-50 d-flex justify-content-center border rouded" />
           <div className="w-25 justify-content-center border rounded bg-light">
             <ContactProfile />
           </div>
@@ -40,9 +36,7 @@ class Profiles extends Component {
         <div>
           <Youtube />
         </div>
-        <div className="googlemaps">
-          <Home />
-        </div>
+        <MapContainer />
       </div>
     );
   }

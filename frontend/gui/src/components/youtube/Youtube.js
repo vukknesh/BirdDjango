@@ -5,8 +5,9 @@ import VideoList from "./video_list";
 import VideoDetail from "./video_detail";
 import { connect } from "react-redux";
 import "./youtube.css";
+import { GOOGLE_API_KEY } from "../../utils/env";
 
-const API_KEY = "AIzaSyBQ-JHAdkRpnFIUlQekQUrn4UHCwQfVucw";
+const API_KEY = GOOGLE_API_KEY;
 
 class Youtube extends Component {
   constructor(props) {

@@ -19,7 +19,8 @@ class HotelCreateUpdateSerializer(ModelSerializer):
     class Meta:
         model = Hotel
         fields = [
-
+            'lat',
+            'lng',
             'title',
             'price',
             'address',
@@ -58,7 +59,8 @@ class HotelDetailSerializer(ModelSerializer):
             'id',
             'user',
             'title',
-
+            'lat',
+            'lng',
             'content',
             'price',
             'address',
@@ -119,6 +121,8 @@ class HotelListSerializer(ModelSerializer):
         model = Hotel
         fields = [
             'id',
+            'lat',
+            'lng',
             'user_id',
             'first_name',
             'last_name',

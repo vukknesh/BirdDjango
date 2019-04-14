@@ -5,8 +5,13 @@ import { connect } from "react-redux";
 import { getCurrentProfile } from "../../actions/profile";
 import { addHotel } from "../../actions/hotels";
 import TextFieldGroup from "../common/TextFieldGroup";
-
+// import { GoogleComponent } from "react-google-location";
 import isEmpty from "../../validation/is-empty";
+import PlacesAutocomplete, {
+  geocodeByAddress,
+  getLatLng
+} from "react-places-autocomplete";
+// const API_KEY = "AIzaSyDvXcLdeULIN8d49xRl08EHVcHGgPS9Cu0";
 
 class AddHotel extends Component {
   state = {
@@ -16,12 +21,32 @@ class AddHotel extends Component {
     city: "",
     state: "",
     content: "",
+    lat: null,
+    lng: null,
+
+    // place: null,
     errors: {}
   };
   componentDidMount() {
     this.props.getCurrentProfile(this.props.user.id);
   }
 
+  handleChange = address => {
+    this.setState({ address });
+  };
+
+  handleSelect = address => {
+    geocodeByAddress(address)
+      .then(results => getLatLng(results[0]))
+      .then(latLng =>
+        this.setState({
+          lat: latLng.lat,
+          lng: latLng.lng
+        })
+      )
+      .catch(error => console.error("Error", error));
+  };
+  // console.log("Success", latLng))
   componentWillReceiveProps(nextProps) {
     if (nextProps.hotel) {
       const hotel = nextProps.hotel;
@@ -50,9 +75,20 @@ class AddHotel extends Component {
 
   onSubmit = event => {
     event.preventDefault();
-    const { title, price, address, city, state, content } = this.state;
+    const {
+      title,
+      price,
+      address,
+      city,
+      state,
+      content,
+      lat,
+      lng
+    } = this.state;
 
     const newHotel = {
+      lat,
+      lng,
       title,
       price,
       address,
@@ -60,7 +96,7 @@ class AddHotel extends Component {
       state,
       content
     };
-
+    console.log(newHotel);
     let token = this.props.token;
 
     this.props.addHotel(newHotel, token, this.props.history);
@@ -70,12 +106,9 @@ class AddHotel extends Component {
     if (!this.props.isAuthenticated) {
       return <Redirect to="/" />;
     }
-    // if (this.state.is_guide) {
-    //   var is_guide = this.state.is_guide;
-    // }
-    // if (this.state.is_owner) {
-    //   var is_owner = this.state.is_owner;
-    // }
+    console.log(this.state.address);
+    console.warn("lat" + this.state.lat);
+    console.warn(this.state.lng);
 
     return (
       <div className="container">
@@ -83,41 +116,60 @@ class AddHotel extends Component {
           <div className="col-md-8 m-auto">
             <h1 className="display-4 text-center">Hotel</h1>
             <p className="lead text-center">Registre sua acomodação</p>
-
-            {/* {is_guide ? (
-              <input
-                type="checkbox"
-                name="is_guide"
-                checked={this.state.is_guide}
-                value={this.state.is_guide}
-                onChange={this.handleCheckboxGuide}
-              />
-            ) : (
-              <input
-                type="checkbox"
-                name="is_guide"
-                value={this.state.is_guide}
-                onChange={this.handleCheckboxGuide}
-              />
-            )}{" "}
-            - Guia <span className="mr-4" />
-            {is_owner ? (
-              <input
-                type="checkbox"
-                name="is_owner"
-                checked={this.state.is_owner}
-                value={this.state.is_owner}
-                onChange={this.handleCheckboxOwner}
-              />
-            ) : (
-              <input
-                type="checkbox"
-                name="is_owner"
-                value={this.state.is_owner}
-                onChange={this.handleCheckboxOwner}
-              />
-            )}{" "}
-            - Acomodações */}
+            <PlacesAutocomplete
+              value={this.state.address}
+              onChange={this.handleChange}
+              onSelect={this.handleSelect}
+            >
+              {({
+                getInputProps,
+                suggestions,
+                getSuggestionItemProps,
+                loading
+              }) => (
+                <div>
+                  <input
+                    {...getInputProps({
+                      placeholder: "Search Places ...",
+                      className: "location-search-input"
+                    })}
+                  />
+                  <div className="autocomplete-dropdown-container">
+                    {loading && <div>Loading...</div>}
+                    {suggestions.map(suggestion => {
+                      const className = suggestion.active
+                        ? "suggestion-item--active"
+                        : "suggestion-item";
+                      // inline style for demonstration purpose
+                      const style = suggestion.active
+                        ? { backgroundColor: "#fafafa", cursor: "pointer" }
+                        : { backgroundColor: "#ffffff", cursor: "pointer" };
+                      return (
+                        <div
+                          {...getSuggestionItemProps(suggestion, {
+                            className,
+                            style
+                          })}
+                        >
+                          <span>{suggestion.description}</span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+            </PlacesAutocomplete>
+            {/* <GoogleComponent
+              apiKey={API_KEY}
+              language={"en"}
+              country={"country:us"}
+              coordinates={true}
+              // locationBoxStyle={"custom-style"}
+              // locationListStyle={"custom-style-list"}
+              onChange={e => {
+                this.setState({ place: e });
+              }}
+            /> */}
             <p className="lead text-center">Titulo</p>
             <form noValidate onSubmit={this.onSubmit}>
               <TextFieldGroup
