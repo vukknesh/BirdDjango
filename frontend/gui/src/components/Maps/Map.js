@@ -8,7 +8,7 @@ import {
 } from "react-google-maps";
 import Geocode from "react-geocode";
 import Autocomplete from "react-google-autocomplete";
-Geocode.setApiKey("AIzaSyBPMD98CvlLAYTgjadCZtIRbOpOez0soyU");
+
 Geocode.enableDebug();
 
 class Map extends Component {

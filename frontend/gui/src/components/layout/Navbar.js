@@ -29,7 +29,7 @@ class Navbar extends Component {
           <Link className="nav-link text-light" to="/add-product">
             Produtos
           </Link>
-          <div class="dropdown-content">
+          <div className="dropdown-content">
             <Link to="/marketplace">Procurar</Link>
             {is_owner ? <Link to="/">Registrar Produto</Link> : null}
           </div>
@@ -38,7 +38,7 @@ class Navbar extends Component {
           <Link className="nav-link text-light" to="/hotels">
             Hoteis
           </Link>
-          <div class="dropdown-content">
+          <div className="dropdown-content">
             <Link to="/hotels">Procurar</Link>
             {is_owner ? <Link to="/add-hotel">Registrar Hotel</Link> : null}
           </div>
@@ -47,7 +47,7 @@ class Navbar extends Component {
           <Link className="nav-link text-light" to="/guide">
             Guias
           </Link>
-          <div class="dropdown-content">
+          <div className="dropdown-content">
             <Link to="/guide">Procurar Guias</Link>
             <Link to="/">Cadastrar</Link>
           </div>
@@ -62,7 +62,7 @@ class Navbar extends Component {
               className="rounded-circle"
             />
           </Link>
-          <div class="dropdown-content">
+          <div className="dropdown-content">
             <div className="perfil-dropdown">
               <div>
                 <img src={image} alt="" />

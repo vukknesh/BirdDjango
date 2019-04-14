@@ -1,9 +1,12 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import Youtube from "../youtube/Youtube";
 import PersonalProfile from "./PersonalProfile";
 import ContactProfile from "./ContactProfile";
-import Map from "../Maps/Map";
+import Home from "../Maps/Home";
+import "./gm.css";
+
 import {
   getProfileByHandle,
   clearCurrentProfile,
@@ -18,6 +21,9 @@ class Profiles extends Component {
   }
 
   render() {
+    if (!this.props.profile) {
+      return <Redirect to="/login" />;
+    }
     return (
       <div style={pageStyle} className="mt-3  bg-light">
         <div className="row h-100 ">
@@ -34,13 +40,8 @@ class Profiles extends Component {
         <div>
           <Youtube />
         </div>
-        <div className="google">
-          <Map
-            google={this.props.google}
-            center={{ lat: 18.5204, lng: 73.8567 }}
-            height="300px"
-            zoom={15}
-          />
+        <div className="googlemaps">
+          <Home />
         </div>
       </div>
     );
