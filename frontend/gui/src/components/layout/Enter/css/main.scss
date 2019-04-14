@@ -37,3 +37,30 @@
 .pp2 {
   color: black;
 }
+.about-container {
+  padding: 50px;
+  background: #b6b3b3;
+}
+.missao {
+  background: #fcfcfc;
+
+  border-radius: 10px;
+  display: flex;
+}
+.valores {
+  min-width: 60%;
+  font-size: 15px;
+  padding: 20px;
+  h3 {
+    color: rgb(94, 86, 13);
+  }
+}
+.imagem-murucututu {
+  min-width: 40%;
+  max-width: 40%;
+  img {
+    width: 80%;
+    height: 80%;
+    padding: 40px 0px 0px 60px;
+  }
+}

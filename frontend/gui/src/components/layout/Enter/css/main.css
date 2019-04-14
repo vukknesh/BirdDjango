@@ -44,4 +44,38 @@
 .pp2 {
   color: black;
 }
+
+.about-container {
+  padding: 50px;
+  background: #b6b3b3;
+}
+
+.missao {
+  background: #fcfcfc;
+  border-radius: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.valores {
+  min-width: 60%;
+  font-size: 15px;
+  padding: 20px;
+}
+
+.valores h3 {
+  color: #5e560d;
+}
+
+.imagem-murucututu {
+  min-width: 40%;
+  max-width: 40%;
+}
+
+.imagem-murucututu img {
+  width: 80%;
+  height: 80%;
+  padding: 40px 0px 0px 60px;
+}
 /*# sourceMappingURL=main.css.map */

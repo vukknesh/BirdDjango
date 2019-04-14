@@ -33,6 +33,14 @@ class HotelProfile extends Component {
     }
     if (this.props.profile) {
       var image = this.props.profile.image;
+      var email = this.props.profile.email;
+      var instagram = this.props.profile.instagram;
+      var wikiaves = this.props.profile.wikiaves;
+      var facebook = this.props.profile.facebook;
+      var youtube = this.props.profile.youtube;
+      var city = this.props.profile.city;
+      var state = this.props.profile.state;
+      var id = this.props.profile.user;
     }
 
     return (
@@ -74,19 +82,23 @@ class HotelProfile extends Component {
             </div>
           </div>
           <div className="owner-info">
-            <div className="hotel-owner p-5">
-              <img src={image} alt="" />
-              <h5>
-                {first_name} {last_name}
-              </h5>
-            </div>
+            <Link to={`/profilebyhandle/${id}/`}>
+              <div className="hotel-owner p-5">
+                <img src={image} alt="" />
+                <h5>
+                  {first_name} {last_name}
+                </h5>
+              </div>
+            </Link>
 
             <div className="personal">
-              <p>email</p>
-              <p>instagram</p>
-              <p>facebook</p>
-              <p>wikiaves</p>
-              <p>youtube</p>
+              <p>Email: {email}</p>
+              <p>
+                {city}-{state}
+              </p>
+              <p>{facebook}</p>
+              <p>{wikiaves}</p>
+              <p>{youtube}</p>
             </div>
             <div className="editar-botoes">
               {this.props.myprofile.id === id ? (

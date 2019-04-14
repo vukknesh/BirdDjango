@@ -1,61 +1,53 @@
 .container2 {
-  display: flex;
   background: lightgray;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 .sub1 {
-  width: 30%;
+  min-width: 100%;
+  height: 40vh;
 
-  padding: 50px 50px;
+  padding: 30px 30px;
+  margin-bottom: 40px;
 }
 .sub2 {
-  width: 70%;
-
-  padding: 50px 50px;
+  min-width: 100%;
+  max-width: 100%;
 }
 
-.sub1 .searchfield1 {
+.procurar {
   background: white;
-  width: 300px;
-  height: 450px;
-
-  border-radius: 0.4rem;
-  padding: 32px;
+  min-width: 80%;
+  height: 40vh;
+  padding: 20px;
+  border-radius: 20px;
 }
 
-.searchfield1 h2 {
-  margin-bottom: 20px;
-}
-
-.searchfield1 input {
-  width: 100%;
-  padding: 10px 5px;
-  border-radius: 5px;
-  margin-bottom: 20px;
-}
-
-.searchfield1 p {
-  font-size: 0.7rem;
-  margin-bottom: 5px;
-}
-
-.searchfield1 .btnsubmit {
-  width: 100px;
+.btnsubmit1 {
+  max-width: 40%;
   float: right;
-  margin-top: 15px;
+  border-radius: 10px;
+  padding: 10px;
   color: white;
   font-weight: bold;
   font-size: 1rem;
   background-color: #1a8fb4;
 }
 
-.searchfield1 .btnsubmit:hover {
+.procurar .btnsubmit1:hover {
   background-color: #08bff7;
   text-decoration: none;
   color: #472d20;
 }
+.procurar input {
+  min-width: 40%;
+  border-radius: 5px;
+  padding: 5px;
+}
 .figuras {
   margin-top: 150px;
-  margin-left: 50px;
+  margin-left: 100px;
 }
 .box {
   top: 50%;

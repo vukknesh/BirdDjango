@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
+
 import "./guide.css";
 import { connect } from "react-redux";
 import { getProfilesByCity } from "../../actions/profile";
@@ -19,27 +19,27 @@ class SearchGuide extends Component {
   };
   render() {
     return (
-      <div>
-        <form action="search" className="searchfield1" onSubmit={this.onSubmit}>
+      <div className="procurar">
+        <form onSubmit={this.onSubmit}>
           <h2>Procure seu guia por cidade ou especie.</h2>
           <p>CIDADE</p>
           <input
             type="text"
             placeholder="Procure seu guia por cidade"
             name="city"
-            className=""
             onChange={this.onChange}
           />
           <p>ESPECIE</p>
           <input
             type="text"
-            placeholder="Procure seu guia por cidade"
+            placeholder="Procure seu guia por Especie"
             name="city"
-            className=""
-            onChange={this.onChange}
+            disabled
           />
 
-          <input type="submit" className="btnsubmit" />
+          <button type="submit" className="btnsubmit1">
+            Procurar
+          </button>
         </form>
       </div>
     );

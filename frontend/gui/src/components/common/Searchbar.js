@@ -36,9 +36,9 @@ class Searchbar extends Component {
           <p>ESPECIE</p>
           <input
             type="text"
-            placeholder="Procure seu guia por cidade"
+            placeholder="Procure seu guia por especie"
             name="city"
-            className=""
+            disabled
             onChange={this.onChange}
           />
 

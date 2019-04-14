@@ -45,7 +45,12 @@ class Contactus extends Component {
         <div className="row">
           <div className="col-md-8 m-auto">
             <h1 className="display-4 text-center">Contato</h1>
-            <p className="lead text-center">Mande-nos um Email</p>
+
+            <p>
+              Entre em contato conosco para enviar dúvidas, críticas, sugestões,
+              informar problemas técnicos e denunciar abusos de usuário.
+              Responderemos o mais rapidamente possível.
+            </p>
             <p className="lead">Nome</p>
             <form noValidate onSubmit={this.onSubmit}>
               <TextFieldGroup

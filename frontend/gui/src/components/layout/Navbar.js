@@ -17,48 +17,60 @@ class Navbar extends Component {
     const { isAuthenticated } = this.props;
     if (this.props.myprofile) {
       var image = this.props.myprofile.image;
+      var first_name = this.props.myprofile.first_name;
+      var last_name = this.props.myprofile.last_name;
+      var email = this.props.myprofile.email;
       var is_owner = this.props.myprofile.is_owner;
     }
 
     const authLinks = (
       <ul className="navbar-nav ml-auto font-weight-bold show1 mr-5">
-        {is_owner ? (
-          <li className="nav-item">
-            <Link className="nav-link text-light" to="/add-hotel">
-              Registrar Hotel
-            </Link>
-          </li>
-        ) : null}
-
-        <li className="nav-item">
+        <li className="nav-item dropdown">
           <Link className="nav-link text-light" to="/hotels">
             Hoteis
           </Link>
+          <div class="dropdown-content">
+            <Link to="/hotels">Procurar</Link>
+            {is_owner ? <Link to="/add-hotel">Registrar Hotel</Link> : null}
+          </div>
         </li>
-        <li className="nav-item">
+        <li className="nav-item dropdown">
           <Link className="nav-link text-light" to="/guide">
             Guias
           </Link>
+          <div class="dropdown-content">
+            <Link to="/guide">Procurar Guias</Link>
+            <Link to="/">Cadastrar</Link>
+          </div>
         </li>
-        <li className="nav-item active show1">
+        <li className="nav-item active show1 dropdown">
           <Link className="nav-link text-light" to="/my-page">
-            Meu Perfil <span className="sr-only">(current)</span>
-          </Link>
-        </li>
-        <li className="nav-item ">
-          <a
-            href="/"
-            onClick={this.handleLogout}
-            className="nav-link text-light"
-          >
+            Perfil{" "}
             <img
               src={image}
               alt=""
-              style={{ width: "30px", height: "30px", marginRight: "15px" }}
+              style={{ width: "30px", height: "30px" }}
               className="rounded-circle"
             />
-            SAIR
-          </a>
+          </Link>
+          <div class="dropdown-content">
+            <div className="perfil-dropdown">
+              <div>
+                <img src={image} alt="" />
+              </div>
+              <div>
+                <h4>
+                  {first_name} {last_name}
+                </h4>
+                <p>{email}</p>
+              </div>
+            </div>
+            <Link to="/my-page">Meu Perfil</Link>
+            <a href="#">Link 2</a>
+            <a href="/" onClick={this.handleLogout}>
+              SAIR/LOGOUT
+            </a>
+          </div>
         </li>
       </ul>
     );

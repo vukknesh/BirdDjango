@@ -58,7 +58,7 @@ class HotelOwners extends Component {
         ));
       }
     }
-    return <div className="container d-flex flex-wrap figuras1">{hotels}</div>;
+    return <div className="container figuras1">{hotels}</div>;
   }
 }
 const mapStateToProps = state => ({

@@ -175,26 +175,26 @@
 
 .container2 {
   display: flex;
+  flex-direction: column;
   background: lightgray;
 }
 .sub1 {
-  width: 30%;
+  width: 100%;
 
   padding: 50px 50px;
 }
 .sub2 {
-  width: 70%;
+  width: 100%;
 
   padding: 50px 50px;
+  margin: 10px 50px;
 }
 
 .sub1 .searchfield1 {
   background: white;
-  width: 300px;
-  height: 450px;
-
-  border-radius: 0.4rem;
-  padding: 32px;
+  padding: 20px;
+  border-radius: 20px;
+  min-height: 40vh;
 }
 
 .searchfield1 h2 {
@@ -231,6 +231,9 @@
 .figuras1 {
   margin-top: 150px;
   margin-left: 50px;
+
+  display: flex;
+  flex-wrap: wrap;
 }
 .top-content {
   min-height: 30vh;
@@ -271,9 +274,6 @@
   padding-left: 15%;
   padding-right: 10%;
 }
-.owner-info {
-  width: 35%;
-}
 
 .comment-owner {
   display: flex;
@@ -290,15 +290,16 @@
   border: 1px solid lightgrey;
   border-radius: 30px;
   margin-right: 10%;
-  height: 60vh;
+
   position: sticky;
   top: 70px;
+  min-width: 35%;
+  min-height: 70vh;
 }
 
 .hotel-owner {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
 
   img {
     height: 65px;
@@ -308,10 +309,13 @@
   }
 }
 .personal {
-  margin: 30px 20px;
+  text-align: center;
+  padding: 0 10px 10px 10px;
+  margin-top: -20px;
 }
 
 .editar-botoes {
-  justify-content: center;
+  justify-content: space-around;
   display: flex;
+  padding: 20px;
 }

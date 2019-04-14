@@ -24,15 +24,7 @@ class SearchHotel extends Component {
           <p>CIDADE</p>
           <input
             type="text"
-            placeholder="Procure seu guia por cidade"
-            name="city"
-            className=""
-            onChange={this.onChange}
-          />
-          <p>ESPECIE</p>
-          <input
-            type="text"
-            placeholder="Procure seu guia por cidade"
+            placeholder="Procure acomodação por cidade"
             name="city"
             className=""
             onChange={this.onChange}

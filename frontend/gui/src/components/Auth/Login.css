@@ -12,7 +12,7 @@
 .container1 {
   font-family: "Roboto", sans-serif;
   font-size: 14px;
-  height: 60vh;
+  height: 90vh;
   padding-top: 40px;
 }
 
@@ -244,7 +244,7 @@
 
 .footer {
   min-height: 250px;
-  margin-top: 200px;
+  margin-top: 40px;
   background: #282828;
   font-family: "Gravity-Regular";
 }
