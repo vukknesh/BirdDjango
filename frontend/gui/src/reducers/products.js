@@ -19,7 +19,7 @@ export default function(state = initialState, action) {
     case ADD_PRODUCT:
       return {
         ...state,
-        product: [action.payload, ...state.products]
+        products: [action.payload, ...state.products]
       };
 
     case PRODUCT_LOADING:
@@ -45,6 +45,13 @@ export default function(state = initialState, action) {
         products: null,
         product: null,
         isLoading: false
+      };
+    case DELETE_PRODUCT:
+      return {
+        ...state,
+        products: state.products.filter(
+          product => product.id !== action.payload
+        )
       };
     default:
       return state;

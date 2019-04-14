@@ -41,7 +41,7 @@ product_detail_url = HyperlinkedIdentityField(
 
 
 class ProductDetailSerializer(ModelSerializer):
-    url = product_detail_url
+
     user = UserSerializer(read_only=True)
 
     image1 = SerializerMethodField()
@@ -49,12 +49,10 @@ class ProductDetailSerializer(ModelSerializer):
     image3 = SerializerMethodField()
     image4 = SerializerMethodField()
 
-    comments = SerializerMethodField()
-
     class Meta:
         model = Product
         fields = [
-            'url',
+
             'id',
             'user',
             'title',

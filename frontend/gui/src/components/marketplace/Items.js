@@ -9,7 +9,7 @@ export default class Items extends Component {
       produtos = this.props.products.map(produto => (
         <Link
           className="produto-cartao"
-          to={`/item-info/${produto.id}/`}
+          to={`/productByHandle/${produto.id}/`}
           key={produto.id}
         >
           <div className="produto-img">

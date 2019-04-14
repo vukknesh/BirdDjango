@@ -26,6 +26,15 @@ class Navbar extends Component {
     const authLinks = (
       <ul className="navbar-nav ml-auto font-weight-bold show1 mr-5">
         <li className="nav-item dropdown">
+          <Link className="nav-link text-light" to="/add-product">
+            Produtos
+          </Link>
+          <div class="dropdown-content">
+            <Link to="/marketplace">Procurar</Link>
+            {is_owner ? <Link to="/">Registrar Produto</Link> : null}
+          </div>
+        </li>
+        <li className="nav-item dropdown">
           <Link className="nav-link text-light" to="/hotels">
             Hoteis
           </Link>

@@ -24,6 +24,9 @@ import FindHotels from "./components/Hotels/FindHotels";
 import AddHotel from "./components/Hotels/AddHotel";
 import EditHotelPics from "./components/Hotels/EditHotelPics";
 
+import AddProduct from "./components/marketplace/AddProduct";
+import ProdutoProfile from "./components/marketplace/ProdutoProfile";
+
 import Enter from "./components/layout/Enter/Enter";
 import EditProfile from "./components/Profile/EditProfile";
 import EditProfilePic from "./components/Profile/EditProfilePic";
@@ -95,6 +98,11 @@ class App extends Component {
                     />
                     <PrivateRoute
                       exact
+                      path="/add-product"
+                      component={AddProduct}
+                    />
+                    <PrivateRoute
+                      exact
                       path="/edit-hotel"
                       component={EditHotel}
                     />
@@ -119,6 +127,11 @@ class App extends Component {
                     exact
                     path="/hotelByHandle/:id/"
                     component={HotelPersonalProfile}
+                  />
+                  <Route
+                    exact
+                    path="/productByHandle/:id/"
+                    component={ProdutoProfile}
                   />
                   <Route exact path="/my-messages" component={MyMessages} />
                   <Route exact path="/my-comments" component={MyComments} />

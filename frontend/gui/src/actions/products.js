@@ -26,7 +26,7 @@ export const addProduct = (productData, token, history) => dispatch => {
   }
 
   axios
-    .post("http://localhost:8000/api/hotels/create/", productData, config)
+    .post("http://localhost:8000/api/products/create/", productData, config)
     .then(res => {
       dispatch(createMessage({ hotelAdd: "Produto adicionado com sucesso!" }));
       dispatch({
@@ -83,6 +83,36 @@ export const getProduct = id => dispatch => {
         type: GET_PRODUCT,
         payload: null
       })
+    );
+};
+export const deleteProduct = (id, token, history) => dispatch => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json"
+    }
+  };
+  if (token) {
+    config.headers["Authorization"] = `Token ${token}`;
+  }
+  axios
+    .delete(`http://localhost:8000/api/products/${id}/delete/`, config)
+
+    .then(res => {
+      history.push("/my-page");
+      dispatch(
+        createMessage({ productDelete: "Produto removido com sucesso!" })
+      );
+      dispatch({
+        type: DELETE_PRODUCT,
+        payload: id
+      });
+    })
+    .catch(
+      err => console.log(err)
+      // dispatch({
+      //   type: GET_ERRORS,
+      //   payload: err.response.data
+      // })
     );
 };
 // export const getHotelsByCity = city => dispatch => {
