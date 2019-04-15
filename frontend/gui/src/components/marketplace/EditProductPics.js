@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Redirect, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { getCurrentProfile } from "../../actions/profile";
-import { updateHotel, getHotel } from "../../actions/hotels";
+import { updateProduct, getProduct } from "../../actions/products";
 import "./main.css";
 import isEmpty from "../../validation/is-empty";
 
@@ -21,19 +21,19 @@ class EditProductPics extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.hotel) {
-      const hotel = nextProps.hotel;
+    if (nextProps.product) {
+      const product = nextProps.product;
 
-      hotel.image1 = !isEmpty(hotel.image1) ? hotel.image1 : false;
-      hotel.image2 = !isEmpty(hotel.image2) ? hotel.image2 : false;
-      hotel.image3 = !isEmpty(hotel.image3) ? hotel.image3 : false;
-      hotel.image4 = !isEmpty(hotel.image4) ? hotel.image4 : false;
+      product.image1 = !isEmpty(product.image1) ? product.image1 : false;
+      product.image2 = !isEmpty(product.image2) ? product.image2 : false;
+      product.image3 = !isEmpty(product.image3) ? product.image3 : false;
+      product.image4 = !isEmpty(product.image4) ? product.image4 : false;
 
       this.setState({
-        image1: hotel.image1,
-        image2: hotel.image2,
-        image3: hotel.image3,
-        image4: hotel.image4
+        image1: product.image1,
+        image2: product.image2,
+        image3: product.image3,
+        image4: product.image4
       });
     }
   }
@@ -75,9 +75,9 @@ class EditProductPics extends Component {
       fd.append("image4", this.state.image4, this.state.image4.name);
     }
 
-    let id = this.props.hotel.id;
+    let id = this.props.product.id;
     let token = this.props.token;
-    this.props.updateHotel(fd, id, token, this.props.history);
+    this.props.updateProduct(fd, id, token, this.props.history);
   };
 
   render() {
@@ -89,9 +89,9 @@ class EditProductPics extends Component {
       <div className="container">
         <div className="row">
           <div className="col-md-8 m-auto">
-            <h1 className="display-4 text-center">Profile</h1>
-            <p className="lead text-center">Edit Your Bird Watcher Profile</p>
-            <p className="lead text-center">Profile Picture</p>
+            <h1 className="display-4 text-center">Produtos</h1>
+            <p className="lead text-center">Editar Fotos do Produto</p>
+
             <form onSubmit={this.onSubmit}>
               <input type="file" name="image1" onChange={this.image1Change} />{" "}
               Imagem 1
@@ -99,6 +99,7 @@ class EditProductPics extends Component {
               <input
                 type="file"
                 name="image2"
+                className="mt-2"
                 onChange={this.image2Change}
               />{" "}
               Imagem 2
@@ -106,6 +107,7 @@ class EditProductPics extends Component {
               <input
                 type="file"
                 name="image3"
+                className="mt-2"
                 onChange={this.image3Change}
               />{" "}
               Imagem 3
@@ -113,24 +115,15 @@ class EditProductPics extends Component {
               <input
                 type="file"
                 name="image4"
+                className="mt-2"
                 onChange={this.image4Change}
               />{" "}
               Imagem 4
               <br />
-              {/* <input
-                type="checkbox"
-                name="is_guide"
-                checked={this.state.is_guide}
-                onChange={this.handleCheckboxGuide}
-              />{" "}
-              - Guia <span className="mr-4" />
               <input
-                type="checkbox"
-                name="is_owner"
-                checked={this.state.is_owner}
-                onChange={this.handleCheckboxOwner}
-              /> */}
-              <input type="submit" className="edit-btn" />
+                type="submit"
+                className="btn btn-block btn-info mb-5 mt-2"
+              />
             </form>
           </div>
         </div>
@@ -139,7 +132,7 @@ class EditProductPics extends Component {
   }
 }
 
-EditHotelPics.propTypes = {
+EditProductPics.propTypes = {
   isAuthenticated: PropTypes.bool,
 
   getCurrentProfile: PropTypes.func.isRequired
@@ -148,11 +141,11 @@ EditHotelPics.propTypes = {
 const mapStateToProps = state => ({
   token: state.auth.token,
   user: state.auth.user,
-  hotel: state.hotels.hotel,
+  product: state.products.product,
   isAuthenticated: state.auth.isAuthenticated
 });
 
 export default connect(
   mapStateToProps,
-  { updateHotel, getCurrentProfile, getHotel }
+  { updateProduct, getProduct, getCurrentProfile }
 )(withRouter(EditProductPics));

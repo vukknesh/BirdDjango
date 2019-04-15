@@ -41,7 +41,7 @@ class Contactus extends Component {
   };
   render() {
     return (
-      <div className="container">
+      <div className="container mb-5">
         <div className="row">
           <div className="col-md-8 m-auto">
             <h1 className="display-4 text-center">Contato</h1>
@@ -93,7 +93,7 @@ class Contactus extends Component {
                 // error={errors.name}
               />
 
-              <input type="submit" className="edit-btn" />
+              <input type="submit" className="btn btn-block btn-info" />
             </form>
           </div>
         </div>

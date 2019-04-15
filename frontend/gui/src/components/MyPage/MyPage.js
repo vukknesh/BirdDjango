@@ -9,7 +9,7 @@ class MyPage extends Component {
 
   render() {
     return (
-      <div style={pageStyle} className="mt-3  bg-light">
+      <div style={pageStyle} className="mt-3  bg-light pb-5">
         <div className="row h-100 ">
           <div className="w-25 d-flex justify-content-center">
             <MyProfile />

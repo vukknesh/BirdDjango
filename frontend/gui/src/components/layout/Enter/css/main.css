@@ -52,6 +52,7 @@
 
 .missao {
   background: #fcfcfc;
+  min-height: 60vh;
   border-radius: 10px;
   display: -webkit-box;
   display: -ms-flexbox;

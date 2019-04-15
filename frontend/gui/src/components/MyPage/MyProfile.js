@@ -122,6 +122,14 @@ class MyProfile extends Component {
                 <hr />
               </Link>
             ) : null}
+            {is_owner ? (
+              <Link to="/my-products" className="link-to">
+                <p>
+                  <i className="fas fa-box-open" /> Meus Produtos
+                </p>
+                <hr />
+              </Link>
+            ) : null}
 
             <Link to="/my-comments" className="link-to">
               <p>

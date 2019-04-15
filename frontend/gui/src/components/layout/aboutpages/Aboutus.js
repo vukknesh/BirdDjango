@@ -4,7 +4,7 @@ import "../Enter/css/main.css";
 
 export default function Aboutus() {
   return (
-    <div className="about-container">
+    <div className="about-container  pb-5">
       <div className="missao">
         <div className="valores">
           <h3>Missão, visão e valores do Murucututu.com</h3>

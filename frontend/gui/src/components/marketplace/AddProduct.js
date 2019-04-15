@@ -72,7 +72,7 @@ class AddProduct extends Component {
     }
 
     return (
-      <div className="container">
+      <div className="container pb-5">
         <div className="row">
           <div className="col-md-8 m-auto">
             <h1 className="display-4 text-center">Produto</h1>
@@ -126,7 +126,7 @@ class AddProduct extends Component {
                 onChange={this.onChange}
               />
 
-              <input type="submit" className="edit-btn" />
+              <input type="submit" className="btn btn-block btn-info" />
             </form>
           </div>
         </div>

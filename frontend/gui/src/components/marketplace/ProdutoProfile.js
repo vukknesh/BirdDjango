@@ -17,7 +17,7 @@ class ProdutoProfile extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.hotel === null) {
+    if (nextProps.product === null) {
       this.props.history.push("/not-found");
       this.setState({
         product: this.props.product

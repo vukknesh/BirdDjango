@@ -149,7 +149,7 @@ class EditProfile extends Component {
     }
 
     return (
-      <div className="container">
+      <div className="container pb-5">
         <div className="row">
           <div className="col-md-8 m-auto">
             <h1 className="display-4 text-center">Profile</h1>
@@ -197,14 +197,12 @@ class EditProfile extends Component {
                 name="city"
                 value={this.state.city}
                 onChange={this.onChange}
-                // error={errors.email}
               />
               <TextFieldGroup
                 placeholder="State"
                 name="state"
                 value={this.state.state}
                 onChange={this.onChange}
-                // error={errors.password}
                 type="text"
               />
               <TextFieldGroup
@@ -212,7 +210,6 @@ class EditProfile extends Component {
                 name="country"
                 value={this.state.country}
                 onChange={this.onChange}
-                // error={errors.password2}
                 type="text"
               />
               <p className="lead text-center">Your Equipment</p>
@@ -222,7 +219,6 @@ class EditProfile extends Component {
                 name="camera"
                 value={this.state.camera}
                 onChange={this.onChange}
-                // error={errors.name}
               />
               <TextFieldGroup
                 placeholder="lens"
@@ -230,7 +226,6 @@ class EditProfile extends Component {
                 name="lens"
                 value={this.state.lens}
                 onChange={this.onChange}
-                // error={errors.name}
               />
               <TextFieldGroup
                 placeholder="recorder"
@@ -238,7 +233,6 @@ class EditProfile extends Component {
                 name="recorder"
                 value={this.state.recorder}
                 onChange={this.onChange}
-                // error={errors.name}
               />
               <TextFieldGroup
                 placeholder="microphone"
@@ -246,7 +240,6 @@ class EditProfile extends Component {
                 name="microphone"
                 value={this.state.microphone}
                 onChange={this.onChange}
-                // error={errors.name}
               />
               <p className="lead text-center">Your Social Media</p>
               <TextFieldGroup
@@ -255,7 +248,6 @@ class EditProfile extends Component {
                 name="youtube"
                 value={this.state.youtube}
                 onChange={this.onChange}
-                // error={errors.name}
               />
               <TextFieldGroup
                 placeholder="facebook"
@@ -263,7 +255,6 @@ class EditProfile extends Component {
                 name="facebook"
                 value={this.state.facebook}
                 onChange={this.onChange}
-                // error={errors.name}
               />
               <TextFieldGroup
                 placeholder="wikiaves"
@@ -271,7 +262,6 @@ class EditProfile extends Component {
                 name="wikiaves"
                 value={this.state.wikiaves}
                 onChange={this.onChange}
-                // error={errors.name}
               />
               <TextFieldGroup
                 placeholder="instagram"
@@ -279,7 +269,6 @@ class EditProfile extends Component {
                 name="instagram"
                 value={this.state.instagram}
                 onChange={this.onChange}
-                // error={errors.name}
               />
               <TextFieldGroup
                 placeholder="Personal Site"
@@ -287,7 +276,6 @@ class EditProfile extends Component {
                 name="personal_site"
                 value={this.state.personal_site}
                 onChange={this.onChange}
-                // error={errors.name}
               />
               <p className="lead text-center">About You</p>
               <TextFieldGroup
@@ -296,18 +284,9 @@ class EditProfile extends Component {
                 name="about_you"
                 value={this.state.about_you}
                 onChange={this.onChange}
-                // error={errors.name}
               />
-              {/* <SelectListGroup
-                placeholder="gender"
-                name="gender"
-                value={this.state.gender}
-                onChange={this.onChange}
-                // error={errors.status}
-                options={options}
-                info="Give an ideia where you are at on your carrer"
-              /> */}
-              <input type="submit" className="edit-btn" />
+
+              <input type="submit" className="btn btn-block btn-info" />
             </form>
           </div>
         </div>

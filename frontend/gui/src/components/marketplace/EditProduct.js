@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Redirect, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { getCurrentProfile } from "../../actions/profile";
-import { updateHotel } from "../../actions/hotels";
+import { updateProduct } from "../../actions/products";
 import TextFieldGroup from "../common/TextFieldGroup";
 
 import isEmpty from "../../validation/is-empty";
@@ -23,48 +23,36 @@ class EditProduct extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.hotel) {
-      const hotel = nextProps.hotel;
+    if (nextProps.product) {
+      const product = nextProps.product;
 
-      hotel.title = !isEmpty(hotel.title) ? hotel.title : "";
-      hotel.price = !isEmpty(hotel.price) ? hotel.price : "";
-      hotel.address = !isEmpty(hotel.address) ? hotel.address : "";
+      product.title = !isEmpty(product.title) ? product.title : "";
+      product.price = !isEmpty(product.price) ? product.price : "";
+      product.address = !isEmpty(product.address) ? product.address : "";
 
-      hotel.city = !isEmpty(hotel.city) ? hotel.city : "";
-      hotel.state = !isEmpty(hotel.state) ? hotel.state : "";
-      hotel.content = !isEmpty(hotel.content) ? hotel.content : "";
+      product.city = !isEmpty(product.city) ? product.city : "";
+      product.state = !isEmpty(product.state) ? product.state : "";
+      product.content = !isEmpty(product.content) ? product.content : "";
 
       this.setState({
-        title: hotel.title,
-        price: hotel.price,
-        address: hotel.address,
-        city: hotel.city,
-        state: hotel.state,
-        content: hotel.content
+        title: product.title,
+        price: product.price,
+        address: product.address,
+        city: product.city,
+        state: product.state,
+        content: product.content
       });
     }
   }
   onChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
-  // handleCheckboxGuide = event => {
-  //   this.setState(prevState => ({
-  //     is_guide: !prevState.is_guide
-  //   }));
-  //   console.log(this.state.is_guide);
-  // };
-  // handleCheckboxOwner = event => {
-  //   this.setState(prevState => ({
-  //     is_owner: !prevState.is_owner
-  //   }));
-  //   console.log(this.state.is_owner);
-  // };
 
   onSubmit = event => {
     event.preventDefault();
     const { title, price, address, city, state, content } = this.state;
 
-    const newHotel = {
+    const newProduct = {
       title,
       price,
       address,
@@ -74,9 +62,9 @@ class EditProduct extends Component {
     };
 
     let token = this.props.token;
-    let id = this.props.hotel.id;
-    console.log(id);
-    this.props.updateHotel(newHotel, id, token, this.props.history);
+    let id = this.props.product.id;
+
+    this.props.updateProduct(newProduct, id, token, this.props.history);
   };
 
   render() {
@@ -91,40 +79,6 @@ class EditProduct extends Component {
             <h1 className="display-4 text-center">Hotel</h1>
             <p className="lead text-center">Editar sua acomodação</p>
 
-            {/* {is_guide ? (
-              <input
-                type="checkbox"
-                name="is_guide"
-                checked={this.state.is_guide}
-                value={this.state.is_guide}
-                onChange={this.handleCheckboxGuide}
-              />
-            ) : (
-              <input
-                type="checkbox"
-                name="is_guide"
-                value={this.state.is_guide}
-                onChange={this.handleCheckboxGuide}
-              />
-            )}{" "}
-            - Guia <span className="mr-4" />
-            {is_owner ? (
-              <input
-                type="checkbox"
-                name="is_owner"
-                checked={this.state.is_owner}
-                value={this.state.is_owner}
-                onChange={this.handleCheckboxOwner}
-              />
-            ) : (
-              <input
-                type="checkbox"
-                name="is_owner"
-                value={this.state.is_owner}
-                onChange={this.handleCheckboxOwner}
-              />
-            )}{" "}
-            - Acomodações */}
             <p className="lead text-center">Titulo</p>
             <form noValidate onSubmit={this.onSubmit}>
               <TextFieldGroup
@@ -133,14 +87,12 @@ class EditProduct extends Component {
                 name="title"
                 value={this.state.title}
                 onChange={this.onChange}
-                // error={errors.email}
               />
               <TextFieldGroup
                 placeholder="Sobre seu lugar..."
                 name="content"
                 value={this.state.content}
                 onChange={this.onChange}
-                // error={errors.password}
                 type="text"
               />
 
@@ -151,7 +103,6 @@ class EditProduct extends Component {
                 name="address"
                 value={this.state.address}
                 onChange={this.onChange}
-                // error={errors.name}
               />
               <TextFieldGroup
                 placeholder="Cidade"
@@ -159,7 +110,6 @@ class EditProduct extends Component {
                 name="city"
                 value={this.state.city}
                 onChange={this.onChange}
-                // error={errors.name}
               />
               <TextFieldGroup
                 placeholder="Estado"
@@ -175,7 +125,6 @@ class EditProduct extends Component {
                 name="price"
                 value={this.state.price}
                 onChange={this.onChange}
-                // error={errors.name}
               />
 
               <input type="submit" className="edit-btn" />
@@ -187,7 +136,7 @@ class EditProduct extends Component {
   }
 }
 
-EditHotel.propTypes = {
+EditProduct.propTypes = {
   isAuthenticated: PropTypes.bool,
 
   getCurrentProfile: PropTypes.func.isRequired
@@ -196,12 +145,12 @@ EditHotel.propTypes = {
 const mapStateToProps = state => ({
   token: state.auth.token,
   user: state.auth.user,
-  hotel: state.hotels.hotel,
+  product: state.products.product,
   profile: state.profiles.profile,
   isAuthenticated: state.auth.isAuthenticated
 });
 
 export default connect(
   mapStateToProps,
-  { getCurrentProfile, updateHotel }
+  { getCurrentProfile, updateProduct }
 )(withRouter(EditProduct));

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { getPosts, clearPosts } from "../../actions/Post";
+import { getPosts, clearPosts, deletePost } from "../../actions/Post";
 import Spinner from "../common/Spinner";
 import { connect } from "react-redux";
 
@@ -52,10 +52,20 @@ class MessageContent extends Component {
                   <p>{post.content}</p>
                 </div>
 
-                <div className="likes">
-                  <i className="far fa-thumbs-up" />
-                  <p>3</p>
-                </div>
+                {this.props.myprofile.id === parseInt(post.user_id, 10) ? (
+                  <div className=" ml-5">
+                    <button
+                      onClick={this.props.deletePost.bind(
+                        this,
+                        post.id,
+                        this.props.token
+                      )}
+                      className="btn btn-danger deletemsg ml-5"
+                    >
+                      Deletar Post
+                    </button>
+                  </div>
+                ) : null}
               </div>
             </div>
           );
@@ -69,10 +79,11 @@ class MessageContent extends Component {
 const mapStateToProps = state => ({
   user: state.auth.user,
   posts: state.posts.posts,
-  myprofile: state.profiles.myprofile
+  myprofile: state.profiles.myprofile,
+  token: state.auth.token
 });
 
 export default connect(
   mapStateToProps,
-  { getPosts, clearPosts }
+  { getPosts, clearPosts, deletePost }
 )(MessageContent);

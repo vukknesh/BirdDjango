@@ -102,12 +102,12 @@ class ProductPersonal extends Component {
             </div>
             <div className="editar-botoes">
               {this.props.myprofile.id === id ? (
-                <Link to="/edit-hotel-pics">
+                <Link to="/edit-product-pics">
                   <button className="edit-btn">Editar Fotos</button>
                 </Link>
               ) : null}
               {this.props.myprofile.id === id ? (
-                <Link to="/edit-hotel">
+                <Link to="/edit-product">
                   <button className="edit-btn">Editar Dados</button>
                 </Link>
               ) : null}

@@ -99,6 +99,7 @@ class EditHotelPics extends Component {
               <input
                 type="file"
                 name="image2"
+                className="mt-2"
                 onChange={this.image2Change}
               />{" "}
               Imagem 2
@@ -106,6 +107,7 @@ class EditHotelPics extends Component {
               <input
                 type="file"
                 name="image3"
+                className="mt-2"
                 onChange={this.image3Change}
               />{" "}
               Imagem 3
@@ -113,24 +115,15 @@ class EditHotelPics extends Component {
               <input
                 type="file"
                 name="image4"
+                className="mt-2"
                 onChange={this.image4Change}
               />{" "}
               Imagem 4
               <br />
-              {/* <input
-                type="checkbox"
-                name="is_guide"
-                checked={this.state.is_guide}
-                onChange={this.handleCheckboxGuide}
-              />{" "}
-              - Guia <span className="mr-4" />
               <input
-                type="checkbox"
-                name="is_owner"
-                checked={this.state.is_owner}
-                onChange={this.handleCheckboxOwner}
-              /> */}
-              <input type="submit" className="edit-btn" />
+                type="submit"
+                className="btn btn-block btn-info mb-5 mt-3"
+              />
             </form>
           </div>
         </div>

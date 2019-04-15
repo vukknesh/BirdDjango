@@ -134,7 +134,7 @@ export const deleteProduct = (id, token, history) => dispatch => {
 // };
 
 // update hotel
-export const updateHotel = (profileData, id, token, history) => dispatch => {
+export const updateProduct = (profileData, id, token, history) => dispatch => {
   const config = {
     headers: {
       "Content-Type": "application/json"
@@ -145,8 +145,8 @@ export const updateHotel = (profileData, id, token, history) => dispatch => {
   }
 
   axios
-    .put(`http://localhost:8000/api/hotels/${id}/edit/`, profileData, config)
-    .then(res => history.push(`/hotelByHandle/${id}/`))
+    .put(`http://localhost:8000/api/products/${id}/edit/`, profileData, config)
+    .then(res => history.push(`/productByHandle/${id}/`))
     .catch(err =>
       dispatch({
         type: GET_ERRORS,

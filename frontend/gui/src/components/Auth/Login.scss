@@ -15,7 +15,7 @@
 .container1 {
   font-family: "Roboto", sans-serif;
   font-size: 14px;
-  height: 90vh;
+  height: 70vh;
   padding-top: 40px;
 }
 
@@ -229,10 +229,12 @@
 }
 
 .footer {
+  position: relative;
   min-height: 250px;
-  margin-top: 40px;
+
   background: #282828;
   font-family: "Gravity-Regular";
+  clear: both;
 
   ul {
     li {

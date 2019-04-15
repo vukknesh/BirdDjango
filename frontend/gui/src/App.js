@@ -24,8 +24,11 @@ import FindHotels from "./components/Hotels/FindHotels";
 import AddHotel from "./components/Hotels/AddHotel";
 import EditHotelPics from "./components/Hotels/EditHotelPics";
 
+import EditProductPics from "./components/marketplace/EditProductPics";
+import EditProduct from "./components/marketplace/EditProduct";
 import AddProduct from "./components/marketplace/AddProduct";
 import ProdutoProfile from "./components/marketplace/ProdutoProfile";
+import MeusProdutos from "./components/MyMessages/MeusProdutos";
 
 import Enter from "./components/layout/Enter/Enter";
 import EditProfile from "./components/Profile/EditProfile";
@@ -103,6 +106,16 @@ class App extends Component {
                     />
                     <PrivateRoute
                       exact
+                      path="/edit-product"
+                      component={EditProduct}
+                    />
+                    <PrivateRoute
+                      exact
+                      path="/edit-product-pics"
+                      component={EditProductPics}
+                    />
+                    <PrivateRoute
+                      exact
                       path="/edit-hotel"
                       component={EditHotel}
                     />
@@ -140,6 +153,7 @@ class App extends Component {
                     path="/my-accomodations"
                     component={MyAccomodations}
                   />
+                  <Route exact path="/my-products" component={MeusProdutos} />
                   <Route
                     exact
                     path="/profilebyhandle/:id/"
