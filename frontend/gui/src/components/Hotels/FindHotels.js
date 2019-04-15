@@ -3,7 +3,7 @@ import Hotels from "./Hotels";
 import HotelOwners from "./HotelOwners";
 import SearchHotel from "./SearchHotel";
 import { connect } from "react-redux";
-
+import MapContainer from "../Maps/MapContainer";
 import "./main.css";
 
 class FindHotels extends Component {
@@ -16,7 +16,12 @@ class FindHotels extends Component {
             <SearchHotel />
           </div>
           <div className="sub2">
-            <HotelOwners />
+            <div className="gmap-container">
+              <MapContainer hotels={this.props.hotels} />
+            </div>
+            <div className="hotel-owner-container">
+              <HotelOwners />
+            </div>
           </div>
         </div>
       </div>

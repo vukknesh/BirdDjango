@@ -4,8 +4,10 @@ import ReactDOM from "react-dom";
 const mapStyles = {
   map: {
     position: "absolute",
+    borderRadius: "15px",
     width: "100%",
-    height: "100%"
+    height: "100%",
+    zIndex: "4"
   }
 };
 
@@ -112,7 +114,7 @@ export class CurrentLocation extends React.Component {
 export default CurrentLocation;
 
 CurrentLocation.defaultProps = {
-  zoom: 14,
+  zoom: 4,
   initialCenter: {
     lat: -15.7380379,
     lng: -47.0340183

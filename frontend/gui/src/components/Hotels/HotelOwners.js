@@ -11,7 +11,6 @@ class HotelOwners extends Component {
       hotels = <Spinner />;
     } else {
       if (this.props.hotels) {
-        console.log(this.props.hotels);
         hotels = this.props.hotels.map(hotel => (
           <div className="box" key={hotel.id}>
             <Link to={`hotelByHandle/${hotel.id}/`}>

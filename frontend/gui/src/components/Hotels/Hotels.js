@@ -36,12 +36,18 @@ class Hotels extends Component {
             value={this.state.city}
           />
           <p>DATA</p>
-          <input placeholder="Data" onChange={this.onChange} type="text" />
-          <p>HOSPEDES</p>
           <input
-            placeholder="Numero de hospedes"
+            placeholder="EM BREVE"
             onChange={this.onChange}
             type="text"
+            disabled
+          />
+          <p>HOSPEDES</p>
+          <input
+            placeholder="EM BREVE"
+            onChange={this.onChange}
+            type="text"
+            disabled
           />
           <input className="btnsubmit" type="submit" />
         </form>

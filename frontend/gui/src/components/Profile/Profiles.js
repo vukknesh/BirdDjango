@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import Youtube from "../youtube/Youtube";
 import PersonalProfile from "./PersonalProfile";
 import ContactProfile from "./ContactProfile";
-import MapContainer from "../Maps/MapContainer";
+
 import {
   getProfileByHandle,
   clearCurrentProfile,
@@ -36,7 +36,6 @@ class Profiles extends Component {
         <div>
           <Youtube />
         </div>
-        <MapContainer />
       </div>
     );
   }

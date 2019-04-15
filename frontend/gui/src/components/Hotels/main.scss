@@ -8,7 +8,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 4;
+  z-index: 5;
 
   min-width: 100%;
   min-height: 100%;
@@ -185,9 +185,18 @@
 }
 .sub2 {
   width: 100%;
-
+  display: flex;
   padding: 50px 50px;
-  margin: 10px 50px;
+}
+.gmap-container {
+  position: relative;
+
+  width: 40%;
+  overflow: hidden;
+}
+.hotel-owner-container {
+  padding-left: 5%;
+  width: 60%;
 }
 
 .sub1 .searchfield1 {
@@ -318,4 +327,18 @@
   justify-content: space-around;
   display: flex;
   padding: 20px;
+}
+.info-maps-window {
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: 300px;
+  small {
+    margin-bottom: 0.5rem;
+  }
+  img {
+    height: 200px;
+    width: 200px;
+  }
 }
