@@ -16,6 +16,7 @@ class Navbar extends Component {
   render() {
     const { isAuthenticated } = this.props;
     if (this.props.myprofile) {
+      var id = this.props.myprofile.id;
       var image = this.props.myprofile.image;
       var first_name = this.props.myprofile.first_name;
       var last_name = this.props.myprofile.last_name;
@@ -126,7 +127,7 @@ class Navbar extends Component {
                 </p>
               </Link>
 
-              <Link className="link-to" to="/my-page">
+              <Link className="link-to" to={`/profilebyhandle/${id}/`}>
                 <p>Meu Perfil</p>
               </Link>
 

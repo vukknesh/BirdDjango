@@ -6,7 +6,7 @@ class ContactProfile extends Component {
     const { first_name, last_name, email, about_you } = this.props;
     return (
       <div>
-        {first_name ? (
+        {this.props.profile ? (
           <div>
             <div className="text-center">
               <h1>Contato</h1>

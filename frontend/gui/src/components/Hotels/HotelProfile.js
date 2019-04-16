@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import "./main.css";
 import { deleteHotel, getHotel } from "../../actions/hotels";
-import { addComment } from "../../actions/comments";
 import { Redirect, Link, withRouter } from "react-router-dom";
 import HotelComments from "./HotelComments";
+import HotelForm from "./HotelForm";
 import { connect } from "react-redux";
 
 class HotelProfile extends Component {
@@ -16,31 +16,7 @@ class HotelProfile extends Component {
     let id = this.props.hotel.id;
     this.props.deleteHotel(id, token, this.props.history);
   };
-  onSubmit = e => {
-    e.preventDefault();
-    let type = "hotel";
-    let slug = this.props.hotel.slug;
-    let id = this.props.hotel.id;
-    let content = this.state.content;
-    let token = this.props.token;
-    const newComment = {
-      content
-    };
-    this.props.addComment(
-      newComment,
-      type,
-      slug,
-      id,
-      token,
-      this.props.history
-    );
-    this.setState({ content: "" });
-  };
-  handleChange = e => {
-    this.setState({
-      content: e.target.value
-    });
-  };
+
   render() {
     if (!this.props.isAuthenticated) {
       return <Redirect to="/login" />;
@@ -113,15 +89,7 @@ class HotelProfile extends Component {
             </div>
 
             <div className="hotel-comments">
-              <form onSubmit={this.onSubmit}>
-                <input
-                  type="text"
-                  placeholder="Comente aqui sua exp"
-                  value={this.state.content}
-                  onChange={this.handleChange}
-                />
-                <input type="submit" className="btn btn-block btn-info mb-5" />
-              </form>
+              <HotelForm />
               <div className="hotel-comments-retrieve">
                 {this.props.hotel ? (
                   <HotelComments comments={comments} />
@@ -182,5 +150,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { deleteHotel, getHotel, addComment }
+  { deleteHotel, getHotel }
 )(withRouter(HotelProfile));

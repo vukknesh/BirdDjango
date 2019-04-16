@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import Youtube from "../youtube/Youtube";
 import PersonalProfile from "./PersonalProfile";
 import ContactProfile from "./ContactProfile";
+import ProfileComments from "./ProfileComments";
 
 import {
   getProfileByHandle,
@@ -28,12 +29,14 @@ class Profiles extends Component {
           <div className="w-25 d-flex justify-content-center">
             <PersonalProfile />
           </div>
-          <div className="w-50 d-flex justify-content-center border rouded" />
-          <div className="w-25 justify-content-center border rounded bg-light">
+          <div className="w-50 d-flex justify-content-center border rouded">
             <ContactProfile />
           </div>
+          <div className="w-25 justify-content-center border rounded bg-light">
+            <ProfileComments />
+          </div>
         </div>
-        <div>
+        <div className="mb-5">
           <Youtube />
         </div>
       </div>

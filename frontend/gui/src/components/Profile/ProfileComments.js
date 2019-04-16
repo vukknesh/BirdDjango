@@ -1,14 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import isEmpty from "../../validation/is-empty";
-import { getHotel } from "../../actions/hotels";
 
-import "./main.css";
-
-class HotelComments extends Component {
-  componentWillMount() {
-    this.props.getHotel(this.props.id);
-  }
+class ProfileComments extends Component {
   render() {
     console.log(this.props.comments);
     let comments;
@@ -25,16 +19,12 @@ class HotelComments extends Component {
         </div>
       ));
     } else {
-      return null;
+      return <div>No comments yet</div>;
     }
     return <div>{comments}</div>;
   }
 }
 const mapStateToProps = state => ({
-  id: state.hotels.hotel.id,
-  comments: state.hotels.hotel.comments
+  comments: state.profiles.profile.comments
 });
-export default connect(
-  mapStateToProps,
-  { getHotel }
-)(HotelComments);
+export default connect(mapStateToProps)(ProfileComments);

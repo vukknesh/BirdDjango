@@ -1,6 +1,8 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
 from .models import Profile
+from comments.models import Comment
+from comments.api.serializers import CommentSerializer
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
@@ -15,7 +17,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class ProfileSerializer(serializers.HyperlinkedModelSerializer):
-    # gender = serializers.CharField(source='get_gender_display', read_only=True)
+
     user_url = serializers.HyperlinkedIdentityField(view_name='user-detail')
     user = serializers.ReadOnlyField(source='user.id')
     id = serializers.IntegerField(source='pk', read_only=True)
@@ -24,13 +26,14 @@ class ProfileSerializer(serializers.HyperlinkedModelSerializer):
     first_name = serializers.CharField(
         source='user.first_name', read_only=True)
     last_name = serializers.CharField(source='user.last_name', read_only=True)
+    comments = serializers.SerializerMethodField()
 
     class Meta:
         model = Profile
         depth = 1
-        fields = ('url', 'id', 'username', 'email', 'first_name', 'last_name', 'image',
+        fields = ('url', 'slug', 'id', 'username', 'email', 'first_name', 'last_name', 'image',
                   'youtube', 'facebook', 'wikiaves', 'instagram', 'personal_site', 'camera', 'lens', 'recorder', 'microphone', 'city', 'state', 'country', 'about_you', 'user', 'is_guide', 'is_owner',
-                  'user_url', 'created_at', 'lat', 'lng', 'address')
+                  'user_url', 'created_at', 'lat', 'lng', 'address', 'comments')
 
     def get_full_name(self, obj):
         request = self.context['request']
@@ -52,3 +55,8 @@ class ProfileSerializer(serializers.HyperlinkedModelSerializer):
             setattr(instance, attr, value)
             instance.save()
         return instance
+
+    def get_comments(self, obj):
+        c_qs = Comment.objects.filter_by_instance(obj)
+        comments = CommentSerializer(c_qs, many=True).data
+        return comments

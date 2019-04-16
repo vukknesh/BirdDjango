@@ -110,7 +110,12 @@ export const updateProfile = (profileData, id, token, history) => dispatch => {
     .put(`http://localhost:8000/api/profiles/${id}/`, profileData, config)
 
     .then(res => history.push("/my-page"))
-    .catch(err => console.log(err.detail));
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
   dispatch(hideLoading());
 };
 

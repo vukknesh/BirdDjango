@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import { deletePost } from "../../actions/Post";
 
 import { connect } from "react-redux";
-import pic from "./profile1.jpg";
+
 import "./main.css";
 import { Link } from "react-router-dom";
 import isEmpty from "../../validation/is-empty";
@@ -61,7 +61,7 @@ export class MyContent extends Component {
 
             <div className="likes">
               <i className="far fa-thumbs-up" />
-              <p>3</p>
+              {/* <p>3</p> */}
             </div>
           </div>
           <div className="card-comments">

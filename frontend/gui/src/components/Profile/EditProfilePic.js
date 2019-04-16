@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Redirect, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { updateProfile, getCurrentProfile } from "../../actions/profile";
-import { ImmutableLoadingBar as LoadingBar } from "react-redux-loading-bar";
+
 import isEmpty from "../../validation/is-empty";
 
 class EditProfile extends Component {
@@ -22,8 +22,8 @@ class EditProfile extends Component {
     if (nextProps.profile) {
       const profile = nextProps.profile;
       profile.image = !isEmpty(profile.image) ? profile.image : false;
-      profile.is_guide = true ? true : false;
-      profile.is_owner = true ? true : false;
+      profile.is_guide = !isEmpty(profile.is_guide) ? profile.is_guide : false;
+      profile.is_owner = !isEmpty(profile.is_owner) ? profile.is_owner : false;
 
       this.setState({
         is_guide: profile.is_guide,
@@ -70,7 +70,7 @@ class EditProfile extends Component {
     }
 
     return (
-      <div className="container">
+      <div className="container mb-5">
         <div className="row">
           <div className="col-md-8 m-auto">
             <h1 className="display-4 text-center">Profile</h1>

@@ -57,11 +57,11 @@ class EditProfile extends Component {
       profile.microphone = !isEmpty(profile.microphone)
         ? profile.microphone
         : "";
+      profile.address = !isEmpty(profile.address) ? profile.address : "";
       profile.city = !isEmpty(profile.city) ? profile.city : "";
       profile.state = !isEmpty(profile.state) ? profile.state : "";
       profile.country = !isEmpty(profile.country) ? profile.country : "";
       profile.about_you = !isEmpty(profile.about_you) ? profile.about_you : "";
-      // profile.gender = !isEmpty(profile.gender) ? profile.gender : "";
 
       this.setState({
         youtube: profile.youtube,
@@ -79,7 +79,8 @@ class EditProfile extends Component {
         country: profile.country,
         about_you: profile.about_you,
         is_guide: profile.is_guide,
-        is_owner: profile.is_owner
+        is_owner: profile.is_owner,
+        address: profile.address
         // gender: profile.gender
       });
     }
@@ -155,7 +156,6 @@ class EditProfile extends Component {
       lat,
       lng,
       address
-      // gender
     } = this.state;
 
     const newUser = {
@@ -177,7 +177,6 @@ class EditProfile extends Component {
       lat,
       lng,
       address
-      // gender
     };
     let id = this.props.user.id;
     let token = this.props.token;
