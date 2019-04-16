@@ -1,15 +1,16 @@
 import React, { Component } from "react";
 import "./main.css";
-import { deleteHotel } from "../../actions/hotels";
+import { deleteHotel, getHotel } from "../../actions/hotels";
 import { addComment } from "../../actions/comments";
 import { Redirect, Link, withRouter } from "react-router-dom";
-
+import HotelComments from "./HotelComments";
 import { connect } from "react-redux";
 
 class HotelProfile extends Component {
   state = {
     content: ""
   };
+
   deleteHotel = e => {
     let token = this.props.token;
     let id = this.props.hotel.id;
@@ -33,6 +34,7 @@ class HotelProfile extends Component {
       token,
       this.props.history
     );
+    this.setState({ content: "" });
   };
   handleChange = e => {
     this.setState({
@@ -56,6 +58,7 @@ class HotelProfile extends Component {
       var image2 = this.props.hotel.image2;
       var image3 = this.props.hotel.image3;
       var image4 = this.props.hotel.image4;
+      var comments = this.props.hotel.comments;
     }
     if (this.props.profile) {
       var image = this.props.profile.image;
@@ -88,33 +91,42 @@ class HotelProfile extends Component {
 
         <div className="hotel-content">
           <div className="hotel-info">
-            <h1>{title}</h1>
-            <p>
-              {city}-{state}
-            </p>
-            <hr />
-            <i className="fas fa-home" /> <p>Address: {address}</p>
-            <i className="fas fa-phone-square" />
-            <p>telefone: (019)99645499</p>
-            <i className="fas fa-info" />
-            <p>{content}</p>
-            <div className="commodities">
-              <i className="fas fa-wifi" />
-              <i className="fas fa-check pr-3" />-{" "}
-              <i className="fas fa-coffee" />{" "}
-              <i className="fas fa-check pr-3" />
-              <i className="fas fa-igloo" />
-              <i className="fas fa-check" />
+            <div className="hotel-content-info">
+              <h1>{title}</h1>
+              <p>
+                {city}-{state}
+              </p>
+              <hr />
+              <i className="fas fa-home" /> <p>Address: {address}</p>
+              <i className="fas fa-phone-square" />
+              <p>telefone: (019)99645499</p>
+              <i className="fas fa-info" />
+              <p>{content}</p>
+              <div className="commodities">
+                <i className="fas fa-wifi" />
+                <i className="fas fa-check pr-3" />-{" "}
+                <i className="fas fa-coffee" />{" "}
+                <i className="fas fa-check pr-3" />
+                <i className="fas fa-igloo" />
+                <i className="fas fa-check" />
+              </div>
             </div>
+
             <div className="hotel-comments">
               <form onSubmit={this.onSubmit}>
                 <input
                   type="text"
+                  placeholder="Comente aqui sua exp"
                   value={this.state.content}
                   onChange={this.handleChange}
                 />
                 <input type="submit" className="btn btn-block btn-info mb-5" />
               </form>
+              <div className="hotel-comments-retrieve">
+                {this.props.hotel ? (
+                  <HotelComments comments={comments} />
+                ) : null}
+              </div>
             </div>
           </div>
           <div className="owner-info">
@@ -170,5 +182,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { deleteHotel, addComment }
+  { deleteHotel, getHotel, addComment }
 )(withRouter(HotelProfile));

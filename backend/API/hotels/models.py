@@ -48,6 +48,7 @@ class Hotel(models.Model):
     state = models.CharField(max_length=20, blank=True, null=True)
     content = models.TextField(blank=True, null=True)
     price = models.IntegerField(default=0)
+
     publish = models.DateField(auto_now=True, auto_now_add=False)
     lat = models.FloatField(default=0)
     lng = models.FloatField(default=0)

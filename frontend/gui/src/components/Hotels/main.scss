@@ -294,6 +294,11 @@
     border-radius: 50%;
   }
 }
+.hotel-content-info {
+  border: 1px solid lightgray;
+  padding: 20px;
+  border-radius: 20px;
+}
 
 .owner-info {
   border: 1px solid lightgrey;
@@ -304,6 +309,7 @@
   top: 70px;
   min-width: 35%;
   min-height: 70vh;
+  max-height: 70vh;
 }
 
 .hotel-owner {
@@ -340,5 +346,34 @@
   img {
     height: 200px;
     width: 200px;
+  }
+}
+
+.comment-card {
+  width: 100%;
+  height: 150px;
+  border: 1px solid lightgray;
+  background: #fcfcfc;
+  border-radius: 20px;
+  margin-bottom: 15px;
+  h4 {
+    padding: 10px;
+  }
+  p {
+    padding: 10px;
+  }
+}
+
+.hotel-comments {
+  border: 1px solid lightgray;
+  padding: 15px;
+  border-radius: 20px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  input {
+    width: 100%;
+    border-radius: 20px;
+    padding: 8px;
+    margin-bottom: 20px;
   }
 }
