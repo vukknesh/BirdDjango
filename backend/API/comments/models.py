@@ -34,6 +34,7 @@ class CommentManager(models.Manager):
                     instance.parent = parent_obj
                 instance.save()
                 return instance
+                print(instance)
         return None
 
 

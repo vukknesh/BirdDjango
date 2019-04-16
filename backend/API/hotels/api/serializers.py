@@ -57,6 +57,7 @@ class HotelDetailSerializer(ModelSerializer):
         fields = [
             'url',
             'id',
+            'slug',
             'user',
             'title',
             'lat',

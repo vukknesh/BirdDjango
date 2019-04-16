@@ -41,8 +41,7 @@ import HotelPersonalProfile from "./components/Hotels/HotelPersonalProfile";
 import EditHotel from "./components/Hotels/EditHotel";
 import MarketPlace from "./components/marketplace/MarketPlace";
 import ItemInfo from "./components/marketplace/ItemInfo";
-
-import LoadingBar from "react-redux-loading-bar";
+import MapContainer from "./components/Maps/MapContainer";
 
 //ALERT OPTIONS
 
@@ -67,7 +66,7 @@ class App extends Component {
                 <Topbar />
 
                 <Alerts />
-                <LoadingBar />
+
                 <Route exact path="/" component={Landing} />
                 <div>
                   <Route exact path="/enter" component={Enter} />
@@ -75,6 +74,7 @@ class App extends Component {
                   <Route exact path="/register" component={Register} />
                   <Route exact path="/about" component={Aboutus} />
                   <Route exact path="/contact" component={Contactus} />
+                  <Route exact path="/gmaps" component={MapContainer} />
                   <Switch>
                     <PrivateRoute exact path="/my-page" component={MyPage} />
                   </Switch>{" "}

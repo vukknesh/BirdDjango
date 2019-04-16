@@ -1,6 +1,3 @@
-export const GET_LEADS = "GET_LEADS";
-export const DELETE_LEAD = "DELETE_LEAD";
-export const ADD_LEAD = "ADD_LEAD";
 export const GET_ERRORS = "GET_ERRORS";
 export const CREATE_MESSAGE = "CREATE_MESSAGE";
 export const USER_LOADING = "USER_LOADING";
@@ -49,3 +46,10 @@ export const GET_PRODUCT = "GET_PRODUCT";
 export const DELETE_PRODUCT = "DELETE_PRODUCT";
 export const PRODUCT_LOADING = "PRODUCT_LOADING";
 export const CLEAR_PRODUCTS = "CLEAR_PRODUCTS";
+
+//comments
+
+export const ADD_COMMENT = "ADD_COMMENT";
+export const GET_COMMENTS = "GET_COMMENTS";
+export const GET_COMMENT = "GET_COMMENT";
+export const DELETE_COMMENT = "DELETE_COMMENT";

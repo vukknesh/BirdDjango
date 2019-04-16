@@ -7,7 +7,7 @@ const mapStyles = {
     borderRadius: "15px",
     width: "100%",
     height: "100%",
-    zIndex: "4"
+    zIndex: "2"
   }
 };
 
@@ -119,6 +119,6 @@ CurrentLocation.defaultProps = {
     lat: -15.7380379,
     lng: -47.0340183
   },
-  centerAroundCurrentLocation: false,
+  centerAroundCurrentLocation: true,
   visible: true
 };

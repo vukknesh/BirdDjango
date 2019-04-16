@@ -30,7 +30,7 @@ class ProfileSerializer(serializers.HyperlinkedModelSerializer):
         depth = 1
         fields = ('url', 'id', 'username', 'email', 'first_name', 'last_name', 'image',
                   'youtube', 'facebook', 'wikiaves', 'instagram', 'personal_site', 'camera', 'lens', 'recorder', 'microphone', 'city', 'state', 'country', 'about_you', 'user', 'is_guide', 'is_owner',
-                  'user_url', 'created_at')
+                  'user_url', 'created_at', 'lat', 'lng', 'address')
 
     def get_full_name(self, obj):
         request = self.context['request']

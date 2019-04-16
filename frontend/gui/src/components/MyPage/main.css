@@ -63,7 +63,9 @@
 }
 
 .content {
-  min-height: 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .card-comments {
@@ -175,16 +177,18 @@
 
 .dropdown-menu {
   background: #472d20;
-  width: 500px;
+  width: 200px;
   padding: 20px 20px 20px 20px;
-  height: 70px;
+  height: 300px;
 }
 
 .dropdown-menu i {
-  margin-right: 10px;
+  margin-right: 20px;
 }
 
 .dropdown-menu a {
+  padding: 10px;
+  margin-bottom: 20px;
   text-decoration: none;
   padding-right: 20px;
   border-radius: 10px;
@@ -205,6 +209,10 @@
 .link-to {
   text-decoration: none;
   color: black;
+}
+
+.link-to p {
+  padding: 10px;
 }
 
 .link-to:hover {

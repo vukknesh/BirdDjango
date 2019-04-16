@@ -45,7 +45,7 @@
   margin-bottom: 20px;
 }
 .content {
-  min-height: 100px;
+  display: flex;
 }
 .card-comments {
   margin-top: 10px;
@@ -140,20 +140,24 @@
 
 .dropdown-menu {
   background: #472d20;
-  width: 500px;
+  width: 200px;
+
   padding: 20px 20px 20px 20px;
-  height: 70px;
+  height: 300px;
 
   i {
-    margin-right: 10px;
+    margin-right: 20px;
   }
   a {
+    padding: 10px;
+    margin-bottom: 20px;
     text-decoration: none;
     padding-right: 20px;
     border-radius: 10px;
 
     color: white;
   }
+
   a:hover {
     background: #f35404;
   }
@@ -170,6 +174,9 @@
 .link-to {
   text-decoration: none;
   color: black;
+  p {
+    padding: 10px;
+  }
 }
 .link-to:hover {
   text-decoration: none;

@@ -3,6 +3,7 @@ import GuideUser from "./GuideUser";
 import SearchGuide from "./SearchGuide";
 import { connect } from "react-redux";
 import Searchbar from "../common/Searchbar";
+import MapContainer from "../Maps/MapContainer";
 import "./guide.css";
 
 class Guide extends Component {
@@ -15,7 +16,12 @@ class Guide extends Component {
             <SearchGuide />
           </div>
           <div className="sub2">
-            <GuideUser />
+            <div className="gmap-container">
+              <MapContainer profiles={this.props.profiles} />
+            </div>
+            <div className="hotel-owner-container ml-4">
+              <GuideUser />
+            </div>
           </div>
         </div>
       </div>
@@ -23,7 +29,8 @@ class Guide extends Component {
   }
 }
 const mapStateToProps = state => ({
-  isAuthenticated: state.auth.isAuthenticated
+  isAuthenticated: state.auth.isAuthenticated,
+  profiles: state.profiles.profiles
 });
 
 export default connect(mapStateToProps)(Guide);

@@ -41,8 +41,8 @@ class MapContainer extends Component {
   }
   render() {
     let markers;
+    let markerProfile;
     if (this.props.hotels) {
-      console.log(this.props.hotels);
       markers = this.props.hotels.map(hotel => (
         <Marker
           onClick={this.onMarkerClick}
@@ -52,6 +52,22 @@ class MapContainer extends Component {
           name={(hotel.price, hotel.title)}
           img={hotel.image1}
           position={{ lat: `${hotel.lat}`, lng: `${hotel.lng}` }}
+          id={hotel.id}
+          key={hotel.id}
+        />
+      ));
+    }
+    if (this.props.profiles) {
+      markerProfile = this.props.profiles.map(profile => (
+        <Marker
+          onClick={this.onMarkerClick}
+          onMouseover={this.onMouseoverMarker}
+          title={profile.first_name}
+          name={profile.last_name}
+          img={profile.image}
+          position={{ lat: `${profile.lat}`, lng: `${profile.lng}` }}
+          id={profile.id}
+          key={profile.id}
         />
       ));
     }
@@ -63,6 +79,7 @@ class MapContainer extends Component {
           name={"current location"}
         />
         {markers}
+        {markerProfile}
         <InfoWindow
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}
@@ -71,7 +88,9 @@ class MapContainer extends Component {
           <div className="info-maps-window">
             <h4>{this.state.selectedPlace.title}</h4>
             <p>{this.state.selectedPlace.name}</p>
-            <small>R$: {this.state.selectedPlace.price}</small>
+            {this.state.selectedPlace.price ? (
+              <small>R$: {this.state.selectedPlace.price}</small>
+            ) : null}
             <img src={this.state.selectedPlace.img} alt="" />
           </div>
         </InfoWindow>

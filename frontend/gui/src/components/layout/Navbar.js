@@ -29,17 +29,26 @@ class Navbar extends Component {
           <Link className="nav-link text-light" to="/add-product">
             Produtos
           </Link>
-          <div className="dropdown-content">
-            <Link to="/marketplace">Procurar</Link>
-            {is_owner ? <Link to="/">Registrar Produto</Link> : null}
+          <div className="dropdown-content-produtos">
+            <Link to="/marketplace">
+              {" "}
+              <p>Procurar</p>
+            </Link>
+            {is_owner ? (
+              <Link to="/">
+                <p>Registrar Produto</p>
+              </Link>
+            ) : null}
           </div>
         </li>
         <li className="nav-item dropdown">
           <Link className="nav-link text-light" to="/hotels">
-            Hoteis
+            <p>Hoteis</p>
           </Link>
-          <div className="dropdown-content">
-            <Link to="/hotels">Procurar</Link>
+          <div className="dropdown-content-hoteis">
+            <Link to="/hotels">
+              <p>Procurar</p>
+            </Link>
             {is_owner ? <Link to="/add-hotel">Registrar Hotel</Link> : null}
           </div>
         </li>
@@ -47,9 +56,13 @@ class Navbar extends Component {
           <Link className="nav-link text-light" to="/guide">
             Guias
           </Link>
-          <div className="dropdown-content">
-            <Link to="/guide">Procurar Guias</Link>
-            <Link to="/">Cadastrar</Link>
+          <div className="dropdown-content-guias">
+            <Link to="/guide">
+              <p>Procurar Guias</p>{" "}
+            </Link>
+            <Link to="/">
+              <p>Cadastrar</p>
+            </Link>
           </div>
         </li>
         <li className="nav-item active show1 dropdown">
@@ -62,7 +75,7 @@ class Navbar extends Component {
               className="rounded-circle"
             />
           </Link>
-          <div className="dropdown-content">
+          <div className="dropdown-content-perfil">
             <div className="perfil-dropdown">
               <div>
                 <img src={image} alt="" />
@@ -73,12 +86,54 @@ class Navbar extends Component {
                 </h4>
                 <p>{email}</p>
               </div>
+              {is_owner ? (
+                <Link to="/my-accomodations" className="link-to">
+                  <p>
+                    <i className="fas fa-home" /> {"  "} Minhas Acomodações
+                  </p>
+                </Link>
+              ) : null}
+              {is_owner ? (
+                <Link to="/my-products" className="link-to">
+                  <p>
+                    <i className="fas fa-box-open" /> {"  "} Meus Produtos
+                  </p>
+                </Link>
+              ) : null}
+
+              <Link to="/my-comments" className="link-to">
+                <p>
+                  <i className="far fa-comments" /> {"  "}Meus Comentarios
+                </p>
+              </Link>
+
+              <Link to="/my-messages" className="link-to">
+                <p>
+                  <i className="far fa-envelope" /> {"  "} Meus Posts
+                </p>
+              </Link>
+
+              <Link to="/edit-profile" className="link-to">
+                <p>
+                  <i className="far fa-address-card" /> {"  "}
+                  Editar Perfil
+                </p>
+              </Link>
+
+              <Link to="/edit-profile-pic" className="link-to">
+                <p>
+                  <i className="fas fa-camera-retro" /> {"  "}Editar Foto
+                </p>
+              </Link>
+
+              <Link className="link-to" to="/my-page">
+                <p>Meu Perfil</p>
+              </Link>
+
+              <a className="link-to" href="/" onClick={this.handleLogout}>
+                <p>LOGOUT</p>
+              </a>
             </div>
-            <Link to="/my-page">Meu Perfil</Link>
-            <a href="#">Link 2</a>
-            <a href="/" onClick={this.handleLogout}>
-              SAIR/LOGOUT
-            </a>
           </div>
         </li>
       </ul>

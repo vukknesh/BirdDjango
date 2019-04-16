@@ -13,6 +13,9 @@ class Profile(models.Model):
     # guide / owner / watcher
     is_guide = models.BooleanField(default=False)
     is_owner = models.BooleanField(default=False)
+    address = models.CharField(max_length=255, blank=True, null=True)
+    lat = models.FloatField(default=0)
+    lng = models.FloatField(default=0)
     # social media
     youtube = models.CharField(max_length=100, blank=True, default='')
     facebook = models.CharField(max_length=100, blank=True, default='')

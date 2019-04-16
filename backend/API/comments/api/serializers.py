@@ -21,6 +21,7 @@ def create_comment_serializer(model_type='post', slug=None, parent_id=None, user
             model = Comment
             fields = [
                 'id',
+                'parent',
                 'content',
                 'timestamp',
             ]
@@ -42,10 +43,13 @@ def create_comment_serializer(model_type='post', slug=None, parent_id=None, user
                 raise ValidationError("This is not a valid content type")
             SomeModel = model_qs.first().model_class()
             obj_qs = SomeModel.objects.filter(slug=self.slug)
-            if not obj_qs.exists() or obj_qs.count() != 1:
+            print(obj_qs)
+            print(self.slug)
+            if not obj_qs.exists():
                 raise ValidationError(
                     "This is not a slug for this content type")
             return data
+            print(data)
 
         def create(self, validated_data):
             content = validated_data.get("content")
@@ -67,11 +71,13 @@ def create_comment_serializer(model_type='post', slug=None, parent_id=None, user
 
 class CommentSerializer(ModelSerializer):
     reply_count = SerializerMethodField()
+    user = UserSerializer(read_only=True)
 
     class Meta:
         model = Comment
         fields = [
             'id',
+            'user',
             'content_type',
             'object_id',
             'parent',
@@ -90,14 +96,16 @@ class CommentListSerializer(ModelSerializer):
     url = HyperlinkedIdentityField(
         view_name='comments-api:thread')
     reply_count = SerializerMethodField()
+    user = UserSerializer(read_only=True)
 
     class Meta:
         model = Comment
         fields = [
             'url',
+            'user',
             'id',
-            # 'content_type',
-            # 'object_id',
+            'content_type',
+            'object_id',
             # 'parent',
             'content',
             'reply_count',
@@ -134,8 +142,8 @@ class CommentDetailSerializer(ModelSerializer):
         fields = [
             'id',
             'user',
-            # 'content_type',
-            # 'object_id',
+            'content_type',
+            'object_id',
             'content',
             'reply_count',
             'replies',

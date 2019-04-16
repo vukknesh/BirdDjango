@@ -48,24 +48,22 @@ class MessageContent extends Component {
               </div>
               <div className="card-body">
                 <div className="content">
-                  <img src={post.image} alt="" />
                   <p>{post.content}</p>
+                  {this.props.myprofile.id === parseInt(post.user_id, 10) ? (
+                    <div className=" ml-5">
+                      <button
+                        onClick={this.props.deletePost.bind(
+                          this,
+                          post.id,
+                          this.props.token
+                        )}
+                        className="btn btn-danger deletemsg ml-5"
+                      >
+                        Deletar Post
+                      </button>
+                    </div>
+                  ) : null}
                 </div>
-
-                {this.props.myprofile.id === parseInt(post.user_id, 10) ? (
-                  <div className=" ml-5">
-                    <button
-                      onClick={this.props.deletePost.bind(
-                        this,
-                        post.id,
-                        this.props.token
-                      )}
-                      className="btn btn-danger deletemsg ml-5"
-                    >
-                      Deletar Post
-                    </button>
-                  </div>
-                ) : null}
               </div>
             </div>
           );

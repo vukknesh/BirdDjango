@@ -1,18 +1,44 @@
 import React, { Component } from "react";
 import "./main.css";
 import { deleteHotel } from "../../actions/hotels";
-
+import { addComment } from "../../actions/comments";
 import { Redirect, Link, withRouter } from "react-router-dom";
 
 import { connect } from "react-redux";
 
 class HotelProfile extends Component {
+  state = {
+    content: ""
+  };
   deleteHotel = e => {
     let token = this.props.token;
     let id = this.props.hotel.id;
     this.props.deleteHotel(id, token, this.props.history);
   };
-
+  onSubmit = e => {
+    e.preventDefault();
+    let type = "hotel";
+    let slug = this.props.hotel.slug;
+    let id = this.props.hotel.id;
+    let content = this.state.content;
+    let token = this.props.token;
+    const newComment = {
+      content
+    };
+    this.props.addComment(
+      newComment,
+      type,
+      slug,
+      id,
+      token,
+      this.props.history
+    );
+  };
+  handleChange = e => {
+    this.setState({
+      content: e.target.value
+    });
+  };
   render() {
     if (!this.props.isAuthenticated) {
       return <Redirect to="/login" />;
@@ -80,6 +106,16 @@ class HotelProfile extends Component {
               <i className="fas fa-igloo" />
               <i className="fas fa-check" />
             </div>
+            <div className="hotel-comments">
+              <form onSubmit={this.onSubmit}>
+                <input
+                  type="text"
+                  value={this.state.content}
+                  onChange={this.handleChange}
+                />
+                <input type="submit" className="btn btn-block btn-info mb-5" />
+              </form>
+            </div>
           </div>
           <div className="owner-info">
             <Link to={`/profilebyhandle/${id}/`}>
@@ -134,5 +170,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { deleteHotel }
+  { deleteHotel, addComment }
 )(withRouter(HotelProfile));

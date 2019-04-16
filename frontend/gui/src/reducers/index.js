@@ -1,5 +1,4 @@
 import { combineReducers } from "redux";
-import { loadingBarReducer } from "react-redux-loading-bar";
 
 import errors from "./errors";
 import messages from "./messages";
@@ -8,6 +7,7 @@ import profiles from "./profiles";
 import posts from "./posts";
 import hotels from "./hotels";
 import products from "./products";
+import comments from "./comments";
 
 export default combineReducers({
   auth,
@@ -16,6 +16,7 @@ export default combineReducers({
   hotels,
   messages,
   products,
-  loadingBar: loadingBarReducer,
+  comments,
+
   errors
 });

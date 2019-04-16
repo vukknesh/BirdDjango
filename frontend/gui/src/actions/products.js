@@ -15,7 +15,6 @@ import { createMessage } from "./messages";
 //add post
 
 export const addProduct = (productData, token, history) => dispatch => {
-  // dispatch(clearErrors());
   const config = {
     headers: {
       "Content-Type": "application/json"
@@ -28,7 +27,9 @@ export const addProduct = (productData, token, history) => dispatch => {
   axios
     .post("http://localhost:8000/api/products/create/", productData, config)
     .then(res => {
-      dispatch(createMessage({ hotelAdd: "Produto adicionado com sucesso!" }));
+      dispatch(
+        createMessage({ productAdd: "Produto adicionado com sucesso!" })
+      );
       dispatch({
         type: ADD_PRODUCT,
         payload: res.data

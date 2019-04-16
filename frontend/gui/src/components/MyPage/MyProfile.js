@@ -72,89 +72,93 @@ class MyProfile extends Component {
                 aria-haspopup="true"
                 aria-expanded="false"
               >
-                <i className="far fa-thumbs-up" /> Social Medias
+                <i className="far fa-thumbs-up" /> {"  "} Social Medias
               </p>
-              <hr />
-              <div className="dropdown-menu">
+
+              <ul className="dropdown-menu">
                 {instagram ? (
-                  <a
-                    target="_blank"
-                    href={`https://www.instagram.com/${instagram}`}
-                  >
-                    <i className="fab fa-instagram" />
-                    Instagram
-                  </a>
+                  <li>
+                    <a
+                      target="_blank"
+                      href={`https://www.instagram.com/${instagram}`}
+                    >
+                      <i className="fab fa-instagram" />
+                      Instagram
+                    </a>
+                  </li>
                 ) : null}
                 {youtube ? (
-                  <a
-                    target="_blank"
-                    href={`https://www.youtube.com/${youtube}`}
-                  >
-                    <i className="fab fa-youtube" />
-                    Youtube
-                  </a>
+                  <li>
+                    <a
+                      target="_blank"
+                      href={`https://www.youtube.com/${youtube}`}
+                    >
+                      <i className="fab fa-youtube" />
+                      Youtube
+                    </a>
+                  </li>
                 ) : null}
                 {facebook ? (
-                  <a
-                    target="_blank"
-                    href={`https://www.facebook.com/${facebook}`}
-                  >
-                    <i className="fab fa-facebook" />
-                    Facebook
-                  </a>
+                  <li>
+                    <a
+                      target="_blank"
+                      href={`https://www.facebook.com/${facebook}`}
+                    >
+                      <i className="fab fa-facebook" />
+                      Facebook
+                    </a>
+                  </li>
                 ) : null}
                 {wikiaves ? (
-                  <a
-                    target="_blank"
-                    href={`https://www.wikiaves.com.br/perfil_${wikiaves}`}
-                  >
-                    <i className="fas fa-dove" />
-                    Wikiaves
-                  </a>
+                  <li>
+                    <a
+                      target="_blank"
+                      href={`https://www.wikiaves.com.br/perfil_${wikiaves}`}
+                    >
+                      <i className="fas fa-dove" />
+                      Wikiaves
+                    </a>
+                  </li>
                 ) : null}
-              </div>
+              </ul>
             </div>
             {is_owner ? (
               <Link to="/my-accomodations" className="link-to">
                 <p>
-                  <i className="fas fa-home" /> Minhas Acomodações
+                  <i className="fas fa-home" /> {"  "} Minhas Acomodações
                 </p>
-                <hr />
               </Link>
             ) : null}
             {is_owner ? (
               <Link to="/my-products" className="link-to">
                 <p>
-                  <i className="fas fa-box-open" /> Meus Produtos
+                  <i className="fas fa-box-open" /> {"  "} Meus Produtos
                 </p>
-                <hr />
               </Link>
             ) : null}
 
             <Link to="/my-comments" className="link-to">
               <p>
-                <i className="far fa-comments" />
-                <span>Comentarios Feitos</span>
+                <i className="far fa-comments" /> {"  "}Meus Comentarios
               </p>
             </Link>
-            <hr />
+
             <Link to="/my-messages" className="link-to">
               <p>
-                <i className="far fa-envelope" /> Meus Posts
+                <i className="far fa-envelope" /> {"  "} Meus Posts
               </p>
             </Link>
-            <hr />
+
             <Link to="/edit-profile" className="link-to">
               <p>
-                <i className="far fa-address-card" />
+                <i className="far fa-address-card" /> {"  "}
                 Editar Perfil
               </p>
-              <hr />
             </Link>
 
             <Link to="/edit-profile-pic" className="link-to">
               <p>
-                <i className="fas fa-camera-retro" /> Editar Foto
+                <i className="fas fa-camera-retro" /> {"  "}Editar Foto
               </p>
             </Link>
           </div>

@@ -19,7 +19,7 @@ class FindHotels extends Component {
             <div className="gmap-container">
               <MapContainer hotels={this.props.hotels} />
             </div>
-            <div className="hotel-owner-container">
+            <div className="hotel-owner-container ml-4">
               <HotelOwners />
             </div>
           </div>

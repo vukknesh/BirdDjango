@@ -9,7 +9,31 @@ nav li:hover {
   width: 50px;
   height: 50px;
 }
-.dropdown-content {
+.dropdown-content-hoteis {
+  display: none;
+  position: fixed;
+
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 1rem;
+  min-height: 100px;
+  text-align: center;
+}
+.dropdown-content-guias {
+  display: none;
+  position: fixed;
+
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 1rem;
+  min-height: 100px;
+  text-align: center;
+}
+.dropdown-content-perfil {
   display: none;
   position: fixed;
   right: 100px;
@@ -18,20 +42,67 @@ nav li:hover {
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
   border-radius: 1rem;
-  min-height: 200px;
+  min-height: 100px;
   text-align: center;
 }
-.dropdown-content a {
-  min-height: 30px;
+.dropdown-content-produtos {
+  display: none;
+  position: fixed;
+
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 1rem;
+  min-height: 100px;
+  text-align: center;
+}
+.dropdown-content-produtos a {
   color: inherit;
 }
-.dropdown-content a:hover {
+.dropdown-content-hoteis a {
+  color: inherit;
+}
+.dropdown-content-perfil a {
+  color: inherit;
+}
+.dropdown-content-guias a {
+  color: inherit;
+}
+.dropdown-content-produtos a:hover {
+  background-color: rgb(143, 139, 139);
+  text-decoration: none;
+  color: white;
+}
+.dropdown-content-hoteis a:hover {
+  background-color: rgb(143, 139, 139);
+  text-decoration: none;
+  color: white;
+}
+.dropdown-content-perfil p:hover {
+  text-decoration: none;
+  color: white;
+  border-radius: 20px;
+}
+.dropdown-content-guias a:hover {
   background-color: rgb(143, 139, 139);
   text-decoration: none;
   color: white;
 }
 
-.dropdown:hover .dropdown-content {
+.dropdown:hover .dropdown-content-produtos {
+  display: flex;
+  flex-direction: column;
+}
+.dropdown:hover .dropdown-content-guias {
+  display: flex;
+  flex-direction: column;
+}
+.dropdown:hover .dropdown-content-hoteis {
+  display: flex;
+  flex-direction: column;
+}
+.dropdown:hover .dropdown-content-perfil {
   display: flex;
   flex-direction: column;
 }

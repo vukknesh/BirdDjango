@@ -4,7 +4,10 @@ import { Redirect, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { updateProfile, getCurrentProfile } from "../../actions/profile";
 import TextFieldGroup from "../common/TextFieldGroup";
-
+import PlacesAutocomplete, {
+  geocodeByAddress,
+  getLatLng
+} from "react-places-autocomplete";
 import isEmpty from "../../validation/is-empty";
 
 class EditProfile extends Component {
@@ -18,11 +21,13 @@ class EditProfile extends Component {
     lens: "",
     recorder: "",
     microphone: "",
+    address: "",
     city: "",
     state: "",
     country: "",
     about_you: "",
-    // gender: "",
+    lat: null,
+    lng: null,
 
     is_guide: false,
     is_owner: false,
@@ -79,6 +84,42 @@ class EditProfile extends Component {
       });
     }
   }
+  handleChange = address => {
+    this.setState({ address });
+  };
+
+  handleSelect = address => {
+    geocodeByAddress(address)
+      .then(results => {
+        console.log(results[0]);
+        this.setState({
+          address: results[0].address_components[0].short_name
+        });
+        getLatLng(results[0]).then(latLng =>
+          this.setState({
+            lat: latLng.lat,
+            lng: latLng.lng
+          })
+        );
+      })
+      .catch(error => console.error("Error", error));
+  };
+  handleChangeCity = city => {
+    this.setState({ city });
+  };
+
+  handleSelectCity = city => {
+    geocodeByAddress(city)
+      .then(results => {
+        console.log(results[0]);
+        this.setState({
+          city: results[0].address_components[0].short_name,
+          state: results[0].address_components[1].short_name,
+          country: results[0].address_components[2].short_name
+        });
+      })
+      .catch(error => console.error("Error", error));
+  };
   onChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
@@ -110,7 +151,10 @@ class EditProfile extends Component {
       city,
       state,
       country,
-      about_you
+      about_you,
+      lat,
+      lng,
+      address
       // gender
     } = this.state;
 
@@ -129,7 +173,10 @@ class EditProfile extends Component {
       city,
       state,
       country,
-      about_you
+      about_you,
+      lat,
+      lng,
+      address
       // gender
     };
     let id = this.props.user.id;
@@ -190,20 +237,100 @@ class EditProfile extends Component {
             )}{" "}
             - Acomodações
             <p className="lead text-center">Adress</p>
+            <PlacesAutocomplete
+              value={this.state.address}
+              onChange={this.handleChange}
+              onSelect={this.handleSelect}
+            >
+              {({
+                getInputProps,
+                suggestions,
+                getSuggestionItemProps,
+                loading
+              }) => (
+                <div>
+                  <input
+                    {...getInputProps({
+                      placeholder: "Endereço",
+                      className: "form-control form-control-lg mb-2"
+                    })}
+                  />
+                  <div className="autocomplete-dropdown-container">
+                    {loading && <div>Loading...</div>}
+                    {suggestions.map(suggestion => {
+                      const className = suggestion.active
+                        ? "suggestion-item--active"
+                        : "suggestion-item";
+                      // inline style for demonstration purpose
+                      const style = suggestion.active
+                        ? { backgroundColor: "#fafafa", cursor: "pointer" }
+                        : { backgroundColor: "#ffffff", cursor: "pointer" };
+                      return (
+                        <div
+                          {...getSuggestionItemProps(suggestion, {
+                            className,
+                            style
+                          })}
+                        >
+                          <span>{suggestion.description}</span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+            </PlacesAutocomplete>
             <form noValidate onSubmit={this.onSubmit}>
-              <TextFieldGroup
-                placeholder="City"
-                type="text"
-                name="city"
+              <PlacesAutocomplete
                 value={this.state.city}
-                onChange={this.onChange}
-              />
+                onChange={this.handleChangeCity}
+                onSelect={this.handleSelectCity}
+              >
+                {({
+                  getInputProps,
+                  suggestions,
+                  getSuggestionItemProps,
+                  loading
+                }) => (
+                  <div>
+                    <input
+                      {...getInputProps({
+                        placeholder: "Cidade",
+                        className: "form-control form-control-lg mb-2"
+                      })}
+                    />
+                    <div className="autocomplete-dropdown-container">
+                      {loading && <div>Loading...</div>}
+                      {suggestions.map(suggestion => {
+                        const className = suggestion.active
+                          ? "suggestion-item--active"
+                          : "suggestion-item";
+                        // inline style for demonstration purpose
+                        const style = suggestion.active
+                          ? { backgroundColor: "#fafafa", cursor: "pointer" }
+                          : { backgroundColor: "#ffffff", cursor: "pointer" };
+                        return (
+                          <div
+                            {...getSuggestionItemProps(suggestion, {
+                              className,
+                              style
+                            })}
+                          >
+                            <span>{suggestion.description}</span>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+              </PlacesAutocomplete>
               <TextFieldGroup
                 placeholder="State"
                 name="state"
                 value={this.state.state}
                 onChange={this.onChange}
                 type="text"
+                disabled
               />
               <TextFieldGroup
                 placeholder="Country"
@@ -211,6 +338,7 @@ class EditProfile extends Component {
                 value={this.state.country}
                 onChange={this.onChange}
                 type="text"
+                disabled
               />
               <p className="lead text-center">Your Equipment</p>
               <TextFieldGroup

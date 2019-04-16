@@ -32,23 +32,6 @@ def upload_location(instance, filename):
 
 class Product(models.Model):
 
-    # CAMERAS = "CAMERAS"
-    # ROUPAS = "ROUPAS"
-    # LENTES = "LENTES"
-    # ROUPAS = "ROUPAS"
-    # ACESSORIOS = "ACESSORIOS"
-    # TODAS = "TODAS"
-    # # (...)
-
-    # CATEGORIAS_CHOICES = (
-    #     (ROUPAS, "Roupas"),
-    #     (LENTES, "Lentes"),
-    #     (CAMERAS, "Cameras"),
-    #     (ACESSORIOS, "Acessorios"),
-    #     # ....
-    #     (TODAS, "Todas"),
-    # )
-
     STATUS = Choices('todas', 'roupas', 'lentes', 'acessorios', 'cameras')
     categorias = models.CharField(
         choices=STATUS, default=STATUS.todas, max_length=20)
@@ -57,9 +40,7 @@ class Product(models.Model):
                              on_delete=models.CASCADE)
 
     title = models.CharField(max_length=120, default='')
-    # categoria = models.CharField(max_length=15,
-    #                              choices=CATEGORIAS_CHOICES,
-    #                              default='Todas')
+    usado = models.BooleanField(default=False)
     slug = models.SlugField(unique=True)
     image1 = models.ImageField(default='defproduct.jpg',
                                upload_to='product_pics')
@@ -75,7 +56,7 @@ class Product(models.Model):
     content = models.TextField(blank=True, null=True)
     price = models.IntegerField(default=0)
     publish = models.DateField(auto_now=True, auto_now_add=False)
-    # category = models.ManyToManyField()
+
     updated = models.DateTimeField(auto_now=True, auto_now_add=False)
     timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
 
