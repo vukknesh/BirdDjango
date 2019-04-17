@@ -8,6 +8,7 @@ import posts from "./posts";
 import hotels from "./hotels";
 import products from "./products";
 import comments from "./comments";
+import locale from "./locale";
 
 export default combineReducers({
   auth,
@@ -17,6 +18,6 @@ export default combineReducers({
   messages,
   products,
   comments,
-
+  locale,
   errors
 });

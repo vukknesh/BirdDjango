@@ -19,6 +19,7 @@
     "react-google-autocomplete": "^1.0.18",
     "react-google-location": "^1.2.2",
     "react-google-maps": "^9.4.5",
+    "react-intl": "^2.8.0",
     "react-places-autocomplete": "^7.2.1",
     "react-redux": "^6.0.1",
     "react-redux-loading-bar": "^4.2.0",

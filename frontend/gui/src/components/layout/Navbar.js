@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logout } from "../../actions/auth";
 import owl from "./owly.png";
+import { FormattedMessage } from "react-intl";
+import { setLocale } from "../../actions/locale";
 
 import "./Navbarcss.css";
 
@@ -26,6 +28,13 @@ class Navbar extends Component {
 
     const authLinks = (
       <ul className="navbar-nav ml-auto font-weight-bold show1 mr-5">
+        <a role="button" onClick={() => this.props.setLocale("en")}>
+          EN
+        </a>{" "}
+        |
+        <a role="button" onClick={() => this.props.setLocale("ru")}>
+          RU
+        </a>
         <li className="nav-item dropdown">
           <Link className="nav-link text-light" to="/add-product">
             Produtos
@@ -49,6 +58,7 @@ class Navbar extends Component {
           <div className="dropdown-content-hoteis">
             <Link to="/hotels">
               <p>Procurar</p>
+              <FormattedMessage id="nav.dashboard" defaultMessage="Dashboard" />
             </Link>
             {is_owner ? <Link to="/add-hotel">Registrar Hotel</Link> : null}
           </div>
@@ -151,6 +161,13 @@ class Navbar extends Component {
             Login
           </Link>
         </li>
+        <a role="button" onClick={() => this.props.setLocale("en")}>
+          EN
+        </a>{" "}
+        |
+        <a role="button" onClick={() => this.props.setLocale("ru")}>
+          RU
+        </a>
       </ul>
     );
 
@@ -201,5 +218,5 @@ const mapStateToProps = state => ({
 });
 export default connect(
   mapStateToProps,
-  { logout }
+  { logout, setLocale }
 )(withRouter(Navbar));

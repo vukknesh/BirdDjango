@@ -1,13 +1,15 @@
 import React, { Component, Fragment } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { Provider } from "react-redux";
+import { connect } from "react-redux";
 
 import { transitions, positions, Provider as AlertProvider } from "react-alert";
 import AlertTemplate from "react-alert-template-basic";
 import Alerts from "./components/layout/Alerts";
 import PrivateRoute from "./components/common/PrivateRoute";
-import store from "./store";
-// import { loadUser } from "./actions/auth";
+
+import { IntlProvider } from "react-intl";
+import messages from "./messages";
+
 //components
 import NotFound from "./components/not-found/NotFound";
 import Navbar from "./components/layout/Navbar";
@@ -58,8 +60,9 @@ const options = {
 
 class App extends Component {
   render() {
+    const { lang } = this.props;
     return (
-      <Provider store={store}>
+      <IntlProvider locale={lang} messages={messages[lang]}>
         <AlertProvider template={AlertTemplate} {...options}>
           <Fragment>
             <Router>
@@ -168,9 +171,11 @@ class App extends Component {
             </Router>
           </Fragment>
         </AlertProvider>
-      </Provider>
+      </IntlProvider>
     );
   }
 }
-
-export default App;
+const mapStateToProps = state => ({
+  lang: state.locale.lang
+});
+export default connect(mapStateToProps)(App);

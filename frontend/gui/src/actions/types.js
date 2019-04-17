@@ -53,3 +53,7 @@ export const ADD_COMMENT = "ADD_COMMENT";
 export const GET_COMMENTS = "GET_COMMENTS";
 export const GET_COMMENT = "GET_COMMENT";
 export const DELETE_COMMENT = "DELETE_COMMENT";
+
+// LANGUAGE
+
+export const LOCALE_SET = "LOCALE_SET";
