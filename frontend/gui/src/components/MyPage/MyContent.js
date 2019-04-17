@@ -54,22 +54,16 @@ export class MyContent extends Component {
             ) : null}
           </div>
           <div className="card-body">
-            <div className="content">
-              <img src={post.image} alt="" />
-              <p>{post.content}</p>
-            </div>
+            <Link to={`postByHandle/${post.id}/`}>
+              <div className="content">
+                <img src={post.image} alt="" />
+                <p>{post.content}</p>
+              </div>
+            </Link>
 
             <div className="likes">
               <i className="far fa-thumbs-up" />
-              {/* <p>3</p> */}
             </div>
-          </div>
-          <div className="card-comments">
-            <form action="submit">
-              <input type="text" />
-              <i className="far fa-smile" />
-              <button>Comentar</button>
-            </form>
           </div>
         </div>
       ));

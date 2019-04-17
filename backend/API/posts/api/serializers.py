@@ -40,7 +40,7 @@ class PostCreateUpdateSerializer(ModelSerializer):
 
 post_detail_url = HyperlinkedIdentityField(
     view_name='posts-api:detail',
-    lookup_field='slug'
+    lookup_field='id'
 )
 
 

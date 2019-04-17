@@ -21,6 +21,7 @@ class ProfileSerializer(serializers.HyperlinkedModelSerializer):
     user_url = serializers.HyperlinkedIdentityField(view_name='user-detail')
     user = serializers.ReadOnlyField(source='user.id')
     id = serializers.IntegerField(source='pk', read_only=True)
+    slug = serializers.SlugField('slug', read_only=True)
     username = serializers.CharField(source='user.username', read_only=True)
     email = serializers.CharField(source='user.email', read_only=True)
     first_name = serializers.CharField(

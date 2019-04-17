@@ -43,6 +43,8 @@ import MarketPlace from "./components/marketplace/MarketPlace";
 import ItemInfo from "./components/marketplace/ItemInfo";
 import MapContainer from "./components/Maps/MapContainer";
 
+import Post from "./components/Post/Post";
+
 //ALERT OPTIONS
 
 const options = {
@@ -159,6 +161,7 @@ class App extends Component {
                     path="/profilebyhandle/:id/"
                     component={Profiles}
                   />
+                  <Route exact path="/postByHandle/:id/" component={Post} />
                   <Footer />
                 </div>
               </div>
