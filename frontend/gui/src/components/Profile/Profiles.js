@@ -13,11 +13,16 @@ import {
 } from "../../actions/profile";
 
 class Profiles extends Component {
-  componentWillMount() {
+  componentDidMount() {
     if (this.props.match.params.id) {
       this.props.getCurrentProfile(this.props.match.params.id);
     }
   }
+  // componentWillReceiveProps(nextProps) {
+  //   if (nextProps.match.params.id !== this.props.match.params.id) {
+  //     this.props.getCurrentProfile(this.props.match.params.id);
+  //   }
+  // }
 
   render() {
     if (!this.props.profile) {

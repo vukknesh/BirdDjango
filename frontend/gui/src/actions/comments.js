@@ -54,6 +54,47 @@ export const addComment = (
       });
     });
 };
+export const addCommentProfile = (
+  content,
+  type,
+  slug,
+  id,
+  token,
+  history
+) => dispatch => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json"
+    }
+  };
+  if (token) {
+    config.headers["Authorization"] = `Token ${token}`;
+  }
+
+  history.push(`/profilebyhandle/${id}/`);
+  axios
+    .post(
+      `http://localhost:8000/api/comments/create/?type=${type}&slug=${slug}`,
+      content,
+      config
+    )
+    .then(res => {
+      dispatch(
+        createMessage({ commentSucesso: "Comentario criado com sucesso!" })
+      );
+      dispatch({
+        type: ADD_COMMENT,
+        payload: res.data
+      });
+    })
+
+    .catch(err => {
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      });
+    });
+};
 export const addCommentPost = (
   content,
   type,
