@@ -32,8 +32,8 @@ class Navbar extends Component {
           EN
         </a>{" "}
         |
-        <a role="button" onClick={() => this.props.setLocale("ru")}>
-          RU
+        <a role="button" onClick={() => this.props.setLocale("br")}>
+          br
         </a>
         <li className="nav-item dropdown">
           <Link className="nav-link text-light" to="/add-product">
@@ -58,7 +58,6 @@ class Navbar extends Component {
           <div className="dropdown-content-hoteis">
             <Link to="/hotels">
               <p>Procurar</p>
-              <FormattedMessage id="nav.dashboard" defaultMessage="Dashboard" />
             </Link>
             {is_owner ? <Link to="/add-hotel">Registrar Hotel</Link> : null}
           </div>
@@ -165,8 +164,8 @@ class Navbar extends Component {
           EN
         </a>{" "}
         |
-        <a role="button" onClick={() => this.props.setLocale("ru")}>
-          RU
+        <a role="button" onClick={() => this.props.setLocale("br")}>
+          BR
         </a>
       </ul>
     );
@@ -183,6 +182,7 @@ class Navbar extends Component {
               Murucututu.com.br
             </div>
           </Link>
+
           <button
             className="navbar-toggler"
             type="button"

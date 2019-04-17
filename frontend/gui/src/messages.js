@@ -1,8 +1,18 @@
 export default {
   en: {
-    "nav.dashboard": "Dashboard"
+    "nav.home": "Home",
+    "nav.home": "About",
+    "nav.contact": "Contact",
+    "nav.hotels": "Hotels",
+    "nav.market": "Marketplace",
+    "nav.guide": "Guides"
   },
-  ru: {
-    "nav.dashboard": "Панель Управления"
+  br: {
+    "nav.home": "Inicial",
+    "nav.about": "Sobre",
+    "nav.contact": "Contato",
+    "nav.hotels": "Hoteis",
+    "nav.market": "Mercado",
+    "nav.guide": "Guias"
   }
 };

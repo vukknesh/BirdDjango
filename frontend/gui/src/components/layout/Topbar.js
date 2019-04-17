@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./Topbar.css";
 import { Link } from "react-router-dom";
-
+import { FormattedMessage } from "react-intl";
 export default class Topbar extends Component {
   render() {
     return (
@@ -9,32 +9,32 @@ export default class Topbar extends Component {
         <ul className="ul1">
           <li className="li1">
             <Link className="a1" to="/">
-              Home
+              <FormattedMessage id="nav.home" defaultMessage="Home" />
             </Link>
           </li>
           <li className="li1">
             <Link className="a1" to="/about">
-              About
+              <FormattedMessage id="nav.about" defaultMessage="About" />
             </Link>
           </li>
           <li className="li1">
             <Link className="a1" to="/contact">
-              Contact
+              <FormattedMessage id="nav.contact" defaultMessage="Contact" />
             </Link>
           </li>
           <li className="li1">
             <Link className="a1" to="/guide">
-              Guide
+              <FormattedMessage id="nav.guide" defaultMessage="Guide" />
             </Link>
           </li>
           <li className="li1">
             <Link className="a1" to="/hotels">
-              Hotels
+              <FormattedMessage id="nav.hotels" defaultMessage="Hotels" />
             </Link>
           </li>
           <li className="li1">
             <Link className="a1" to="/marketplace">
-              Marketplace
+              <FormattedMessage id="nav.market" defaultMessage="Marketplace" />
             </Link>
           </li>
         </ul>

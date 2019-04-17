@@ -11,12 +11,12 @@ import * as serviceWorker from "./serviceWorker";
 
 import { addLocaleData } from "react-intl";
 import en from "react-intl/locale-data/en";
-import ru from "react-intl/locale-data/ru";
+import br from "react-intl/locale-data/br";
 import { localeSet } from "./actions/locale";
 
 //add lg
 addLocaleData(en);
-addLocaleData(ru);
+addLocaleData(br);
 
 if (localStorage.alhubLang) {
   store.dispatch(localeSet(localStorage.alhubLang));
