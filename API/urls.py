@@ -3,8 +3,10 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import url, include as inc
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    
     path('', include('accounts.urls')),
     path('', include('userprofile.urls')),
     # path('api/posts/', include('posts.api.urls')),

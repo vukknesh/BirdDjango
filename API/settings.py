@@ -14,6 +14,12 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BACKEND_DIR = BASE_DIR  
+FRONTEND_DIR = os.path.abspath(
+    os.path.join(BACKEND_DIR,  'frontend/gui/'))
+
+print(FRONTEND_DIR)
+print(BACKEND_DIR)
 
 
 # Quick-start development settings - unsuitable for production
@@ -24,6 +30,7 @@ SECRET_KEY = '@xm0nsyzgepjf(2rn7_w40e@vtru4a93xgt9-5p_i1w+t2eezw'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+
 
 ALLOWED_HOSTS = ['165.22.146.170', 'localhost']
 
@@ -36,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    
     'django.contrib.staticfiles',
 
 
@@ -72,6 +80,7 @@ MIDDLEWARE = [
 
 
     'django.middleware.security.SecurityMiddleware',
+    
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -85,7 +94,7 @@ ROOT_URLCONF = 'API.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(FRONTEND_DIR, 'build/')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -162,6 +171,11 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 STATIC_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+
+
+
+
 
 CORS_ORIGIN_ALLOW_ALL = True
 
