@@ -1,11 +1,11 @@
 asn1crypto==0.24.0
-# astroid==2.2.5
+astroid==2.2.5
 boto3==1.9.126
 botocore==1.12.126
 cffi==1.12.2
 colorama==0.4.1
 cryptography==2.6.1
-# Django==2.1.7
+Django==2.1.7
 django-cors-headers==2.5.2
 django-filter==2.1.0
 django-markdown-deux==1.0.5
