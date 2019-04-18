@@ -14,12 +14,7 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-BACKEND_DIR = BASE_DIR  
-FRONTEND_DIR = os.path.abspath(
-    os.path.join(BACKEND_DIR,  'frontend/gui/'))
 
-print(FRONTEND_DIR)
-print(BACKEND_DIR)
 
 
 # Quick-start development settings - unsuitable for production
@@ -183,9 +178,7 @@ CORS_ORIGIN_ALLOW_ALL = True
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
-print(AWS_ACCESS_KEY_ID)
-print(AWS_SECRET_ACCESS_KEY)
-print(AWS_STORAGE_BUCKET_NAME)
+
 
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
